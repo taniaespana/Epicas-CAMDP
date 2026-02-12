@@ -97,6 +97,19 @@
       <button onclick="clearAllFilters()" class="text-blue-600 hover:text-blue-800 font-semibold underline text-xs">Limpiar filtro</button>
     </div>
 
+    <!-- GANTT CHART -->
+    <section class="card" aria-label="Gantt de épicas">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-bold" style="color:#0053e2">📅 Gantt — Timeline de Épicas</h3>
+        <div class="text-xs text-gray-400">Línea roja = hoy</div>
+      </div>
+      <div style="height:{{ [gantt|length * 32 + 60, 300]|max }}px; max-height:900px; overflow-y:auto;">
+        <div style="height:{{ gantt|length * 32 + 60 }}px; min-height:280px;">
+          <canvas id="ganttChart"></canvas>
+        </div>
+      </div>
+    </section>
+
     <!-- CHARTS ROW 1: Status + Dominio -->
     <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="card chart-clickable">
@@ -250,6 +263,7 @@
   <script>
   // ===================== DATA =====================
   const EPICS_DATA = {{ epics|tojson }};
+  const GANTT_DATA = {{ gantt|tojson }};
   const CHART_DATA = {
     status:   { labels: {{ status_dist.keys()|list|tojson }},   values: {{ status_dist.values()|list|tojson }} },
     dominio:  { labels: {{ dominio_dist.keys()|list|tojson }},  values: {{ dominio_dist.values()|list|tojson }} },

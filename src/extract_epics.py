@@ -34,7 +34,8 @@ def fetch_all_epics(session: requests.Session) -> list[dict]:
     jql = "project = CAMDP AND issuetype = Epic ORDER BY created DESC"
     fields = (
         "summary,status,assignee,created,updated,priority,"
-        "labels,description,resolution,resolutiondate,components"
+        "labels,description,resolution,resolutiondate,components,"
+        "duedate,customfield_10400,customfield_11805"
     )
 
     all_issues: list[dict] = []
@@ -90,6 +91,9 @@ def clean_epic(issue: dict) -> dict:
         "components": [c["name"] for c in f.get("components", [])],
         "description": (f.get("description") or "")[:300],
         "url": f"{config['JIRA_URL'].rstrip('/')}/browse/{issue['key']}",
+        "start_date": (f.get("customfield_11805") or "")[:10],
+        "planned_done_date": (f.get("customfield_10400") or "")[:10],
+        "due_date": (f.get("duedate") or "")[:10],
     }
 
 

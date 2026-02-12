@@ -7,7 +7,7 @@ Clasifica componentes y labels según su prefijo numérico.
 import json
 import re
 from collections import Counter
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -79,10 +79,30 @@ def filter_relevant(epics: list[dict]) -> list[dict]:
     ]
 
 
+def _effective_end_date(epic: dict) -> str:
+    """Calcula fecha fin efectiva para Gantt.
+
+    Prioridad: planned_done_date si existe y no vencido, sino due_date.
+    """
+    today = date.today().isoformat()
+    planned = epic.get("planned_done_date", "")
+    due = epic.get("due_date", "")
+
+    if planned and planned >= today:
+        return planned
+    if due:
+        return due
+    # Fallback: si planned existe pero vencido y no hay due, usar planned
+    if planned:
+        return planned
+    return ""
+
+
 def enrich_epic(epic: dict) -> dict:
-    """Agrega campos clasificados al epic."""
+    """Agrega campos clasificados y fecha Gantt al epic."""
     epic["comp_parsed"] = parse_components(epic.get("components", []))
     epic["label_parsed"] = parse_labels(epic.get("labels", []))
+    epic["gantt_end"] = _effective_end_date(epic)
 
     epic["dominio"] = ", ".join(epic["comp_parsed"].get("Dominio", []))
     epic["equipo_df"] = ", ".join(epic["comp_parsed"].get("Equipo DF", []))
@@ -138,6 +158,21 @@ def compute_all_metrics() -> dict:
     blocked = [e for e in epics if e["status"] == "Blocked"]
     done_recent = [e for e in epics if e["status"] == "Listo"]
 
+    # Gantt: solo épicas con start_date y gantt_end
+    gantt = [
+        {
+            "key": e["key"],
+            "summary": e["summary"][:60],
+            "start": e["start_date"],
+            "end": e["gantt_end"],
+            "status": e["status"],
+            "assignee": e["assignee"],
+            "dominio": e["dominio"],
+        }
+        for e in sorted(epics, key=lambda x: x.get("start_date", ""))
+        if e.get("start_date") and e.get("gantt_end")
+    ]
+
     return {
         "generated_at": now,
         "cutoff_date": CUTOFF_DATE,
@@ -178,4 +213,5 @@ def compute_all_metrics() -> dict:
         "active_epics": active,
         "blocked_epics": blocked,
         "done_recent": done_recent,
+        "gantt": gantt,
     }

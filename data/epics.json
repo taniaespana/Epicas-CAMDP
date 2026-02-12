@@ -22,7 +22,10 @@
       "5.Externo"
     ],
     "description": "Mapeo y disponibilización de fuentes de datos prioritarias a nivel del Data Lake, con el objetivo de habilitar el acceso centralizado a la información clave para el crecimiento del negocio de eCommerce. Incluye el monitoreo continuo de la salud y disponibilidad de cada fuente.\r\n \r\nObjetivo de Negoci",
-    "url": "https://jira.walmart.com/browse/CAMDP-26618"
+    "url": "https://jira.walmart.com/browse/CAMDP-26618",
+    "start_date": "2026-01-08",
+    "planned_done_date": "2026-03-26",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26541",
@@ -51,7 +54,10 @@
       "DP_Operaciones"
     ],
     "description": "*Descripción:*\r\nSolicito la implementación de la ingesta de datos provenientes de la fuente Saltrama, cuyos mensajes llegan desde Kafka en formato JSON.\r\n\r\n*Detalles del requerimiento:*\r\n * Cada mensaje tiene la siguiente estructura:\r\n\r\n{\\{{}}\r\n{{  \"header\":\r\n\r\n{ ... }\r\n\r\n,}}\r\n{\\{  \"tenders\": [ ... ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26541"
+    "url": "https://jira.walmart.com/browse/CAMDP-26541",
+    "start_date": "2026-02-03",
+    "planned_done_date": "2026-03-30",
+    "due_date": "2026-02-28"
   },
   {
     "key": "CAMDP-26540",
@@ -79,7 +85,10 @@
       "5.Externo"
     ],
     "description": "En esta épica se incluirán todas las actividades correspondientes a la solicitud Habilitación Tablas Flujo de Mercadería.\r\n\r\nLa cual fue solicitada por con el ticket CAMDP-23634 Migración de datos Eventos5000 hacia Datalake (Desarrollo)\r\n\r\nEstimación de esfuerzo y costos realizada con el ticket CAMD",
-    "url": "https://jira.walmart.com/browse/CAMDP-26540"
+    "url": "https://jira.walmart.com/browse/CAMDP-26540",
+    "start_date": "2026-02-03",
+    "planned_done_date": "2026-03-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26417",
@@ -103,7 +112,10 @@
       "1.SCM"
     ],
     "description": "Hola, equipo,\r\n\r\nUna vez completada la evaluación de *AI Score* y la exploración inicial, entrego formalmente el proyecto *Smart Forecasting – Expected Sales* para la implementación de *Machine Learning (ML)*.\r\n\r\nEsta iniciativa busca *transformar el proceso actual de previsión de ventas* dentro de ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26417"
+    "url": "https://jira.walmart.com/browse/CAMDP-26417",
+    "start_date": "2025-11-03",
+    "planned_done_date": "2026-02-18",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26404",
@@ -129,7 +141,10 @@
       "5.Externo"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Manufactura - Evolución Amino*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26404"
+    "url": "https://jira.walmart.com/browse/CAMDP-26404",
+    "start_date": "2026-01-19",
+    "planned_done_date": "2026-03-30",
+    "due_date": "2026-03-30"
   },
   {
     "key": "CAMDP-26397",
@@ -154,7 +169,10 @@
       "5.Externo"
     ],
     "description": "*Contexto o antecedentes del proyecto:* \r\n\r\nEl proyecto surge como una iniciativa del equipo de Tecnología (Tech) para abordar problemas relacionados con la calidad de datos y la gestión de precios en Walmart. Se identificó una baja gobernanza de datos (menos del 20% de las tablas) y una alta duplic",
-    "url": "https://jira.walmart.com/browse/CAMDP-26397"
+    "url": "https://jira.walmart.com/browse/CAMDP-26397",
+    "start_date": "2026-01-19",
+    "planned_done_date": "2026-06-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26392",
@@ -182,7 +200,10 @@
       "5.Externo"
     ],
     "description": "*Contexto:* Flujo actual desarrollado en Dataiku por el equipo de BI, el mismo ha presentado oportunidades por temas de reglas de negocio que no fueron claras y por lo tanto no han sido aplicadas de la manera correcta.\r\n\r\n*Alcance:* El flujo de integridad modular carece de gobierno, trazabilidad y u",
-    "url": "https://jira.walmart.com/browse/CAMDP-26392"
+    "url": "https://jira.walmart.com/browse/CAMDP-26392",
+    "start_date": "2026-01-19",
+    "planned_done_date": "2026-03-30",
+    "due_date": "2026-03-30"
   },
   {
     "key": "CAMDP-26332",
@@ -210,7 +231,10 @@
       "5.Externo"
     ],
     "description": "* *Contexto o antecedentes:*  el proceso actual de manejo de quejas incluye la captura de información por parte del SAC (lo hace negocio), el llenado de formularios en Power Apps (lo llena negocio, pero la administración del formulario la tenemos en D&A) y el seguimiento de quejas por parte de Walma",
-    "url": "https://jira.walmart.com/browse/CAMDP-26332"
+    "url": "https://jira.walmart.com/browse/CAMDP-26332",
+    "start_date": "2026-01-20",
+    "planned_done_date": "2026-06-30",
+    "due_date": "2026-06-30"
   },
   {
     "key": "CAMDP-26308",
@@ -236,7 +260,10 @@
       "5.Externo"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Perfor*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26308"
+    "url": "https://jira.walmart.com/browse/CAMDP-26308",
+    "start_date": "2026-01-19",
+    "planned_done_date": "2026-03-30",
+    "due_date": "2026-03-30"
   },
   {
     "key": "CAMDP-26307",
@@ -259,7 +286,10 @@
       "5.Externo"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Transporte - Simple Route a Datamart*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26307"
+    "url": "https://jira.walmart.com/browse/CAMDP-26307",
+    "start_date": "2025-09-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": "2026-03-31"
   },
   {
     "key": "CAMDP-26306",
@@ -286,7 +316,10 @@
       "5.Externo"
     ],
     "description": "Hola, equipo,\r\n\r\nUna vez completada la evaluación de *AI Score* y la exploración inicial, entrego formalmente el proyecto *Smart Forecasting – Expected Sales* para la implementación de *Machine Learning (ML)*.\r\n\r\nEsta iniciativa busca *transformar el proceso actual de previsión de ventas* dentro de ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26306"
+    "url": "https://jira.walmart.com/browse/CAMDP-26306",
+    "start_date": "2025-11-03",
+    "planned_done_date": "2026-02-18",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26305",
@@ -313,7 +346,10 @@
       "5.Externo"
     ],
     "description": "Esta iniciativa busca escalar la solución SML existente hacia una mayor granularidad y automatización del pronóstico dentro del proceso financiero, reemplazando prácticas manuales y mejorando la visibilidad operativa por categoría.\r\n\r\n*Aspectos destacados de la evaluación:*\r\n\r\n* Enfoque recomendado:",
-    "url": "https://jira.walmart.com/browse/CAMDP-26305"
+    "url": "https://jira.walmart.com/browse/CAMDP-26305",
+    "start_date": "2025-11-06",
+    "planned_done_date": "2026-02-24",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26304",
@@ -339,7 +375,10 @@
       "5.Externo"
     ],
     "description": "*Descripción detallada*\r\n\r\nSe requiere implementar un modelo de IA para Merma Administrativa, el cual permita realizar ensayos de algoritmos, análisis EDA, definición de variables y revisión de indicadores de rendimiento, para poder anticipar y automatizar la detección de estos casos y que genere un",
-    "url": "https://jira.walmart.com/browse/CAMDP-26304"
+    "url": "https://jira.walmart.com/browse/CAMDP-26304",
+    "start_date": "2025-11-06",
+    "planned_done_date": "2026-02-24",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26262",
@@ -367,7 +406,10 @@
       "5.Externo"
     ],
     "description": "The data exposure effort will cover the following *entities and data flows*:\r\n\r\n* *Portfolio Data Model*\r\n** Initiatives → Epics → Tasks → Metrics → Risks (Airtable schema alignment)\r\n* *Historical Performance Data*\r\n** KPI trend history (12–24 months)\r\n** Decision logs, milestones, risk incidents\r\n",
-    "url": "https://jira.walmart.com/browse/CAMDP-26262"
+    "url": "https://jira.walmart.com/browse/CAMDP-26262",
+    "start_date": "2026-01-09",
+    "planned_done_date": "2026-03-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26250",
@@ -396,7 +438,10 @@
       "5.Externo"
     ],
     "description": "Se requiere migrar las tablas del proyecto CAM Caja Chica hacia Datalake para consumir y crear reportes posteriormente.\r\n\r\n \r\n|Ambiente|Servidor Host|Nombre BD|Tipo|Versión|Cuentas de Servicio|\r\n|Producción|10.190.91.36|cam_pg_prod_cajachica|PostgreSQL|16|svc-db-pstg-cajachica-admin: administrador|\r",
-    "url": "https://jira.walmart.com/browse/CAMDP-26250"
+    "url": "https://jira.walmart.com/browse/CAMDP-26250",
+    "start_date": "2026-01-09",
+    "planned_done_date": "2026-02-23",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26245",
@@ -424,7 +469,10 @@
       "5.Externo"
     ],
     "description": "Épica correspondiente a los ticket de requerimientos asociados a Comercial - Pricing.",
-    "url": "https://jira.walmart.com/browse/CAMDP-26245"
+    "url": "https://jira.walmart.com/browse/CAMDP-26245",
+    "start_date": "2026-01-08",
+    "planned_done_date": "2026-02-25",
+    "due_date": "2026-02-25"
   },
   {
     "key": "CAMDP-26243",
@@ -443,7 +491,10 @@
       "1.Data_DP"
     ],
     "description": "KTLO´s 2026",
-    "url": "https://jira.walmart.com/browse/CAMDP-26243"
+    "url": "https://jira.walmart.com/browse/CAMDP-26243",
+    "start_date": "2026-01-08",
+    "planned_done_date": "2026-12-31",
+    "due_date": "2026-12-31"
   },
   {
     "key": "CAMDP-26242",
@@ -469,7 +520,10 @@
       "5.Externo"
     ],
     "description": "Objetivo dedicado al proyecto de Ecommerce",
-    "url": "https://jira.walmart.com/browse/CAMDP-26242"
+    "url": "https://jira.walmart.com/browse/CAMDP-26242",
+    "start_date": "2026-01-08",
+    "planned_done_date": "2026-03-26",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26239",
@@ -498,7 +552,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Transporte - Simple Route a Datamart*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26239"
+    "url": "https://jira.walmart.com/browse/CAMDP-26239",
+    "start_date": "2025-09-11",
+    "planned_done_date": "2026-03-31",
+    "due_date": "2026-03-31"
   },
   {
     "key": "CAMDP-26238",
@@ -521,7 +578,10 @@
       "5.Externo"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Manufactura - Bizerba Remediation*\r\n\r\n \r\n\r\nEsta épica esta asociada en la solicitud CAMDP-24880 DF - SCM - Manufactura - Bizerba Remediation",
-    "url": "https://jira.walmart.com/browse/CAMDP-26238"
+    "url": "https://jira.walmart.com/browse/CAMDP-26238",
+    "start_date": "2025-10-27",
+    "planned_done_date": "2026-03-31",
+    "due_date": "2026-03-31"
   },
   {
     "key": "CAMDP-26237",
@@ -550,7 +610,10 @@
       "Portfolio_Supply"
     ],
     "description": "PENDIENTE COLOCAR DESCRIPCIÓN\r\n\r\nÉpica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Analizador de huevo*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26237"
+    "url": "https://jira.walmart.com/browse/CAMDP-26237",
+    "start_date": "2025-11-24",
+    "planned_done_date": "2026-01-26",
+    "due_date": "2026-02-27"
   },
   {
     "key": "CAMDP-26236",
@@ -573,7 +636,10 @@
       "GenAI"
     ],
     "description": "(Smart Voucher Reconciler – Arquitectura Multi-Agente)\r\n\r\nEste agente de inteligencia artificial realiza la *conciliación automática entre los vales emitidos por entidades como iglesias* y los {*}tickets de compra generados en tiendas de Walmart Centroamérica{*}. Su función principal es validar, com",
-    "url": "https://jira.walmart.com/browse/CAMDP-26236"
+    "url": "https://jira.walmart.com/browse/CAMDP-26236",
+    "start_date": "2025-06-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": "2026-01-30"
   },
   {
     "key": "CAMDP-26235",
@@ -600,7 +666,10 @@
       "NavySeals"
     ],
     "description": "Épica creada para registrar todas la tareas relacionadas con el Proyecto DPM",
-    "url": "https://jira.walmart.com/browse/CAMDP-26235"
+    "url": "https://jira.walmart.com/browse/CAMDP-26235",
+    "start_date": "2025-10-08",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26234",
@@ -629,7 +698,10 @@
       "5.Interno"
     ],
     "description": "*Alcance POC - MVP1* *Objective:* Optimizar el proceso de gestión de discrepancias en importaciones mediante la automatización inteligente, utilizando herramientas de inteligencia artificial (machine learning) en combinación con automatización de procesos para reducir tiempos de resolución, mejorar ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26234"
+    "url": "https://jira.walmart.com/browse/CAMDP-26234",
+    "start_date": "2026-01-09",
+    "planned_done_date": "2026-01-26",
+    "due_date": "2026-02-27"
   },
   {
     "key": "CAMDP-26233",
@@ -654,7 +726,10 @@
       "5.Externo"
     ],
     "description": "Desrrollar un modelo de ML que permita realizar el pronostico adecuado de sencillo ( morralla ) que es necesario enviar a las Tiendas para garantizar su operación.",
-    "url": "https://jira.walmart.com/browse/CAMDP-26233"
+    "url": "https://jira.walmart.com/browse/CAMDP-26233",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2026-02-28",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26232",
@@ -676,7 +751,10 @@
       "5.Interno"
     ],
     "description": "KTLO´s 2026",
-    "url": "https://jira.walmart.com/browse/CAMDP-26232"
+    "url": "https://jira.walmart.com/browse/CAMDP-26232",
+    "start_date": "2026-01-08",
+    "planned_done_date": "2026-12-31",
+    "due_date": "2026-12-31"
   },
   {
     "key": "CAMDP-26231",
@@ -698,7 +776,10 @@
       "5.Interno"
     ],
     "description": "Gestión Administrativa de recursos.",
-    "url": "https://jira.walmart.com/browse/CAMDP-26231"
+    "url": "https://jira.walmart.com/browse/CAMDP-26231",
+    "start_date": "2026-01-08",
+    "planned_done_date": "2026-12-31",
+    "due_date": "2026-12-31"
   },
   {
     "key": "CAMDP-26214",
@@ -727,7 +808,10 @@
       "DP_Soluc.Financieras"
     ],
     "description": "Se requiere la importación del modelo y los datos almacenados en la base de datos del sistema Mis Pagos desde la base de datos de Acxiom Datamart . El objetivo es centralizar la información en una fuente sólida y confiable que proporcione datos precisos.\r\n\r\nAtendemos mas de 7 millones de clientes an",
-    "url": "https://jira.walmart.com/browse/CAMDP-26214"
+    "url": "https://jira.walmart.com/browse/CAMDP-26214",
+    "start_date": "2026-01-06",
+    "planned_done_date": "2026-03-30",
+    "due_date": "2026-03-30"
   },
   {
     "key": "CAMDP-26213",
@@ -752,7 +836,10 @@
       "5.Externo"
     ],
     "description": "Contexto: Se requiere la creación de una tabla modelada en el data Lake, con la estructura del insumo de excel adjunto.\r\n\r\nEsta tabla es requerida para el proyecto Be store, la misma seguirá siendo alimentada por un csv que proviene del proveedor Be store, y esta alojada en un onedrive.\r\n\r\nContacto ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26213"
+    "url": "https://jira.walmart.com/browse/CAMDP-26213",
+    "start_date": "2026-01-06",
+    "planned_done_date": "2026-03-30",
+    "due_date": "2026-03-30"
   },
   {
     "key": "CAMDP-26058",
@@ -779,7 +866,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Balanzas Manufactura (WSI)*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26058"
+    "url": "https://jira.walmart.com/browse/CAMDP-26058",
+    "start_date": "2025-11-24",
+    "planned_done_date": "2026-01-26",
+    "due_date": ""
   },
   {
     "key": "CAMDP-26037",
@@ -806,7 +896,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Analizador de huevo*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-26037"
+    "url": "https://jira.walmart.com/browse/CAMDP-26037",
+    "start_date": "2025-11-24",
+    "planned_done_date": "2026-01-26",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25989",
@@ -836,7 +929,10 @@
       "NavySeals"
     ],
     "description": "[~m0d0dyv]  por favor actualizar descripción\r\n\r\n*Aspectos destacados de la evaluación:*\r\n *  \r\n\r\n*Consideraciones técnicas:*\r\n *  \r\n\r\n*Objetivo del ticket:*\r\n *  \r\n\r\n*Documentación y referencias:*\r\n *  \r\n\r\n*Contactos:*\r\n *  ",
-    "url": "https://jira.walmart.com/browse/CAMDP-25989"
+    "url": "https://jira.walmart.com/browse/CAMDP-25989",
+    "start_date": "2025-11-06",
+    "planned_done_date": "2026-02-24",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25819",
@@ -857,7 +953,10 @@
       "DataNinjas"
     ],
     "description": "No se encuentran datos de asistencia para el día 20 de noviembre para toda la población de CAM",
-    "url": "https://jira.walmart.com/browse/CAMDP-25819"
+    "url": "https://jira.walmart.com/browse/CAMDP-25819",
+    "start_date": "2025-12-01",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25806",
@@ -885,7 +984,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Perfor*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-25806"
+    "url": "https://jira.walmart.com/browse/CAMDP-25806",
+    "start_date": "2025-11-24",
+    "planned_done_date": "2026-01-26",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25728",
@@ -909,7 +1011,10 @@
       "DataWizards"
     ],
     "description": "{*}Contexto de la solicitud{*}: Se requiere atender solicitudes, para el equipo de Oficina al Cliente relacionadas con Medallia y Digital Promo.\r\n\r\n*Documentación base:* No aplicada\r\n\r\n*Áreas involucradas:* Diego Castro\r\n\r\n*Requisitos:*  Permisos, Accesos requeridos a relacionar en tickets asociados",
-    "url": "https://jira.walmart.com/browse/CAMDP-25728"
+    "url": "https://jira.walmart.com/browse/CAMDP-25728",
+    "start_date": "2025-10-06",
+    "planned_done_date": "2026-01-26",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25727",
@@ -939,7 +1044,10 @@
       "DataNinjas"
     ],
     "description": "Se requiere migrar las tablas del proyecto CAM Caja Chica hacia Datalake para consumir y crear reportes posteriormente.\r\n\r\n \r\n|Ambiente|Servidor Host|Nombre BD|Tipo|Versión|Cuentas de Servicio|\r\n|Producción|10.190.91.36|cam_pg_prod_cajachica|PostgreSQL|16|svc-db-pstg-cajachica-admin: administrador|\r",
-    "url": "https://jira.walmart.com/browse/CAMDP-25727"
+    "url": "https://jira.walmart.com/browse/CAMDP-25727",
+    "start_date": "2025-11-24",
+    "planned_done_date": "2026-01-26",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25722",
@@ -966,7 +1074,10 @@
       "5.Externo"
     ],
     "description": "{*}Contexto de la solicitud{*}: Se requiere atender solicitudes, para el equipo de Soluciones Financieras.\r\nrelacioandas con transacciones diarias de Remesas en las tiendas de Walmart CAM.\r\nDatalake Smart \r\n\r\nDatalake RH \r\n\r\n*Áreas involucradas:* Jefry Azofeifa",
-    "url": "https://jira.walmart.com/browse/CAMDP-25722"
+    "url": "https://jira.walmart.com/browse/CAMDP-25722",
+    "start_date": "2025-11-17",
+    "planned_done_date": "2026-01-26",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25618",
@@ -995,7 +1106,10 @@
       "A-Team"
     ],
     "description": "The data exposure effort will cover the following *entities and data flows*:\r\n\r\n* *Portfolio Data Model*\r\n** Initiatives → Epics → Tasks → Metrics → Risks (Airtable schema alignment)\r\n* *Historical Performance Data*\r\n** KPI trend history (12–24 months)\r\n** Decision logs, milestones, risk incidents\r\n",
-    "url": "https://jira.walmart.com/browse/CAMDP-25618"
+    "url": "https://jira.walmart.com/browse/CAMDP-25618",
+    "start_date": "2025-12-02",
+    "planned_done_date": "2026-01-05",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25604",
@@ -1024,7 +1138,10 @@
       "CAMDF_NewRequest"
     ],
     "description": "Contexto:\r\nDado los resultados en el estado de resultados de la compañía, es necesario analizar las oportunidades de ahorro en la estructura de gastos en las tiendas. Actualmente se utiliza el modulo de SAP PR2 para consultar información, pero esta fuente no ofrece el detalle necesario a nivel de pr",
-    "url": "https://jira.walmart.com/browse/CAMDP-25604"
+    "url": "https://jira.walmart.com/browse/CAMDP-25604",
+    "start_date": "2025-11-25",
+    "planned_done_date": "2026-01-30",
+    "due_date": "2026-01-30"
   },
   {
     "key": "CAMDP-25579",
@@ -1045,7 +1162,10 @@
       "DataNinjas"
     ],
     "description": "Épica correspondiente a los ticket de requerimientos asociados a Comercial - Pricing.",
-    "url": "https://jira.walmart.com/browse/CAMDP-25579"
+    "url": "https://jira.walmart.com/browse/CAMDP-25579",
+    "start_date": "2025-10-24",
+    "planned_done_date": "2026-02-25",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25504",
@@ -1069,7 +1189,10 @@
       "NavySeals"
     ],
     "description": "Esta iniciativa busca escalar la solución SML existente hacia una mayor granularidad y automatización del pronóstico dentro del proceso financiero, reemplazando prácticas manuales y mejorando la visibilidad operativa por categoría.\r\n\r\n*Aspectos destacados de la evaluación:*\r\n\r\n* Enfoque recomendado:",
-    "url": "https://jira.walmart.com/browse/CAMDP-25504"
+    "url": "https://jira.walmart.com/browse/CAMDP-25504",
+    "start_date": "2025-11-06",
+    "planned_done_date": "2026-02-24",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25464",
@@ -1090,7 +1213,10 @@
       "A-Team"
     ],
     "description": "* *Descripción detallada:*\r\n ** Crear estandares para administrar y gestionar instancias en postgresql\r\n ** Agregar mejores practicas\r\n\r\n \r\n * *Alcance:*\r\n ** Crear estandares para administrar y gestion  instancias en postgresql\r\n\r\n \r\n * {*}Criterios de Aceptación{*}:\r\n **  Documentar en confluence ",
-    "url": "https://jira.walmart.com/browse/CAMDP-25464"
+    "url": "https://jira.walmart.com/browse/CAMDP-25464",
+    "start_date": "2025-02-28",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25420",
@@ -1114,7 +1240,10 @@
       "DataWizards"
     ],
     "description": "Esta epica se crea con el objetivo de agrupar todas las tareas relacionadas con investigaciones, pruebas, PoC y similares de caracter interno del Squad de NavySeals.",
-    "url": "https://jira.walmart.com/browse/CAMDP-25420"
+    "url": "https://jira.walmart.com/browse/CAMDP-25420",
+    "start_date": "2025-10-01",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25418",
@@ -1139,7 +1268,10 @@
       "DP_Ecomm"
     ],
     "description": "Esta epica se crea con el objetivo de agrupar todas las tareas relacionadas con apoyos, revisiones y actualizaciones de conexiones en PowerBI Gateway.",
-    "url": "https://jira.walmart.com/browse/CAMDP-25418"
+    "url": "https://jira.walmart.com/browse/CAMDP-25418",
+    "start_date": "2025-06-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25391",
@@ -1161,7 +1293,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Manufactura - Bizerba Remediation*\r\n\r\n \r\n\r\nEsta épica esta asociada en la solicitud CAMDP-24880 DF - SCM - Manufactura - Bizerba Remediation",
-    "url": "https://jira.walmart.com/browse/CAMDP-25391"
+    "url": "https://jira.walmart.com/browse/CAMDP-25391",
+    "start_date": "2025-10-27",
+    "planned_done_date": "2025-12-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25390",
@@ -1186,7 +1321,10 @@
       "NavySeals"
     ],
     "description": "Hola, equipo,\r\n\r\nUna vez completada la evaluación de *AI Score* y la exploración inicial, entrego formalmente el proyecto *Smart Forecasting – Expected Sales* para la implementación de *Machine Learning (ML)*.\r\n\r\nEsta iniciativa busca *transformar el proceso actual de previsión de ventas* dentro de ",
-    "url": "https://jira.walmart.com/browse/CAMDP-25390"
+    "url": "https://jira.walmart.com/browse/CAMDP-25390",
+    "start_date": "2025-11-03",
+    "planned_done_date": "2026-02-18",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25317",
@@ -1210,7 +1348,10 @@
       "NavySeals"
     ],
     "description": "Esta epica se crea con el objetivo de agrupar todas las tareas relacionadas a la migración y apoyos en APIs que requieren otros equipos de Ingeniería y Arquitectura dentro de Data Fabric.",
-    "url": "https://jira.walmart.com/browse/CAMDP-25317"
+    "url": "https://jira.walmart.com/browse/CAMDP-25317",
+    "start_date": "2025-06-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25287",
@@ -1235,7 +1376,10 @@
       "5.Externo"
     ],
     "description": "*Contexto o antecedentes del proyecto:* \r\n\r\nEl proyecto surge como una iniciativa del equipo de Tecnología (Tech) para abordar problemas relacionados con la calidad de datos y la gestión de precios en Walmart. Se identificó una baja gobernanza de datos (menos del 20% de las tablas) y una alta duplic",
-    "url": "https://jira.walmart.com/browse/CAMDP-25287"
+    "url": "https://jira.walmart.com/browse/CAMDP-25287",
+    "start_date": "2025-11-10",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25246",
@@ -1266,7 +1410,10 @@
       "NavySeals"
     ],
     "description": "Esta epica se crea con el objetivo de agrupar todas las tareas relacionadas al PoC y Desarrollo del modelo  basado en Robot de Matches para identificar atributos de items con oportunidad de mejora en sus pesos y características que afectan el calculo de merma.",
-    "url": "https://jira.walmart.com/browse/CAMDP-25246"
+    "url": "https://jira.walmart.com/browse/CAMDP-25246",
+    "start_date": "2025-10-20",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25193",
@@ -1291,7 +1438,10 @@
       "DP_Ecomm"
     ],
     "description": "Esta epica se crea con el objetivo de agrupar todas las tareas relacionadas con la PoC para apoyar al team de cliente unico en su proceso de unificacion de clientes de los sistemas Walmart.",
-    "url": "https://jira.walmart.com/browse/CAMDP-25193"
+    "url": "https://jira.walmart.com/browse/CAMDP-25193",
+    "start_date": "2025-06-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25147",
@@ -1315,7 +1465,10 @@
       "NavySeals"
     ],
     "description": "* *Contexto o antecedentes:*  el proceso actual de manejo de quejas incluye la captura de información por parte del SAC (lo hace negocio), el llenado de formularios en Power Apps (lo llena negocio, pero la administración del formulario la tenemos en D&A) y el seguimiento de quejas por parte de Walma",
-    "url": "https://jira.walmart.com/browse/CAMDP-25147"
+    "url": "https://jira.walmart.com/browse/CAMDP-25147",
+    "start_date": "2025-10-20",
+    "planned_done_date": "2026-01-20",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25144",
@@ -1336,7 +1489,10 @@
       "GenAI"
     ],
     "description": "Desarrollo y Despliegue de solucion Picking Ecommerce",
-    "url": "https://jira.walmart.com/browse/CAMDP-25144"
+    "url": "https://jira.walmart.com/browse/CAMDP-25144",
+    "start_date": "2026-01-06",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25047",
@@ -1363,7 +1519,10 @@
       "NavySeals"
     ],
     "description": "Épica creada para registrar todas la tareas relacionadas con el Proyecto DPM",
-    "url": "https://jira.walmart.com/browse/CAMDP-25047"
+    "url": "https://jira.walmart.com/browse/CAMDP-25047",
+    "start_date": "2025-10-08",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-25008",
@@ -1386,7 +1545,10 @@
       "NavySeals"
     ],
     "description": "Esta epica se crea con el objetivo de agrupar todas las tareas relacionadas a dataiku por parte del equipo de data platform",
-    "url": "https://jira.walmart.com/browse/CAMDP-25008"
+    "url": "https://jira.walmart.com/browse/CAMDP-25008",
+    "start_date": "2025-06-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24922",
@@ -1412,7 +1574,10 @@
       "5.Externo"
     ],
     "description": "Nombre de reporte o flujo: DPM - Ampliación Fresh y MG\r\nDetalle de incidente: Solicitud del negocio para agregar al desarrollo las divisiones de Fresh y MG.\r\n\r\nContexto: Este es un proyecto financiado con presupuesto del área de Marketing, el sponsor es Jorge Jimenez y tiene como finalidad buscar au",
-    "url": "https://jira.walmart.com/browse/CAMDP-24922"
+    "url": "https://jira.walmart.com/browse/CAMDP-24922",
+    "start_date": "2026-01-08",
+    "planned_done_date": "2026-06-28",
+    "due_date": "2026-06-28"
   },
   {
     "key": "CAMDP-24914",
@@ -1433,7 +1598,10 @@
       "CAMDF_NewRequest"
     ],
     "description": "Del proyecto wmt-k1-dl-data-prod en un bucket productivo para Aprobador Eventos 5K ocupamos consumir las imagenes que se están almacenando en dicho bucket, ¿Cómo podemos consumir los objetos del bucket para colocarlos en un reporte?",
-    "url": "https://jira.walmart.com/browse/CAMDP-24914"
+    "url": "https://jira.walmart.com/browse/CAMDP-24914",
+    "start_date": "2025-10-17",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24892",
@@ -1454,7 +1622,10 @@
       "A-Team"
     ],
     "description": "Epica creada para el trackeo de las horas de los lideres dedicas a sus recursos",
-    "url": "https://jira.walmart.com/browse/CAMDP-24892"
+    "url": "https://jira.walmart.com/browse/CAMDP-24892",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24855",
@@ -1476,7 +1647,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Transporte - Simple Route a Datamart*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-24855"
+    "url": "https://jira.walmart.com/browse/CAMDP-24855",
+    "start_date": "2025-09-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24830",
@@ -1497,7 +1671,10 @@
       "GenAI"
     ],
     "description": "(Smart Voucher Reconciler – Arquitectura Multi-Agente)\r\n\r\nEste agente de inteligencia artificial realiza la *conciliación automática entre los vales emitidos por entidades como iglesias* y los {*}tickets de compra generados en tiendas de Walmart Centroamérica{*}. Su función principal es validar, com",
-    "url": "https://jira.walmart.com/browse/CAMDP-24830"
+    "url": "https://jira.walmart.com/browse/CAMDP-24830",
+    "start_date": "2025-06-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24736",
@@ -1519,7 +1696,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Logística - Control  Temperaturas*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-24736"
+    "url": "https://jira.walmart.com/browse/CAMDP-24736",
+    "start_date": "2025-09-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24735",
@@ -1541,7 +1721,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Importaciones - DIGI Resurtido*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-24735"
+    "url": "https://jira.walmart.com/browse/CAMDP-24735",
+    "start_date": "2025-09-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24734",
@@ -1563,7 +1746,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Importaciones - Costeo Real*\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-24734"
+    "url": "https://jira.walmart.com/browse/CAMDP-24734",
+    "start_date": "2025-09-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24682",
@@ -1582,7 +1768,10 @@
       "GenAI"
     ],
     "description": "Accesos, cursos, etc",
-    "url": "https://jira.walmart.com/browse/CAMDP-24682"
+    "url": "https://jira.walmart.com/browse/CAMDP-24682",
+    "start_date": "2025-09-22",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24630",
@@ -1603,7 +1792,10 @@
       "GenAI"
     ],
     "description": "Desarrollo y Despliegue de solucion Picking Ecommerce",
-    "url": "https://jira.walmart.com/browse/CAMDP-24630"
+    "url": "https://jira.walmart.com/browse/CAMDP-24630",
+    "start_date": "2025-06-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24629",
@@ -1624,7 +1816,10 @@
       "A-Team"
     ],
     "description": "Objetivo creado con la finalidad de registrar los apoyos que se brinden por parte de los LT's a sus equipos. Incluye guía, orientación y apoyo técnico de requerirse",
-    "url": "https://jira.walmart.com/browse/CAMDP-24629"
+    "url": "https://jira.walmart.com/browse/CAMDP-24629",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24628",
@@ -1645,7 +1840,10 @@
       "A-Team"
     ],
     "description": "Objetivo creado con la finalidad de registrar los apoyos que se brinden por parte de los LT's a sus equipos. Incluye guía, orientación y apoyo técnico de requerirse",
-    "url": "https://jira.walmart.com/browse/CAMDP-24628"
+    "url": "https://jira.walmart.com/browse/CAMDP-24628",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24609",
@@ -1668,7 +1866,10 @@
       "DataNinjas"
     ],
     "description": "Basado en el análisis realizado en CAMDP-23781 para el cambio de los reportes que usa SEIF al tipo de cambio PEG, solicitamos la realización de esta estimación.\r\n\r\nEl detalle del cambio implica lo siguiente:\r\n\r\nSegún la decisión de negocio, se utilizará en adelante el tipo de cambio PEG en los proce",
-    "url": "https://jira.walmart.com/browse/CAMDP-24609"
+    "url": "https://jira.walmart.com/browse/CAMDP-24609",
+    "start_date": "2025-09-24",
+    "planned_done_date": "2025-10-24",
+    "due_date": "2025-12-31"
   },
   {
     "key": "CAMDP-24605",
@@ -1694,7 +1895,10 @@
       "5.Externo"
     ],
     "description": "Es necesario realizar la migración/hablitación de las tablas del proyecto de etiquetas electronicas en esquemas de datalake que puedan ser consumidas por las herramientas aprobadas para CAM.\r\n\r\nTicket de estimación: [https://jira.walmart.com/servicedesk/customer/portal/8359/CAMDP-23614|https://jira.",
-    "url": "https://jira.walmart.com/browse/CAMDP-24605"
+    "url": "https://jira.walmart.com/browse/CAMDP-24605",
+    "start_date": "2026-01-21",
+    "planned_done_date": "2026-03-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24582",
@@ -1715,7 +1919,10 @@
       "CAMDF_NewRequest"
     ],
     "description": "Para el proyecto de Administración de Canastos se desplegaron en el repositorio [dl-tech-people-dags|https://gecgithub01.walmart.com/camts/dl-tech-people-dags/tree/main/dags] 3 dags que llenaría la información relevante de Item, Ventas e Inventario a utilizar en la aplicación Administración de Canas",
-    "url": "https://jira.walmart.com/browse/CAMDP-24582"
+    "url": "https://jira.walmart.com/browse/CAMDP-24582",
+    "start_date": "2025-09-17",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24575",
@@ -1736,7 +1943,10 @@
       "CAMDF_NewRequest"
     ],
     "description": "En el proyecto de automatización de cierres diarios, envíamos data a los equipos de contabilidad (EBS) para poder que ellos puedan realizar sus asientos y conciliaciones. Sin embargo el equipo de arquitectura tiene la duda si estos datos son gobernados y gestionados por el equipo de D&A. \r\n\r\n \r\n\r\nEn",
-    "url": "https://jira.walmart.com/browse/CAMDP-24575"
+    "url": "https://jira.walmart.com/browse/CAMDP-24575",
+    "start_date": "2025-09-22",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24491",
@@ -1764,7 +1974,10 @@
       "DataWizards"
     ],
     "description": "En esta épica se incluirán todas las actividades correspondientes a procesos de Automatización Data Factory, que serán atendidos por [~vn567w0] ",
-    "url": "https://jira.walmart.com/browse/CAMDP-24491"
+    "url": "https://jira.walmart.com/browse/CAMDP-24491",
+    "start_date": "2025-07-16",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24471",
@@ -1789,7 +2002,10 @@
       "5.Externo"
     ],
     "description": "Contexto: Se requiere la creación de una tabla modelada en el data Lake, con la estructura del insumo de excel adjunto.\r\n\r\nEsta tabla es requerida para el proyecto Be store, la misma seguirá siendo alimentada por un csv que proviene del proveedor Be store, y esta alojada en un onedrive.\r\n\r\nContacto ",
-    "url": "https://jira.walmart.com/browse/CAMDP-24471"
+    "url": "https://jira.walmart.com/browse/CAMDP-24471",
+    "start_date": "2025-12-15",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24160",
@@ -1808,7 +2024,10 @@
       "DataNinjas"
     ],
     "description": "Epica creada para todo lo relacionado con el tema de Google Ad Manager (GAM)",
-    "url": "https://jira.walmart.com/browse/CAMDP-24160"
+    "url": "https://jira.walmart.com/browse/CAMDP-24160",
+    "start_date": "2025-08-19",
+    "planned_done_date": "2025-09-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24069",
@@ -1829,7 +2048,10 @@
       "A-Team"
     ],
     "description": "Épica en la cual se registrarán temas relacionados con Dataiku durante el 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-24069"
+    "url": "https://jira.walmart.com/browse/CAMDP-24069",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-24055",
@@ -1850,7 +2072,10 @@
       "CAMDF_NewRequest"
     ],
     "description": "Ticket Original: [\\[CAMDP-23865] Creación y habilitación de instancias Cloud SQL para CAM FELCR en GCP PROD - Enterprise JIRA|https://jira.walmart.com/browse/CAMDP-23865]\r\n\r\nSe requiere redundancia en dos regiones; y un aumento de recursos para la instancia creada de:\r\n\r\n \r\n\r\n*k1-dl-postgres-felcr*\r",
-    "url": "https://jira.walmart.com/browse/CAMDP-24055"
+    "url": "https://jira.walmart.com/browse/CAMDP-24055",
+    "start_date": "2025-08-12",
+    "planned_done_date": "2025-08-18",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23982",
@@ -1869,7 +2094,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo cuyo fin es registrar los temas varios que se trabajen en relación con Inteligencia Artificial (Generación de Propuestas, investigaciones, etc)",
-    "url": "https://jira.walmart.com/browse/CAMDP-23982"
+    "url": "https://jira.walmart.com/browse/CAMDP-23982",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23967",
@@ -1888,7 +2116,10 @@
       "DataNinjas"
     ],
     "description": "Desrrollar un modelo de ML que permita realizar el pronostico adecuado de sencillo ( morralla ) que es necesario enviar a las Tiendas para garantizar su operación.",
-    "url": "https://jira.walmart.com/browse/CAMDP-23967"
+    "url": "https://jira.walmart.com/browse/CAMDP-23967",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23939",
@@ -1918,7 +2149,10 @@
       "DP_Tech"
     ],
     "description": "Epica creada para el trackeo de las horas de los lideres dedicas a sus recursos",
-    "url": "https://jira.walmart.com/browse/CAMDP-23939"
+    "url": "https://jira.walmart.com/browse/CAMDP-23939",
+    "start_date": "2025-05-29",
+    "planned_done_date": "2025-12-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23890",
@@ -1939,7 +2173,10 @@
       "CAMDF_NewRequest"
     ],
     "description": "Se detectó un faltante de datos para el día 26 de junio de 2025 para CR en la siguiente tabla. \r\n\r\n\r\n\r\nwmt-intl-cons-local-k1-prod.k1_local_cust_secure_tables.wmt_k1_k1_cust_tndr_anlys\r\n\r\n\r\n\r\nEsto implica valores faltantes necesarios para los análisis que está llevando el equipo de Dunnhumby. ",
-    "url": "https://jira.walmart.com/browse/CAMDP-23890"
+    "url": "https://jira.walmart.com/browse/CAMDP-23890",
+    "start_date": "2025-08-01",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23871",
@@ -1958,7 +2195,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado a temas relacionados con SpotCAM",
-    "url": "https://jira.walmart.com/browse/CAMDP-23871"
+    "url": "https://jira.walmart.com/browse/CAMDP-23871",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23868",
@@ -1983,7 +2223,10 @@
       "DP_Ofic.Cliente"
     ],
     "description": "Épica asociada al proyecto DW - AC (Actividad Comercial) relacionado a:\r\n\r\n \r\n|*HU*|*PRIORIDAD*|*NOMBRE*|\r\n|+CAMDP-23694+|+1+|AC – Creación de tabla de Elasticidad|\r\n|+CAMDP-23693+|+2+|AC – Construcción y modelado de Tablas para Plantilla Verde|\r\n|+CAMDP-23695+|+3+|AC – Creación y Modelado tabla Ven",
-    "url": "https://jira.walmart.com/browse/CAMDP-23868"
+    "url": "https://jira.walmart.com/browse/CAMDP-23868",
+    "start_date": "2025-05-29",
+    "planned_done_date": "2025-11-28",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23802",
@@ -2013,7 +2256,10 @@
       "DP_Operaciones"
     ],
     "description": "*Descripción:*\r\nSolicito la implementación de la ingesta de datos provenientes de la fuente Saltrama, cuyos mensajes llegan desde Kafka en formato JSON.\r\n\r\n*Detalles del requerimiento:*\r\n * Cada mensaje tiene la siguiente estructura:\r\n\r\n{\\{{}}\r\n{{  \"header\":\r\n\r\n{ ... }\r\n\r\n,}}\r\n{\\{  \"tenders\": [ ... ",
-    "url": "https://jira.walmart.com/browse/CAMDP-23802"
+    "url": "https://jira.walmart.com/browse/CAMDP-23802",
+    "start_date": "2025-08-01",
+    "planned_done_date": "2025-08-04",
+    "due_date": "2026-02-28"
   },
   {
     "key": "CAMDP-23790",
@@ -2034,7 +2280,10 @@
       "DataNinjas"
     ],
     "description": "Épica en la cual se registrarán temas que afecten el tiempo efectivo de trabajo, tales como situaciones de salud, problemas con la computadora, con la VDI, y demás.",
-    "url": "https://jira.walmart.com/browse/CAMDP-23790"
+    "url": "https://jira.walmart.com/browse/CAMDP-23790",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23778",
@@ -2055,7 +2304,10 @@
       "A-Team"
     ],
     "description": "Epica creada para relacionar Apoyos que se realicen a otros equipos en diferentes temas",
-    "url": "https://jira.walmart.com/browse/CAMDP-23778"
+    "url": "https://jira.walmart.com/browse/CAMDP-23778",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23777",
@@ -2076,7 +2328,10 @@
       "A-Team"
     ],
     "description": "Epica creada para relacionar Meetings, Training, Onboarding de temas generales",
-    "url": "https://jira.walmart.com/browse/CAMDP-23777"
+    "url": "https://jira.walmart.com/browse/CAMDP-23777",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23772",
@@ -2107,7 +2362,10 @@
       "DP_Tech"
     ],
     "description": "Esta épica agrupa todas las solicitudes enfocadas al servicio de Cloud SQL",
-    "url": "https://jira.walmart.com/browse/CAMDP-23772"
+    "url": "https://jira.walmart.com/browse/CAMDP-23772",
+    "start_date": "2025-08-28",
+    "planned_done_date": "2025-12-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23640",
@@ -2129,7 +2387,10 @@
       "DataNinjas"
     ],
     "description": "En esta épica se incluirán todas las actividades correspondientes a la solicitud Habilitación Tablas Flujo de Mercadería.\r\n\r\nLa cual fue solicitada por con el ticket CAMDP-23634 Migración de datos Eventos5000 hacia Datalake (Desarrollo)\r\n\r\nEstimación de esfuerzo y costos realizada con el ticket CAMD",
-    "url": "https://jira.walmart.com/browse/CAMDP-23640"
+    "url": "https://jira.walmart.com/browse/CAMDP-23640",
+    "start_date": "2025-07-16",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23639",
@@ -2151,7 +2412,10 @@
       "DataNinjas"
     ],
     "description": "En esta épica se incluirán todas las actividades correspondientes a la solicitud Habilitación Tablas Flujo de Mercadería.\r\n\r\nLa cual fue solicitada con el ticket CAMDP-23635 Habilitación Tablas Flujo de Mercadería\r\n\r\nEstimación de esfuerzo y costos realizada con el ticket CAMDP-22920 Migración Tabla",
-    "url": "https://jira.walmart.com/browse/CAMDP-23639"
+    "url": "https://jira.walmart.com/browse/CAMDP-23639",
+    "start_date": "2025-07-16",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23539",
@@ -2172,7 +2436,10 @@
       "IA"
     ],
     "description": "Épica en la cual se registrará todo lo relacionado con IA de solicitudes realizadas por el Squad DataWizards",
-    "url": "https://jira.walmart.com/browse/CAMDP-23539"
+    "url": "https://jira.walmart.com/browse/CAMDP-23539",
+    "start_date": "2025-07-07",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23538",
@@ -2193,7 +2460,10 @@
       "IA"
     ],
     "description": "Épica en la cual se registrará todo lo relacionado con IA de solicitudes realizadas por el Squad DataNninjas",
-    "url": "https://jira.walmart.com/browse/CAMDP-23538"
+    "url": "https://jira.walmart.com/browse/CAMDP-23538",
+    "start_date": "2025-07-07",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23537",
@@ -2214,7 +2484,10 @@
       "IA"
     ],
     "description": "Épica en la cual se registrará todo lo relacionado con IA de solicitudes realizadas por el Squad A-Team",
-    "url": "https://jira.walmart.com/browse/CAMDP-23537"
+    "url": "https://jira.walmart.com/browse/CAMDP-23537",
+    "start_date": "2025-07-07",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23473",
@@ -2231,7 +2504,10 @@
     "labels": [],
     "components": [],
     "description": "Soporte y mantenimeinto de estructuras y procesos relacionados a la genearción de datos del Flash de Ventas en SPOT.",
-    "url": "https://jira.walmart.com/browse/CAMDP-23473"
+    "url": "https://jira.walmart.com/browse/CAMDP-23473",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23449",
@@ -2252,7 +2528,10 @@
       "CAMDF_NewRequest"
     ],
     "description": "Incluir el nuevo Brand_ID: 231268, Marca: ALLSWELL en el Query que alimenta la tabla: wmt-intl-cons-mc-k1-prod.k1_local_tables.k1_bus_own_brands\r\n\r\nTomar como referencia el caso: [https://jira.walmart.com/servicedesk/customer/portal/8359/CAMDP-20420|https://jira.walmart.com/servicedesk/customer/port",
-    "url": "https://jira.walmart.com/browse/CAMDP-23449"
+    "url": "https://jira.walmart.com/browse/CAMDP-23449",
+    "start_date": "2025-10-17",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23414",
@@ -2273,7 +2552,10 @@
       "A-Team"
     ],
     "description": "Objetivo creado para registrar temas referentes a GCP",
-    "url": "https://jira.walmart.com/browse/CAMDP-23414"
+    "url": "https://jira.walmart.com/browse/CAMDP-23414",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23396",
@@ -2294,7 +2576,10 @@
       "A-Team"
     ],
     "description": "Objetivo creado para registrar los apoyos que se le brinden al equipo de TAX",
-    "url": "https://jira.walmart.com/browse/CAMDP-23396"
+    "url": "https://jira.walmart.com/browse/CAMDP-23396",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23328",
@@ -2315,7 +2600,10 @@
       "DataWizards"
     ],
     "description": "Épica asociada al proyecto CRM 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-23328"
+    "url": "https://jira.walmart.com/browse/CAMDP-23328",
+    "start_date": "2025-05-29",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23326",
@@ -2337,7 +2625,10 @@
       "DataNinjas"
     ],
     "description": "# Estimación de las mejoras de SEIF:\r\n## Sobre escribir datos en Azure, documentación y monitoreo.\r\n## Envío avisos de correos al iniciar y finalizar cada proceso.\r\n## Restringir acceso a usuarios en SPOT para usar solo SEIF.  ARGOS (sustituye SPOT)  Se quiere cerrar ARGOS y entrar con AD.\r\n\r\n",
-    "url": "https://jira.walmart.com/browse/CAMDP-23326"
+    "url": "https://jira.walmart.com/browse/CAMDP-23326",
+    "start_date": "2025-07-07",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23288",
@@ -2356,7 +2647,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo destinado a registrar las tareas relacionadas con BCT, 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-23288"
+    "url": "https://jira.walmart.com/browse/CAMDP-23288",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23263",
@@ -2377,7 +2671,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo creado para apoyar el proyecto Morralla",
-    "url": "https://jira.walmart.com/browse/CAMDP-23263"
+    "url": "https://jira.walmart.com/browse/CAMDP-23263",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23219",
@@ -2403,7 +2700,10 @@
       "DP_Ecomm"
     ],
     "description": "Esta epica se crea con el objetivo de agrupar todas las tareas relacionadas a dataiku por parte del equipo de data platform",
-    "url": "https://jira.walmart.com/browse/CAMDP-23219"
+    "url": "https://jira.walmart.com/browse/CAMDP-23219",
+    "start_date": "2025-06-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23170",
@@ -2424,7 +2724,10 @@
       "DataNinjas"
     ],
     "description": "Actividades para reducir los costos del 2025 asociados a los servicios Cloud GCP",
-    "url": "https://jira.walmart.com/browse/CAMDP-23170"
+    "url": "https://jira.walmart.com/browse/CAMDP-23170",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23040",
@@ -2443,7 +2746,10 @@
       "DataNinjas"
     ],
     "description": "Epica creada para el trackeo de las horas de los lideres dedicas a sus recursos",
-    "url": "https://jira.walmart.com/browse/CAMDP-23040"
+    "url": "https://jira.walmart.com/browse/CAMDP-23040",
+    "start_date": "2025-05-29",
+    "planned_done_date": "2025-12-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23038",
@@ -2468,7 +2774,10 @@
       "DP_Finanzas"
     ],
     "description": "Épica asociada al proyecto FEL CR (Factura Electronica) relacionado a:\r\n\r\n1-Analisis, diseño, desarrollo e implementación de la obtención de los datos de los items cabys, registro sanitario y forma farmacéutica que se ocupan para completar el xml de envío para hacienda\r\n\r\n2-Analisis, diseño, desarro",
-    "url": "https://jira.walmart.com/browse/CAMDP-23038"
+    "url": "https://jira.walmart.com/browse/CAMDP-23038",
+    "start_date": "2025-05-29",
+    "planned_done_date": "2031-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-23021",
@@ -2489,7 +2798,10 @@
       "DP_Interno"
     ],
     "description": "Manejo de tickets relacionados al equipo de pricing:\r\n - Pricing",
-    "url": "https://jira.walmart.com/browse/CAMDP-23021"
+    "url": "https://jira.walmart.com/browse/CAMDP-23021",
+    "start_date": "2025-05-27",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22919",
@@ -2508,7 +2820,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado a nuevas iniciativas de SPOTCAM relacionadas con IA",
-    "url": "https://jira.walmart.com/browse/CAMDP-22919"
+    "url": "https://jira.walmart.com/browse/CAMDP-22919",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22917",
@@ -2532,7 +2847,10 @@
       "DP_Operaciones"
     ],
     "description": "Épica creada para registrar las tareas de BCT 2024",
-    "url": "https://jira.walmart.com/browse/CAMDP-22917"
+    "url": "https://jira.walmart.com/browse/CAMDP-22917",
+    "start_date": "2025-05-20",
+    "planned_done_date": "2025-12-30",
+    "due_date": "2025-12-30"
   },
   {
     "key": "CAMDP-22895",
@@ -2551,7 +2869,10 @@
       "DataNinjas"
     ],
     "description": "Herramienta creada para registrar apoyos en temas varios a diferentes miembros del equipo o de otros equipos",
-    "url": "https://jira.walmart.com/browse/CAMDP-22895"
+    "url": "https://jira.walmart.com/browse/CAMDP-22895",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22842",
@@ -2575,7 +2896,10 @@
       "DP_Ecomm"
     ],
     "description": "En ecommerce estamos haciendo un desarrollo para llevar facturación electrónica a Costa Rica como se hizo en El Salvador.  Y estamos ocupando la API de customberDB para crear/actualizar clientes. \r\n\r\nAl realiza pruebas del flujo, estamos recibiendo un error en la creación de clientes, específicament",
-    "url": "https://jira.walmart.com/browse/CAMDP-22842"
+    "url": "https://jira.walmart.com/browse/CAMDP-22842",
+    "start_date": "2025-05-15",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22810",
@@ -2596,7 +2920,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado al proyecto de Ecommerce",
-    "url": "https://jira.walmart.com/browse/CAMDP-22810"
+    "url": "https://jira.walmart.com/browse/CAMDP-22810",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22632",
@@ -2617,7 +2944,10 @@
       "DataNinjas"
     ],
     "description": "Actualmente una de las BD de ecommerce se encuentra en SQL y anteriormente se ha trabajando toda la data histórica en las bases transaccionales ocasionando lentitud en productivo. \r\n\r\nDado este issue arquitectura dividió la BD en transaccional e histórica, sin embargo no existe una definición para q",
-    "url": "https://jira.walmart.com/browse/CAMDP-22632"
+    "url": "https://jira.walmart.com/browse/CAMDP-22632",
+    "start_date": "2025-12-30",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22509",
@@ -2638,7 +2968,10 @@
       "DataNinjas"
     ],
     "description": "Solicitudes de IA para el area de Pricing referente a canastos representativos.\r\n\r\n!image-2025-04-11-10-32-08-277.png|width=767,height=451!",
-    "url": "https://jira.walmart.com/browse/CAMDP-22509"
+    "url": "https://jira.walmart.com/browse/CAMDP-22509",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22508",
@@ -2659,7 +2992,10 @@
       "DataNinjas"
     ],
     "description": "Solicitudes de IA para area de RRHH referente a la revision de atributos de asociados que deben ser revisados.\r\n\r\nEl objetivo es omologar los atributos relacionados a posiciones y puestos de los asociados para el proyecto de JPM.\r\n\r\n!image-2025-04-11-10-36-16-265.png|width=667,height=380!\r\n\r\n \r\n\r\n!i",
-    "url": "https://jira.walmart.com/browse/CAMDP-22508"
+    "url": "https://jira.walmart.com/browse/CAMDP-22508",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22491",
@@ -2680,7 +3016,10 @@
       "A-Team"
     ],
     "description": "Esta épica agrupa todas aquellas tareas, solicitudes o actividades puntuales que no pertenecen a una iniciativa o proyecto específico. \r\nIncluye temas operativos, soporte interno, ajustes menores, coordinación general y otros pendientes varios del día a día. El objetivo es centralizar y dar trazabil",
-    "url": "https://jira.walmart.com/browse/CAMDP-22491"
+    "url": "https://jira.walmart.com/browse/CAMDP-22491",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22481",
@@ -2701,7 +3040,10 @@
       "DataNinjas"
     ],
     "description": "A solicitud del area de tecnología, se requiere mover las siguientes tablas al DL [https://confluence.walmart.com/display/CAMINPRO/ER|https://confluence.walmart.com/display/CAMINPRO/ER], estas tablas se requieren para poder modificar las conexiones del reporte actual de Pricing:\r\n\r\n# dbo.Basket (Bas",
-    "url": "https://jira.walmart.com/browse/CAMDP-22481"
+    "url": "https://jira.walmart.com/browse/CAMDP-22481",
+    "start_date": "2025-04-14",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22476",
@@ -2722,7 +3064,10 @@
       "DataWizards"
     ],
     "description": "En esta épica se incluirán todas las tareas internas del equipo",
-    "url": "https://jira.walmart.com/browse/CAMDP-22476"
+    "url": "https://jira.walmart.com/browse/CAMDP-22476",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22473",
@@ -2750,7 +3095,10 @@
       "DP_Ecomm"
     ],
     "description": "En esta épica se incluirán todos los requerimientos relacionados con el proyecto Market Place",
-    "url": "https://jira.walmart.com/browse/CAMDP-22473"
+    "url": "https://jira.walmart.com/browse/CAMDP-22473",
+    "start_date": "2025-01-14",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22158",
@@ -2769,7 +3117,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado a accesos en SPOTCAM ",
-    "url": "https://jira.walmart.com/browse/CAMDP-22158"
+    "url": "https://jira.walmart.com/browse/CAMDP-22158",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22156",
@@ -2790,7 +3141,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado al proyecto del area de pricing ",
-    "url": "https://jira.walmart.com/browse/CAMDP-22156"
+    "url": "https://jira.walmart.com/browse/CAMDP-22156",
+    "start_date": "2025-03-01",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22146",
@@ -2811,7 +3165,10 @@
       "A-Team"
     ],
     "description": "Épica en la cual se registrarán temas que afecten el tiempo efectivo de trabajo, tales como situaciones de salud, problemas con la computadora, con la VDI, y demás.",
-    "url": "https://jira.walmart.com/browse/CAMDP-22146"
+    "url": "https://jira.walmart.com/browse/CAMDP-22146",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22143",
@@ -2830,7 +3187,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo de Supply Chain dedicado a la migracion del sistema CODISA.",
-    "url": "https://jira.walmart.com/browse/CAMDP-22143"
+    "url": "https://jira.walmart.com/browse/CAMDP-22143",
+    "start_date": "2025-01-01",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22134",
@@ -2849,7 +3209,10 @@
       "DataNinjas"
     ],
     "description": "Realizar el Discovery, estimacion y desarrollo de procesos para la ingestion de datos de dispositivios que se conectan en Tiendas hacia el Data Lake.\r\n\r\nLas fuentes de datos son los reportes de Cisco DNA Center y datos de Airwatch.",
-    "url": "https://jira.walmart.com/browse/CAMDP-22134"
+    "url": "https://jira.walmart.com/browse/CAMDP-22134",
+    "start_date": "2025-01-01",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22121",
@@ -2868,7 +3231,10 @@
     ],
     "components": [],
     "description": "*Áreas involucradas:* Data Governance + Data Factory\r\n\r\n{*}Alcance{*}: Asegurar que 30 de los reportes y X métricas criticas del negocio estén alineados con los activos de datos gobernados, a través de revisión y ajustes de los reportes y métricas existentes para garantizar su consistencia y cumplim",
-    "url": "https://jira.walmart.com/browse/CAMDP-22121"
+    "url": "https://jira.walmart.com/browse/CAMDP-22121",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22120",
@@ -2887,7 +3253,10 @@
     ],
     "components": [],
     "description": "{*}Áreas participantes{*}: Data Governance + Data Factory\r\n\r\n{*}Alcance{*}: Migrar dentro del Enterprise Data Portal (EDP) el 100% de los Activos Críticos  al Data Lake Local en D&A con su Data Owner y Data Steward Asignado. Disponibilizar un repositorio user-Friendly con el negocio para visualizar ",
-    "url": "https://jira.walmart.com/browse/CAMDP-22120"
+    "url": "https://jira.walmart.com/browse/CAMDP-22120",
+    "start_date": "2025-10-08",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22119",
@@ -2906,7 +3275,10 @@
     ],
     "components": [],
     "description": "{*}Áreas participantes{*}: Data Governance + Data Factory\r\n\r\n*Alcance:* Integración de Validaciones y Estandares de calidad de datos en procesos de Ingestas en al menos 35% Flujos Importantes/Críticos para asegurar la calidad y precisión de los datos críticos- Data Governance / Fabrica de Datos",
-    "url": "https://jira.walmart.com/browse/CAMDP-22119"
+    "url": "https://jira.walmart.com/browse/CAMDP-22119",
+    "start_date": "2025-05-02",
+    "planned_done_date": "2025-06-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22118",
@@ -2925,7 +3297,10 @@
     ],
     "components": [],
     "description": "*Áreas involucradas:* Data Governance + Data Factory\r\n\r\n*Alcance:* Habilitacion e implementacion de al menos 2 dominios en uso Datawarehouse como una nueva forma de trabajo Gobierno de Datos -Fabrica de Datos",
-    "url": "https://jira.walmart.com/browse/CAMDP-22118"
+    "url": "https://jira.walmart.com/browse/CAMDP-22118",
+    "start_date": "2025-01-27",
+    "planned_done_date": "2025-12-19",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22117",
@@ -2944,7 +3319,10 @@
     ],
     "components": [],
     "description": "Buscar, Probar y Definir Casos Innovación y Ampliación de las capacidades de IA a través de GEMINI en CAM, a través de un proceso transicionado de Pruebas de concepto hasta la implementación total.",
-    "url": "https://jira.walmart.com/browse/CAMDP-22117"
+    "url": "https://jira.walmart.com/browse/CAMDP-22117",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22116",
@@ -2963,7 +3341,10 @@
     ],
     "components": [],
     "description": "Implementación del 100%,Politica Caracteres Especiales con el fin de reducir riesgos de seguridad a traves de la transferencia de datos de terceros en ambiente Walmart",
-    "url": "https://jira.walmart.com/browse/CAMDP-22116"
+    "url": "https://jira.walmart.com/browse/CAMDP-22116",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22115",
@@ -2982,7 +3363,10 @@
     ],
     "components": [],
     "description": "Reducir en un 10% los costos operativos de Azure y Google e iniciativas Parity , implementar un sistema de monitoreo del 100% consumo en la nube para diciembre de 2025 (APIs, Reubicacion de Servicios, Componentes sin Uso, etc.)",
-    "url": "https://jira.walmart.com/browse/CAMDP-22115"
+    "url": "https://jira.walmart.com/browse/CAMDP-22115",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22114",
@@ -3001,7 +3385,10 @@
     ],
     "components": [],
     "description": "POC para la habilitación de nuevos servicios Google en casos de uso de la operación - Cloud SQL, Data Transfer, BigQuery Layers, Data Mesh",
-    "url": "https://jira.walmart.com/browse/CAMDP-22114"
+    "url": "https://jira.walmart.com/browse/CAMDP-22114",
+    "start_date": "2025-04-01",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22098",
@@ -3024,7 +3411,10 @@
       "DataNinjas"
     ],
     "description": "Actualizar credenciales de cuentas de servicio de GCP, Airflow y Gateway de Power BI próximas a vencer.\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-22098"
+    "url": "https://jira.walmart.com/browse/CAMDP-22098",
+    "start_date": "2025-02-01",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22089",
@@ -3045,7 +3435,10 @@
       "DataWizards"
     ],
     "description": "Manejo de tickets relacionados IA de centros de excelencia",
-    "url": "https://jira.walmart.com/browse/CAMDP-22089"
+    "url": "https://jira.walmart.com/browse/CAMDP-22089",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22083",
@@ -3067,7 +3460,10 @@
       "DataNinjas"
     ],
     "description": "Este objetivo esta dedicado a la atencion del proyecto de remesas",
-    "url": "https://jira.walmart.com/browse/CAMDP-22083"
+    "url": "https://jira.walmart.com/browse/CAMDP-22083",
+    "start_date": "2025-03-06",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22081",
@@ -3086,7 +3482,10 @@
       "DataNinjas"
     ],
     "description": "Épica asociada a https://jira.walmart.com/browse/CAMDP-21346.\r\n\r\nObjetivo dedicado al PRD a control de vencidos",
-    "url": "https://jira.walmart.com/browse/CAMDP-22081"
+    "url": "https://jira.walmart.com/browse/CAMDP-22081",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22079",
@@ -3105,7 +3504,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado al analisis y estimacion de SACVE",
-    "url": "https://jira.walmart.com/browse/CAMDP-22079"
+    "url": "https://jira.walmart.com/browse/CAMDP-22079",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22069",
@@ -3126,7 +3528,10 @@
       "A-Team"
     ],
     "description": "A-Team - Governance GCP Administration - 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-22069"
+    "url": "https://jira.walmart.com/browse/CAMDP-22069",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22066",
@@ -3145,7 +3550,10 @@
     ],
     "components": [],
     "description": "Disminuir las incidencias de vulnerabilidades y problemas de seguridad en un 30% para septiembre de 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-22066"
+    "url": "https://jira.walmart.com/browse/CAMDP-22066",
+    "start_date": "2025-04-01",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22065",
@@ -3164,7 +3572,10 @@
     ],
     "components": [],
     "description": "Convertir SPOT en nuestro nuevo Data Market Place CAM (Inboud, Rae) y Alinearlo con nuestras politicas y estandares de Acceso (AD)",
-    "url": "https://jira.walmart.com/browse/CAMDP-22065"
+    "url": "https://jira.walmart.com/browse/CAMDP-22065",
+    "start_date": "2025-04-01",
+    "planned_done_date": "2025-10-30",
+    "due_date": "2025-11-25"
   },
   {
     "key": "CAMDP-22042",
@@ -3183,7 +3594,10 @@
     ],
     "components": [],
     "description": "Probar una POC para implementar procesos de monitoreo de data PII existente a nivel de todos los componentes del datalake (bucket, tabla, vista). La POC debe estar enfocada en una herramienta disponible o bien en un tool creado por nosotros mismos.",
-    "url": "https://jira.walmart.com/browse/CAMDP-22042"
+    "url": "https://jira.walmart.com/browse/CAMDP-22042",
+    "start_date": "2025-01-01",
+    "planned_done_date": "2025-09-30",
+    "due_date": "2025-11-25"
   },
   {
     "key": "CAMDP-22023",
@@ -3202,7 +3616,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo creado para registrar temas generales de tiempos muy cortos y no apliquen para una epica nueva",
-    "url": "https://jira.walmart.com/browse/CAMDP-22023"
+    "url": "https://jira.walmart.com/browse/CAMDP-22023",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22022",
@@ -3221,7 +3638,10 @@
       "DataNinjas"
     ],
     "description": "Epica creada para el trackeo de las horas de los lideres dedicas a sus recursos",
-    "url": "https://jira.walmart.com/browse/CAMDP-22022"
+    "url": "https://jira.walmart.com/browse/CAMDP-22022",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22021",
@@ -3240,7 +3660,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado a actualizacion del UI en el aplicativo de Spot (Inbound)",
-    "url": "https://jira.walmart.com/browse/CAMDP-22021"
+    "url": "https://jira.walmart.com/browse/CAMDP-22021",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22020",
@@ -3259,7 +3682,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado al proyecto de pricing incorporando IA al procesamiento de video a texto",
-    "url": "https://jira.walmart.com/browse/CAMDP-22020"
+    "url": "https://jira.walmart.com/browse/CAMDP-22020",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22019",
@@ -3278,7 +3704,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado al proyecto de IA para el proceamiento de voz a texto para el area de pricing",
-    "url": "https://jira.walmart.com/browse/CAMDP-22019"
+    "url": "https://jira.walmart.com/browse/CAMDP-22019",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22018",
@@ -3297,7 +3726,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado al decomiso de Argos en el aplicativo de SpotCam",
-    "url": "https://jira.walmart.com/browse/CAMDP-22018"
+    "url": "https://jira.walmart.com/browse/CAMDP-22018",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22017",
@@ -3322,7 +3754,10 @@
       "DataWizards"
     ],
     "description": "Objetivo dedicado al proyecto de Admin de Canastos ",
-    "url": "https://jira.walmart.com/browse/CAMDP-22017"
+    "url": "https://jira.walmart.com/browse/CAMDP-22017",
+    "start_date": "2025-03-03",
+    "planned_done_date": "2025-12-15",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22016",
@@ -3352,7 +3787,10 @@
       "DP_Finanzas"
     ],
     "description": "Objetivo dedicado al proyecto MAC",
-    "url": "https://jira.walmart.com/browse/CAMDP-22016"
+    "url": "https://jira.walmart.com/browse/CAMDP-22016",
+    "start_date": "2025-02-28",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22015",
@@ -3371,7 +3809,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado al proyecto de IA de Ecomm el cual se encuentra dedicado al incorporar un proceso de imagenes utilizando IA",
-    "url": "https://jira.walmart.com/browse/CAMDP-22015"
+    "url": "https://jira.walmart.com/browse/CAMDP-22015",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22014",
@@ -3390,7 +3831,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado a la migracion de CTH al DL",
-    "url": "https://jira.walmart.com/browse/CAMDP-22014"
+    "url": "https://jira.walmart.com/browse/CAMDP-22014",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22013",
@@ -3409,7 +3853,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado a la atencion de las diferentes vulnerabilidades",
-    "url": "https://jira.walmart.com/browse/CAMDP-22013"
+    "url": "https://jira.walmart.com/browse/CAMDP-22013",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22012",
@@ -3428,7 +3875,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado a la incoporacion de nuevos datasets al DWH ya creado en el 2024",
-    "url": "https://jira.walmart.com/browse/CAMDP-22012"
+    "url": "https://jira.walmart.com/browse/CAMDP-22012",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22010",
@@ -3451,7 +3901,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo dedicado al proyecto del area de pricing ",
-    "url": "https://jira.walmart.com/browse/CAMDP-22010"
+    "url": "https://jira.walmart.com/browse/CAMDP-22010",
+    "start_date": "2025-02-01",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22007",
@@ -3479,7 +3932,10 @@
       "DataNinjas"
     ],
     "description": "Objetivo de Supply Chain dedicado a la migracion del sistema CODISA.",
-    "url": "https://jira.walmart.com/browse/CAMDP-22007"
+    "url": "https://jira.walmart.com/browse/CAMDP-22007",
+    "start_date": "2025-01-01",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-22000",
@@ -3500,7 +3956,10 @@
       "CAMDF_NewRequest"
     ],
     "description": "Aun no se logra cargar el BP y BP Stretch  por medio del Inbound\r\nBP_ST_CAT_03_2025...............64c1521f-f350-42f0-a73f-d9a2c9772e66\r\nPLAN_CAT_SPOT_03_25.......683b9249-3e59-481e-950e-3b604035ad60",
-    "url": "https://jira.walmart.com/browse/CAMDP-22000"
+    "url": "https://jira.walmart.com/browse/CAMDP-22000",
+    "start_date": "2025-03-04",
+    "planned_done_date": "2025-03-07",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21957",
@@ -3526,7 +3985,10 @@
       "A-Team"
     ],
     "description": "Actualización archivos mes a mes 2025 en el Sharepoint respectivo Se realiza esta tarea para la actualización de los archivos fuente del Reporte Forecast 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-21957"
+    "url": "https://jira.walmart.com/browse/CAMDP-21957",
+    "start_date": "2025-02-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21931",
@@ -3549,7 +4011,10 @@
       "DataWizards"
     ],
     "description": "Épica con fines de relacionar todas las solicitudes entrates a CAMDF que esten asociadas con conexiones Gateway y Power BI, durante el año 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-21931"
+    "url": "https://jira.walmart.com/browse/CAMDP-21931",
+    "start_date": "2025-02-21",
+    "planned_done_date": "2025-12-17",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21921",
@@ -3570,7 +4035,10 @@
       "DataWizards"
     ],
     "description": " \r\n * *Contexto:* Esta es una solicitud para corregir un DAG para SEIF, (mail adjunto Re- SEIF-BDI Ajustes proceso de Reserva)\r\n\r\n * *Necesidad (Porque se requiere esta solicitud):*  Realizar la corrección por Data Factory y del lado de negocio Ana debería de hacer el RFC y demás no nosotros\r\n * *Ob",
-    "url": "https://jira.walmart.com/browse/CAMDP-21921"
+    "url": "https://jira.walmart.com/browse/CAMDP-21921",
+    "start_date": "2025-02-24",
+    "planned_done_date": "2025-03-25",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21915",
@@ -3598,7 +4066,10 @@
       "DataNinjas"
     ],
     "description": " \r\n * *Contexto:* Esta es una solicitud para estimar en tiempo y costo cuanto tardaríamos en generar la ingesta de nuevos datos que el proveedor VTEX nos estaría colocando en un MFT o SFTP, ETC\r\n\r\n * *Necesidad (Porque se requiere esta solicitud):* A solicitud de [~c0m092v] (Ver mail adjunto Propues",
-    "url": "https://jira.walmart.com/browse/CAMDP-21915"
+    "url": "https://jira.walmart.com/browse/CAMDP-21915",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21868",
@@ -3619,7 +4090,10 @@
       "A-Team"
     ],
     "description": "A-Team - Innovation Topics - 2025\r\n\r\nCloud Data Fusion, Streaming, Data Flow. Etc",
-    "url": "https://jira.walmart.com/browse/CAMDP-21868"
+    "url": "https://jira.walmart.com/browse/CAMDP-21868",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21867",
@@ -3640,7 +4114,10 @@
       "A-Team"
     ],
     "description": "A-Team - Frameworks Optimizations - 2025\r\n\r\nEsta épica está dedicada para la actualización de componentes de las herramientas o sistemas.\r\n\r\nAirflow Dags, Version Upgrade, Runtime Upgrade, New Frameworks, Vulnerabilities related to Data pipelines, etc.\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-21867"
+    "url": "https://jira.walmart.com/browse/CAMDP-21867",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21866",
@@ -3661,7 +4138,10 @@
       "A-Team"
     ],
     "description": "A-Team - GCP Vulnerabilities - 2025\r\n\r\nKey Rotation and Bringa Vulnerabilities.\r\n\r\nCambio de claves a nivel de servicio o google para cumplimiento de seguridad.",
-    "url": "https://jira.walmart.com/browse/CAMDP-21866"
+    "url": "https://jira.walmart.com/browse/CAMDP-21866",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21865",
@@ -3682,7 +4162,10 @@
       "A-Team"
     ],
     "description": "A-Team - Governance GCP Administration - 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-21865"
+    "url": "https://jira.walmart.com/browse/CAMDP-21865",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21864",
@@ -3703,7 +4186,10 @@
       "A-Team"
     ],
     "description": "Épica en la cual se registrará todo lo relacionado con Supply Chain Management",
-    "url": "https://jira.walmart.com/browse/CAMDP-21864"
+    "url": "https://jira.walmart.com/browse/CAMDP-21864",
+    "start_date": "2025-10-08",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21863",
@@ -3724,7 +4210,10 @@
       "A-Team"
     ],
     "description": "A-Team - DATA MARKET PLACE",
-    "url": "https://jira.walmart.com/browse/CAMDP-21863"
+    "url": "https://jira.walmart.com/browse/CAMDP-21863",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21862",
@@ -3750,7 +4239,10 @@
       "A-Team"
     ],
     "description": "A-Team - Datalake Health - Cost Optimization",
-    "url": "https://jira.walmart.com/browse/CAMDP-21862"
+    "url": "https://jira.walmart.com/browse/CAMDP-21862",
+    "start_date": "2025-02-28",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21860",
@@ -3777,7 +4269,10 @@
       "A-Team"
     ],
     "description": "Épica en la cual se registrará todo lo relacionado con Inteligencia Artificial ( sea documentación, POCs o tiempo de estudio)",
-    "url": "https://jira.walmart.com/browse/CAMDP-21860"
+    "url": "https://jira.walmart.com/browse/CAMDP-21860",
+    "start_date": "2025-01-07",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21848",
@@ -3796,7 +4291,10 @@
     ],
     "components": [],
     "description": "Épica donde se registararán las tareas a las que Fernando Vega deberá darle seguimiento, las cuales serán asignadas a Edualter Fernández. ",
-    "url": "https://jira.walmart.com/browse/CAMDP-21848"
+    "url": "https://jira.walmart.com/browse/CAMDP-21848",
+    "start_date": "2025-03-11",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21834",
@@ -3815,7 +4313,10 @@
       "DataNinjas"
     ],
     "description": "Epica creada para todo lo relacionado con el equipo de desarrollo de CAMBI",
-    "url": "https://jira.walmart.com/browse/CAMDP-21834"
+    "url": "https://jira.walmart.com/browse/CAMDP-21834",
+    "start_date": "2025-02-13",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21821",
@@ -3840,7 +4341,10 @@
       "Portfolio_Supply"
     ],
     "description": "Épica en la cual se registrará todo lo relacionado con Supply Chain Management",
-    "url": "https://jira.walmart.com/browse/CAMDP-21821"
+    "url": "https://jira.walmart.com/browse/CAMDP-21821",
+    "start_date": "2025-02-12",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21818",
@@ -3861,7 +4365,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica correspondiente a los ticket de requerimientos y/o solicitudes tanto externas como internas recibidas desde form jira para ser atendidas por los squads",
-    "url": "https://jira.walmart.com/browse/CAMDP-21818"
+    "url": "https://jira.walmart.com/browse/CAMDP-21818",
+    "start_date": "2025-01-07",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21807",
@@ -3884,7 +4391,10 @@
       "DataWizards"
     ],
     "description": "Épica relacionada con todo lo referente a release CAMDF con respecto a la creación de RFC e implementaciones en PROD de Api´s, Dags, BD etc.",
-    "url": "https://jira.walmart.com/browse/CAMDP-21807"
+    "url": "https://jira.walmart.com/browse/CAMDP-21807",
+    "start_date": "2025-02-11",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21791",
@@ -3914,7 +4424,10 @@
       "DP_Cumplimiento"
     ],
     "description": "Esta epica se crea con el objetivo de manejar todas las tareas relacionadas al temas de cumplimiento con INT(vulnerabilidades, cambios en Google, etc).",
-    "url": "https://jira.walmart.com/browse/CAMDP-21791"
+    "url": "https://jira.walmart.com/browse/CAMDP-21791",
+    "start_date": "2025-02-10",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21774",
@@ -3940,7 +4453,10 @@
       "DataWizards"
     ],
     "description": "Se requiere generar una nueva arquitectura para el proyecto de KPIs, ya que actualmente la Base de datos que es transaccional se está volviendo pesada y no está dándo un buen rendimiento por la cantidad de datos que está soportando a raíz de su crecimiento.",
-    "url": "https://jira.walmart.com/browse/CAMDP-21774"
+    "url": "https://jira.walmart.com/browse/CAMDP-21774",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21707",
@@ -3959,7 +4475,10 @@
       "DataWizards"
     ],
     "description": "Epica creada para relacionar temas de Picking Ecommerce",
-    "url": "https://jira.walmart.com/browse/CAMDP-21707"
+    "url": "https://jira.walmart.com/browse/CAMDP-21707",
+    "start_date": "2023-10-02",
+    "planned_done_date": "",
+    "due_date": "2023-12-29"
   },
   {
     "key": "CAMDP-21706",
@@ -3978,7 +4497,10 @@
       "DataWizards"
     ],
     "description": "Epica creada para relacionar temas de Picking Ecommerce",
-    "url": "https://jira.walmart.com/browse/CAMDP-21706"
+    "url": "https://jira.walmart.com/browse/CAMDP-21706",
+    "start_date": "2023-10-02",
+    "planned_done_date": "",
+    "due_date": "2023-12-29"
   },
   {
     "key": "CAMDP-21704",
@@ -4004,7 +4526,10 @@
       "DataWizards"
     ],
     "description": "Epica creada para relacionar temas de Saltrama ",
-    "url": "https://jira.walmart.com/browse/CAMDP-21704"
+    "url": "https://jira.walmart.com/browse/CAMDP-21704",
+    "start_date": "2023-10-02",
+    "planned_done_date": "2025-12-31",
+    "due_date": "2025-12-31"
   },
   {
     "key": "CAMDP-21667",
@@ -4025,7 +4550,10 @@
       "A-Team"
     ],
     "description": "A-Team - EDP - 2025",
-    "url": "https://jira.walmart.com/browse/CAMDP-21667"
+    "url": "https://jira.walmart.com/browse/CAMDP-21667",
+    "start_date": "2025-02-03",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21630",
@@ -4046,7 +4574,10 @@
       "CAM Data Portal"
     ],
     "description": "Epica creada para relacionar Meetings, Training, Onboarding de temas generales relacionados a SpotCam & MAC",
-    "url": "https://jira.walmart.com/browse/CAMDP-21630"
+    "url": "https://jira.walmart.com/browse/CAMDP-21630",
+    "start_date": "2023-10-02",
+    "planned_done_date": "",
+    "due_date": "2023-12-29"
   },
   {
     "key": "CAMDP-21579",
@@ -4067,7 +4598,10 @@
       "DP_Interno"
     ],
     "description": "Ticket creado para registrar los apoyos varios a distintos equipos o entre miembros del equipo",
-    "url": "https://jira.walmart.com/browse/CAMDP-21579"
+    "url": "https://jira.walmart.com/browse/CAMDP-21579",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21533",
@@ -4088,7 +4622,10 @@
       "DataWizards"
     ],
     "description": "Épica creada para registrar las tareas relacionadas con temas de DSN5",
-    "url": "https://jira.walmart.com/browse/CAMDP-21533"
+    "url": "https://jira.walmart.com/browse/CAMDP-21533",
+    "start_date": "2024-10-21",
+    "planned_done_date": "2024-10-25",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21529",
@@ -4109,7 +4646,10 @@
       "DP_Interno"
     ],
     "description": "Creación de nuevos requerimientos para ingestar datos desde o hacia el dataLake",
-    "url": "https://jira.walmart.com/browse/CAMDP-21529"
+    "url": "https://jira.walmart.com/browse/CAMDP-21529",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21458",
@@ -4130,7 +4670,10 @@
       "DataWizards"
     ],
     "description": "Esta épica se crea para llevar el manejo de la documentación de todos los dags",
-    "url": "https://jira.walmart.com/browse/CAMDP-21458"
+    "url": "https://jira.walmart.com/browse/CAMDP-21458",
+    "start_date": "2025-03-18",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21434",
@@ -4151,7 +4694,10 @@
       "DataWizards"
     ],
     "description": "Épica para reportar todos los ajustes que se deban hacer al api, ya sean mejoras o cambios por cumplimiento(SR, Gates, Seguridad, etc).\r\nPara un manejo control los tickets deben ser creados bajo la siguiente nomenclatura:\r\n\r\ncódigo de la tarea - nombre del api - descripción del cambio\r\n\r\n*Códigos*\r\n",
-    "url": "https://jira.walmart.com/browse/CAMDP-21434"
+    "url": "https://jira.walmart.com/browse/CAMDP-21434",
+    "start_date": "2025-12-29",
+    "planned_done_date": "2023-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21433",
@@ -4173,7 +4719,10 @@
       "DP_Externo"
     ],
     "description": "EBS",
-    "url": "https://jira.walmart.com/browse/CAMDP-21433"
+    "url": "https://jira.walmart.com/browse/CAMDP-21433",
+    "start_date": "2025-12-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21432",
@@ -4190,7 +4739,10 @@
     "labels": [],
     "components": [],
     "description": "Épica creada para registrar tareas que no son tan comunes de Data Platform, pero que requieren un apoyo por parte del equipo",
-    "url": "https://jira.walmart.com/browse/CAMDP-21432"
+    "url": "https://jira.walmart.com/browse/CAMDP-21432",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21431",
@@ -4209,7 +4761,10 @@
     ],
     "components": [],
     "description": "En esta epica se agrupan todos los tickets relacionados a Data Science",
-    "url": "https://jira.walmart.com/browse/CAMDP-21431"
+    "url": "https://jira.walmart.com/browse/CAMDP-21431",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21430",
@@ -4240,7 +4795,10 @@
       "DP_Finanzas"
     ],
     "description": "Manejo de tickets relacionados a impuestos para el año 2023",
-    "url": "https://jira.walmart.com/browse/CAMDP-21430"
+    "url": "https://jira.walmart.com/browse/CAMDP-21430",
+    "start_date": "2025-01-14",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21417",
@@ -4259,7 +4817,10 @@
     ],
     "components": [],
     "description": "Esta epica se crea con el objeto de documentar todos los releases que se hagan a airflow",
-    "url": "https://jira.walmart.com/browse/CAMDP-21417"
+    "url": "https://jira.walmart.com/browse/CAMDP-21417",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21410",
@@ -4280,7 +4841,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica correspondiente a los ticket de requerimientos y/o solicitudes tanto externas como internas recibidas desde form jira para ser atendidas por el equipo de Architectura",
-    "url": "https://jira.walmart.com/browse/CAMDP-21410"
+    "url": "https://jira.walmart.com/browse/CAMDP-21410",
+    "start_date": "2025-01-07",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21409",
@@ -4299,7 +4863,10 @@
     ],
     "components": [],
     "description": "Épica relacionada a todas las solicitudes internas del equipo de arquitectura que se generan directamente dentro del dashboard CAMDP - Arquitectura.",
-    "url": "https://jira.walmart.com/browse/CAMDP-21409"
+    "url": "https://jira.walmart.com/browse/CAMDP-21409",
+    "start_date": "2025-01-07",
+    "planned_done_date": "2025-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21373",
@@ -4328,7 +4895,10 @@
       "DP_Soluc.Financieras"
     ],
     "description": "Se requiere la importación del modelo y los datos almacenados en la base de datos del sistema Mis Pagos desde la base de datos de Acxiom Datamart . El objetivo es centralizar la información en una fuente sólida y confiable que proporcione datos precisos.\r\n\r\nAtendemos mas de 7 millones de clientes an",
-    "url": "https://jira.walmart.com/browse/CAMDP-21373"
+    "url": "https://jira.walmart.com/browse/CAMDP-21373",
+    "start_date": "2025-02-24",
+    "planned_done_date": "2026-01-20",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21347",
@@ -4354,7 +4924,10 @@
       "DP_Merchandising"
     ],
     "description": "Se solicita apoyo en la mejora del proceso de recomendación de precios para los items en tienda. El proceso actualmente consume información de diferentes fuentes y se procesa a través de un flujo en Dataiku, el cual ha mostrado oportunidades en el rendimiento. La información se almacena de manera lo",
-    "url": "https://jira.walmart.com/browse/CAMDP-21347"
+    "url": "https://jira.walmart.com/browse/CAMDP-21347",
+    "start_date": "2024-03-05",
+    "planned_done_date": "2025-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-21337",
@@ -4387,7 +4960,10 @@
       "DP_Soluc.Financieras"
     ],
     "description": "Yo como servicios financieros requiero  que se habilite un bucket para  que el bus empresarial pueda depositar la información de los cajeros extraídos del Smart.",
-    "url": "https://jira.walmart.com/browse/CAMDP-21337"
+    "url": "https://jira.walmart.com/browse/CAMDP-21337",
+    "start_date": "2025-02-17",
+    "planned_done_date": "2025-12-31",
+    "due_date": "2026-01-12"
   },
   {
     "key": "CAMDP-21263",
@@ -4407,7 +4983,10 @@
     ],
     "components": [],
     "description": "Épica asociada al ticket de iniciativa Traslado de información de conexiones en tienda del DNA center y de fuentes adicionales https://jira.walmart.com/browse/CAMDP-20850\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-21263"
+    "url": "https://jira.walmart.com/browse/CAMDP-21263",
+    "start_date": "2024-12-17",
+    "planned_done_date": "2024-01-24",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20935",
@@ -4430,7 +5009,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica correspondiente a la solicitud \r\n\r\n[https://confluence.walmart.com/display/CAMINPRO/Interfaces+Codisa+Oracle+-+MIMS]",
-    "url": "https://jira.walmart.com/browse/CAMDP-20935"
+    "url": "https://jira.walmart.com/browse/CAMDP-20935",
+    "start_date": "2023-12-19",
+    "planned_done_date": "2024-12-19",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20925",
@@ -4451,7 +5033,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica correspondiente a la solicitud CAMDP-20774 CAMDP - Ing Migración tablas Kairós",
-    "url": "https://jira.walmart.com/browse/CAMDP-20925"
+    "url": "https://jira.walmart.com/browse/CAMDP-20925",
+    "start_date": "2023-12-19",
+    "planned_done_date": "2024-12-19",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20899",
@@ -4468,7 +5053,10 @@
     "labels": [],
     "components": [],
     "description": "Se crea este ticket para manejar todas las tareas relacionadas a ecommerce",
-    "url": "https://jira.walmart.com/browse/CAMDP-20899"
+    "url": "https://jira.walmart.com/browse/CAMDP-20899",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20644",
@@ -4489,7 +5077,10 @@
       "DP_Interno"
     ],
     "description": "En esta épica se registrarán todas las tareas que hayan surgido de las Retrospectivas de Ingeniería",
-    "url": "https://jira.walmart.com/browse/CAMDP-20644"
+    "url": "https://jira.walmart.com/browse/CAMDP-20644",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20509",
@@ -4510,7 +5101,10 @@
       "DP_Externo"
     ],
     "description": "Remesas de Métodos de pago",
-    "url": "https://jira.walmart.com/browse/CAMDP-20509"
+    "url": "https://jira.walmart.com/browse/CAMDP-20509",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20416",
@@ -4529,7 +5123,10 @@
     ],
     "components": [],
     "description": "Épica asociada al ticket de iniciativa https://jira.walmart.com/browse/CAMDP-20399\r\n\r\n \r\n\r\n \r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-20416"
+    "url": "https://jira.walmart.com/browse/CAMDP-20416",
+    "start_date": "2023-11-23",
+    "planned_done_date": "2023-12-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20372",
@@ -4550,7 +5147,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada a la solicitud RHR30 -  Reporte Descuento de Asociado ( Nueva Conexion) asociada al ticket  https://jira.walmart.com/browse/CAMDP-20370",
-    "url": "https://jira.walmart.com/browse/CAMDP-20372"
+    "url": "https://jira.walmart.com/browse/CAMDP-20372",
+    "start_date": "2024-04-09",
+    "planned_done_date": "2024-06-19",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20325",
@@ -4571,7 +5171,10 @@
       "DP_Externo"
     ],
     "description": "Épica creada para registrar temas de migración de CTH",
-    "url": "https://jira.walmart.com/browse/CAMDP-20325"
+    "url": "https://jira.walmart.com/browse/CAMDP-20325",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20285",
@@ -4594,7 +5197,10 @@
       "DP_Externo"
     ],
     "description": "Solicitamos crear una replica de los datos que actualmente se encuentran en bases de datos SQL on premise hacia el DataLake. Esto nos permitirá realizar reportes de usabilidad del aplicativo en conjunto con el equipo de CAM Data Analytics.\r\n\r\nDEV:\r\n\r\nServidor: [lcmnt55032gt.cam.wal-mart.com|http://l",
-    "url": "https://jira.walmart.com/browse/CAMDP-20285"
+    "url": "https://jira.walmart.com/browse/CAMDP-20285",
+    "start_date": "2024-12-09",
+    "planned_done_date": "2024-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20207",
@@ -4613,7 +5219,10 @@
     ],
     "components": [],
     "description": "Épica relacionada al ticket CAMDP-20022 CAMDP-REFAC-OPR21-MIGO",
-    "url": "https://jira.walmart.com/browse/CAMDP-20207"
+    "url": "https://jira.walmart.com/browse/CAMDP-20207",
+    "start_date": "2025-11-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20205",
@@ -4632,7 +5241,10 @@
     ],
     "components": [],
     "description": "Épica relacionada al ticket CAMDP-20152 RHR28- Dashboard TAM People – Vacaciones",
-    "url": "https://jira.walmart.com/browse/CAMDP-20205"
+    "url": "https://jira.walmart.com/browse/CAMDP-20205",
+    "start_date": "2025-11-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20058",
@@ -4658,7 +5270,10 @@
       "DataWizards"
     ],
     "description": "Ticket medir a nivel de los reportes de Power BI RUR/RAR cantidad de veces que accede un usuario al reporte\r\n # cantidad de usuarios con acceso al reporte\r\n # cantidad de usuarios que si acceden al reporte\r\n # % variacion (usuarios que tienen acceso / usuarios que si acceden)\r\n # permanencia (saber ",
-    "url": "https://jira.walmart.com/browse/CAMDP-20058"
+    "url": "https://jira.walmart.com/browse/CAMDP-20058",
+    "start_date": "2025-12-30",
+    "planned_done_date": "2026-01-12",
+    "due_date": "2026-01-12"
   },
   {
     "key": "CAMDP-20029",
@@ -4677,7 +5292,10 @@
     ],
     "components": [],
     "description": "Épica relacionada al ticket  CAMDP-20021CAMDP-REFAC - ORP22-Self Scan y Self Check Out",
-    "url": "https://jira.walmart.com/browse/CAMDP-20029"
+    "url": "https://jira.walmart.com/browse/CAMDP-20029",
+    "start_date": "2025-11-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-20024",
@@ -4696,7 +5314,10 @@
     ],
     "components": [],
     "description": "Épica relacionada al ticket CAMDP-19993 relacionada a Ausentismo",
-    "url": "https://jira.walmart.com/browse/CAMDP-20024"
+    "url": "https://jira.walmart.com/browse/CAMDP-20024",
+    "start_date": "2025-11-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19887",
@@ -4719,7 +5340,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica creada para relacionar todo lo asociado con IA Tercer Ojo LALO (Lowest Advertised List Offer)",
-    "url": "https://jira.walmart.com/browse/CAMDP-19887"
+    "url": "https://jira.walmart.com/browse/CAMDP-19887",
+    "start_date": "2023-10-02",
+    "planned_done_date": "2024-12-26",
+    "due_date": "2023-12-29"
   },
   {
     "key": "CAMDP-19848",
@@ -4742,7 +5366,10 @@
       "DP_Externo"
     ],
     "description": "Se requiere traer al data lake WM la información de Google Ads",
-    "url": "https://jira.walmart.com/browse/CAMDP-19848"
+    "url": "https://jira.walmart.com/browse/CAMDP-19848",
+    "start_date": "2024-08-21",
+    "planned_done_date": "2024-11-28",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19804",
@@ -4763,7 +5390,10 @@
       "DP_Externo"
     ],
     "description": "Épica creada para registrar todas la tareas relacionadas con el Proyecto DPM",
-    "url": "https://jira.walmart.com/browse/CAMDP-19804"
+    "url": "https://jira.walmart.com/browse/CAMDP-19804",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19711",
@@ -4783,7 +5413,10 @@
     ],
     "components": [],
     "description": "There’s more data than ever impacting all aspects of business. Organizations are faced with increasing user demands for that data, with a wide range of access requirements. Then there’s AI, which is radically transforming how you create and think about every project. The delivery and adoption of gen",
-    "url": "https://jira.walmart.com/browse/CAMDP-19711"
+    "url": "https://jira.walmart.com/browse/CAMDP-19711",
+    "start_date": "2024-01-02",
+    "planned_done_date": "2024-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19591",
@@ -4802,7 +5435,10 @@
     ],
     "components": [],
     "description": "Épica credenciales account de Data Platform\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-19591"
+    "url": "https://jira.walmart.com/browse/CAMDP-19591",
+    "start_date": "2024-01-02",
+    "planned_done_date": "2024-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19578",
@@ -4823,7 +5459,10 @@
       "Data Lake"
     ],
     "description": "Epica relacionada a la creacion, adopcion y migracion de usuarios hacia su respectivas capas de consumo.\r\n\r\nK1 - Capas de Consumo",
-    "url": "https://jira.walmart.com/browse/CAMDP-19578"
+    "url": "https://jira.walmart.com/browse/CAMDP-19578",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19568",
@@ -4842,7 +5481,10 @@
     ],
     "components": [],
     "description": "Épica relacionado con la migracion de K1 Local hacia DL Local",
-    "url": "https://jira.walmart.com/browse/CAMDP-19568"
+    "url": "https://jira.walmart.com/browse/CAMDP-19568",
+    "start_date": "2024-01-02",
+    "planned_done_date": "2024-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19538",
@@ -4865,7 +5507,10 @@
       "DP_Externo"
     ],
     "description": "Solicitud de desarrollo de una automatización en la base de datos WIFI: Se requiere el desarrollo de una solución automatizada para la base de datos WIFI que sea capaz de extraer la información relevante y compartirla con el equipo de negocios. La información se debe presentar en formato de archivo ",
-    "url": "https://jira.walmart.com/browse/CAMDP-19538"
+    "url": "https://jira.walmart.com/browse/CAMDP-19538",
+    "start_date": "2024-07-30",
+    "planned_done_date": "2024-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19403",
@@ -4886,7 +5531,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada al ticket CAMDP-19382 RHR18- Ajustes Dashboard Capacitacion Operaciones\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-19382\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-19403"
+    "url": "https://jira.walmart.com/browse/CAMDP-19403",
+    "start_date": "2024-07-19",
+    "planned_done_date": "2024-08-27",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19270",
@@ -4907,7 +5555,10 @@
       "DP_Interno"
     ],
     "description": "Épica creada para registrar los temas relacionados con Ranger Policy, de Self Service",
-    "url": "https://jira.walmart.com/browse/CAMDP-19270"
+    "url": "https://jira.walmart.com/browse/CAMDP-19270",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19127",
@@ -4928,7 +5579,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada al ticket CAMDP-18865 RHR-24 Modificación al flujo de posiciones y HC Extracción Mensual",
-    "url": "https://jira.walmart.com/browse/CAMDP-19127"
+    "url": "https://jira.walmart.com/browse/CAMDP-19127",
+    "start_date": "2024-04-09",
+    "planned_done_date": "2024-09-18",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19126",
@@ -4947,7 +5601,10 @@
     ],
     "components": [],
     "description": "Épica relacionada al ticket CAMDP-19075 RHR23- Reporte de Asistencia del Home Office",
-    "url": "https://jira.walmart.com/browse/CAMDP-19126"
+    "url": "https://jira.walmart.com/browse/CAMDP-19126",
+    "start_date": "2024-06-27",
+    "planned_done_date": "2024-08-20",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19067",
@@ -4968,7 +5625,10 @@
       "DP_Interno"
     ],
     "description": "SSP - Datalake 2.0 \r\n\r\n[https://confluence.walmart.com/pages/viewpage.action?spaceKey=CAMINPRO&title=02.+New+Solution+Diagram]",
-    "url": "https://jira.walmart.com/browse/CAMDP-19067"
+    "url": "https://jira.walmart.com/browse/CAMDP-19067",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19026",
@@ -4987,7 +5647,10 @@
       "DP_Externo"
     ],
     "description": "Épica creada para registrar todos los temas relacionados con el tema de Tercer Ojo",
-    "url": "https://jira.walmart.com/browse/CAMDP-19026"
+    "url": "https://jira.walmart.com/browse/CAMDP-19026",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-19025",
@@ -5008,7 +5671,10 @@
       "DP_Externo"
     ],
     "description": "Épica creada para registrar las tareas relacionadas con temas de DSN5",
-    "url": "https://jira.walmart.com/browse/CAMDP-19025"
+    "url": "https://jira.walmart.com/browse/CAMDP-19025",
+    "start_date": "2024-10-21",
+    "planned_done_date": "2024-10-25",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18977",
@@ -5030,7 +5696,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica creada para relacionar temas en transición de KPIs a Arquitectura, de las actividades en curso de [~vn545y3] y [~vn0vnnl] ",
-    "url": "https://jira.walmart.com/browse/CAMDP-18977"
+    "url": "https://jira.walmart.com/browse/CAMDP-18977",
+    "start_date": "2024-06-21",
+    "planned_done_date": "2024-11-19",
+    "due_date": "2023-12-29"
   },
   {
     "key": "CAMDP-18936",
@@ -5052,7 +5721,10 @@
       "DP_Interno"
     ],
     "description": "Épica relacionada a los procesos de migración requeridos entre CTH, BigQuery y Kafka",
-    "url": "https://jira.walmart.com/browse/CAMDP-18936"
+    "url": "https://jira.walmart.com/browse/CAMDP-18936",
+    "start_date": "2024-06-17",
+    "planned_done_date": "2024-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18935",
@@ -5071,7 +5743,10 @@
       "DP_Interno"
     ],
     "description": "Épica creada para corregir los Bugs que se presentan en diferentes áreas",
-    "url": "https://jira.walmart.com/browse/CAMDP-18935"
+    "url": "https://jira.walmart.com/browse/CAMDP-18935",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18712",
@@ -5092,7 +5767,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada al ticket CAMDP-18655 RHR22 - Refactoring del Dataiku de Asociado del mes\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-18655",
-    "url": "https://jira.walmart.com/browse/CAMDP-18712"
+    "url": "https://jira.walmart.com/browse/CAMDP-18712",
+    "start_date": "2024-04-09",
+    "planned_done_date": "2024-09-18",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18710",
@@ -5113,7 +5791,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada al ticket CAMDP-18654  RHR20- Dashboard de Capacitación HO\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-18654",
-    "url": "https://jira.walmart.com/browse/CAMDP-18710"
+    "url": "https://jira.walmart.com/browse/CAMDP-18710",
+    "start_date": "2024-04-09",
+    "planned_done_date": "2024-08-20",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18709",
@@ -5134,7 +5815,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada al ticket CAMDP-18640  RHR18- Ajustes Dashboard Capacitacion Operaciones\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-18640",
-    "url": "https://jira.walmart.com/browse/CAMDP-18709"
+    "url": "https://jira.walmart.com/browse/CAMDP-18709",
+    "start_date": "2024-04-09",
+    "planned_done_date": "2024-07-16",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18550",
@@ -5155,7 +5839,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada al ticket CAMDP-18445 RHR16- Exploratoria de Data Movimientos\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-18445",
-    "url": "https://jira.walmart.com/browse/CAMDP-18550"
+    "url": "https://jira.walmart.com/browse/CAMDP-18550",
+    "start_date": "2024-04-09",
+    "planned_done_date": "2024-06-19",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18439",
@@ -5174,7 +5861,10 @@
       "DP_Interno"
     ],
     "description": "Épica creada para registrar el tiempo invertido en reuniones durante los sprints",
-    "url": "https://jira.walmart.com/browse/CAMDP-18439"
+    "url": "https://jira.walmart.com/browse/CAMDP-18439",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18436",
@@ -5195,7 +5885,10 @@
       "DP_Interno"
     ],
     "description": "Innovacion 2024",
-    "url": "https://jira.walmart.com/browse/CAMDP-18436"
+    "url": "https://jira.walmart.com/browse/CAMDP-18436",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18303",
@@ -5216,7 +5909,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relaciona a la solicitud  CAMDP-17768 RHR11-Creación de consulta de metrics people- Proyecto Prisma\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-17768",
-    "url": "https://jira.walmart.com/browse/CAMDP-18303"
+    "url": "https://jira.walmart.com/browse/CAMDP-18303",
+    "start_date": "2024-04-18",
+    "planned_done_date": "2024-08-20",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18293",
@@ -5237,7 +5933,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica asociada a la solicitud CAMDP-18053 RHR12- Headcount históricos de asociados de cierre\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-18053",
-    "url": "https://jira.walmart.com/browse/CAMDP-18293"
+    "url": "https://jira.walmart.com/browse/CAMDP-18293",
+    "start_date": "2024-04-18",
+    "planned_done_date": "2024-08-14",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18291",
@@ -5256,7 +5955,10 @@
     ],
     "components": [],
     "description": "Épica relacionada al ticket de solicitud  RHR07 Requerimiento de información historica de SAP 4.7\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-17729",
-    "url": "https://jira.walmart.com/browse/CAMDP-18291"
+    "url": "https://jira.walmart.com/browse/CAMDP-18291",
+    "start_date": "2024-04-18",
+    "planned_done_date": "2024-09-24",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18290",
@@ -5277,7 +5979,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada a la solicitud RHR09-Configuración al gateway oficial - PBI RH del ticket https://jira.walmart.com/browse/CAMDP-17588",
-    "url": "https://jira.walmart.com/browse/CAMDP-18290"
+    "url": "https://jira.walmart.com/browse/CAMDP-18290",
+    "start_date": "2024-04-18",
+    "planned_done_date": "2024-07-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18277",
@@ -5296,7 +6001,10 @@
     ],
     "components": [],
     "description": "Épica asociada al ticket https://jira.walmart.com/browse/CAMDP-18090",
-    "url": "https://jira.walmart.com/browse/CAMDP-18277"
+    "url": "https://jira.walmart.com/browse/CAMDP-18277",
+    "start_date": "2024-04-02",
+    "planned_done_date": "2024-07-23",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18276",
@@ -5315,7 +6023,10 @@
     ],
     "components": [],
     "description": "Épica asociada al ticket CAMDP-17967 Revisión PBI omnicanalidad ",
-    "url": "https://jira.walmart.com/browse/CAMDP-18276"
+    "url": "https://jira.walmart.com/browse/CAMDP-18276",
+    "start_date": "2024-03-18",
+    "planned_done_date": "2024-07-23",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18233",
@@ -5336,7 +6047,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica correspondiente al Proyecto GCP CAM Sandbox (DEV Y PROD)",
-    "url": "https://jira.walmart.com/browse/CAMDP-18233"
+    "url": "https://jira.walmart.com/browse/CAMDP-18233",
+    "start_date": "2024-02-20",
+    "planned_done_date": "2024-09-24",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18206",
@@ -5356,7 +6070,10 @@
     ],
     "components": [],
     "description": "Épica asociada al ticket de iniciativa https://jira.walmart.com/browse/CAMDP-16707\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-18206"
+    "url": "https://jira.walmart.com/browse/CAMDP-18206",
+    "start_date": "2023-11-08",
+    "planned_done_date": "2024-02-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18201",
@@ -5377,7 +6094,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada al ticket CAMDP-18109 RHR15- Modificación de inducción Corporativa\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-18109\r\n\r\nVersionamiento 2\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-18556",
-    "url": "https://jira.walmart.com/browse/CAMDP-18201"
+    "url": "https://jira.walmart.com/browse/CAMDP-18201",
+    "start_date": "2024-04-09",
+    "planned_done_date": "2024-05-09",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18198",
@@ -5398,7 +6118,10 @@
       "CAM Data Portal"
     ],
     "description": "Epica creada para relacionar Meetings, Training, Onboarding de temas generales relacionados a Refactoring",
-    "url": "https://jira.walmart.com/browse/CAMDP-18198"
+    "url": "https://jira.walmart.com/browse/CAMDP-18198",
+    "start_date": "2024-04-09",
+    "planned_done_date": "2026-05-26",
+    "due_date": "2023-12-29"
   },
   {
     "key": "CAMDP-18191",
@@ -5417,7 +6140,10 @@
       "DP_Interno"
     ],
     "description": "Épica creada para registrar las tareas relacionadas con el Área de Comercial - Marca Privada",
-    "url": "https://jira.walmart.com/browse/CAMDP-18191"
+    "url": "https://jira.walmart.com/browse/CAMDP-18191",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18190",
@@ -5434,7 +6160,10 @@
     "labels": [],
     "components": [],
     "description": "Épica se crea con la finalidad de registrar las tareas solicitadas por el equipo de Merchandising",
-    "url": "https://jira.walmart.com/browse/CAMDP-18190"
+    "url": "https://jira.walmart.com/browse/CAMDP-18190",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18187",
@@ -5455,7 +6184,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica correspondiente al  Proyecto GCP CAM Data IA  (DEV Y PROD)",
-    "url": "https://jira.walmart.com/browse/CAMDP-18187"
+    "url": "https://jira.walmart.com/browse/CAMDP-18187",
+    "start_date": "2023-12-26",
+    "planned_done_date": "2024-04-02",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18186",
@@ -5476,7 +6208,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica correspondiente al  Proyecto GCP CAM Data Governance (DEV Y PROD)",
-    "url": "https://jira.walmart.com/browse/CAMDP-18186"
+    "url": "https://jira.walmart.com/browse/CAMDP-18186",
+    "start_date": "2023-12-26",
+    "planned_done_date": "2024-04-02",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18166",
@@ -5493,7 +6228,10 @@
     "labels": [],
     "components": [],
     "description": "Se crea esta épica para agrupar todas las tareas imprevista que surjan durante los sprints:\r\n\r\n1) Errores con ambientes\r\n\r\n2) Permisos\r\n\r\n3) Daños en las máquinas\r\n\r\n \r\n\r\netc",
-    "url": "https://jira.walmart.com/browse/CAMDP-18166"
+    "url": "https://jira.walmart.com/browse/CAMDP-18166",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18127",
@@ -5512,7 +6250,10 @@
     ],
     "components": [],
     "description": "Esta épica se creo con el objetivo de agrupar todos los tickets relacionados al trabajo de los reportes de aguas residuales",
-    "url": "https://jira.walmart.com/browse/CAMDP-18127"
+    "url": "https://jira.walmart.com/browse/CAMDP-18127",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18048",
@@ -5533,7 +6274,10 @@
       "DP_Interno"
     ],
     "description": "Todo lo relacionado con Buffer 2024",
-    "url": "https://jira.walmart.com/browse/CAMDP-18048"
+    "url": "https://jira.walmart.com/browse/CAMDP-18048",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18047",
@@ -5554,7 +6298,10 @@
       "DP_Interno"
     ],
     "description": "Épica creada para registrar todo lo que se lleve a cabo en relación con Verificador Integrado en el año 2024",
-    "url": "https://jira.walmart.com/browse/CAMDP-18047"
+    "url": "https://jira.walmart.com/browse/CAMDP-18047",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18046",
@@ -5575,7 +6322,10 @@
       "DP_Interno"
     ],
     "description": "Ticket creado para registrar los apoyos varios a distintos equipos",
-    "url": "https://jira.walmart.com/browse/CAMDP-18046"
+    "url": "https://jira.walmart.com/browse/CAMDP-18046",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18045",
@@ -5594,7 +6344,10 @@
     ],
     "components": [],
     "description": "Ticket creado para registrar todo lo relacionado con Vulnerabilidades",
-    "url": "https://jira.walmart.com/browse/CAMDP-18045"
+    "url": "https://jira.walmart.com/browse/CAMDP-18045",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-18004",
@@ -5613,7 +6366,10 @@
     ],
     "components": [],
     "description": "Épica relacionada a todas las solicitudes internas del equipo de Refactoring que se generan directamente dentro del dashboard CAMDP - Refactoring.",
-    "url": "https://jira.walmart.com/browse/CAMDP-18004"
+    "url": "https://jira.walmart.com/browse/CAMDP-18004",
+    "start_date": "2024-03-20",
+    "planned_done_date": "2024-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17794",
@@ -5634,7 +6390,10 @@
       "DP_Interno"
     ],
     "description": "Épica creada para registrar las tareas relacionadas con MAC, año 2024",
-    "url": "https://jira.walmart.com/browse/CAMDP-17794"
+    "url": "https://jira.walmart.com/browse/CAMDP-17794",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17788",
@@ -5655,7 +6414,10 @@
       "DP_Externo"
     ],
     "description": "EBS",
-    "url": "https://jira.walmart.com/browse/CAMDP-17788"
+    "url": "https://jira.walmart.com/browse/CAMDP-17788",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17684",
@@ -5676,7 +6438,10 @@
       "DP_Interno"
     ],
     "description": "El objetivo de esta épica es organizar todas las tareas asociadas a apoyos que se dan para el equipo de Seif",
-    "url": "https://jira.walmart.com/browse/CAMDP-17684"
+    "url": "https://jira.walmart.com/browse/CAMDP-17684",
+    "start_date": "2024-02-06",
+    "planned_done_date": "2023-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17683",
@@ -5697,7 +6462,10 @@
       "DP_Interno"
     ],
     "description": "Épica creada para registrar las tareas provenientes de Kairos",
-    "url": "https://jira.walmart.com/browse/CAMDP-17683"
+    "url": "https://jira.walmart.com/browse/CAMDP-17683",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17674",
@@ -5716,7 +6484,10 @@
     ],
     "components": [],
     "description": "Epica asociada al proyecto de Saltrama",
-    "url": "https://jira.walmart.com/browse/CAMDP-17674"
+    "url": "https://jira.walmart.com/browse/CAMDP-17674",
+    "start_date": "2023-09-25",
+    "planned_done_date": "2023-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17669",
@@ -5733,7 +6504,10 @@
     "labels": [],
     "components": [],
     "description": "El objetivo de esta épica es para agrupar todas las tareas de wsi",
-    "url": "https://jira.walmart.com/browse/CAMDP-17669"
+    "url": "https://jira.walmart.com/browse/CAMDP-17669",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17648",
@@ -5752,7 +6526,10 @@
     ],
     "components": [],
     "description": "Épica creada para registrar las tareas de BCT 2024",
-    "url": "https://jira.walmart.com/browse/CAMDP-17648"
+    "url": "https://jira.walmart.com/browse/CAMDP-17648",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17620",
@@ -5773,7 +6550,10 @@
       "DP_Interno"
     ],
     "description": "Temas relacionados con Customer DB",
-    "url": "https://jira.walmart.com/browse/CAMDP-17620"
+    "url": "https://jira.walmart.com/browse/CAMDP-17620",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17618",
@@ -5792,7 +6572,10 @@
     ],
     "components": [],
     "description": "Épica creada para registrar tareas relacionadas con Morpho 2024",
-    "url": "https://jira.walmart.com/browse/CAMDP-17618"
+    "url": "https://jira.walmart.com/browse/CAMDP-17618",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17559",
@@ -5811,7 +6594,10 @@
     ],
     "components": [],
     "description": "Todos los tickets relacionados con requerimientos de SAP, para el año 2023",
-    "url": "https://jira.walmart.com/browse/CAMDP-17559"
+    "url": "https://jira.walmart.com/browse/CAMDP-17559",
+    "start_date": "2024-01-29",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17544",
@@ -5830,7 +6616,10 @@
     ],
     "components": [],
     "description": "En esta epica se agrupan todos los tickets relacionados a Data Science",
-    "url": "https://jira.walmart.com/browse/CAMDP-17544"
+    "url": "https://jira.walmart.com/browse/CAMDP-17544",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17515",
@@ -5847,7 +6636,10 @@
     "labels": [],
     "components": [],
     "description": "Épica creada para registrar tareas que no son tan comunes de Data Platform, pero que requieren un apoyo por parte del equipo",
-    "url": "https://jira.walmart.com/browse/CAMDP-17515"
+    "url": "https://jira.walmart.com/browse/CAMDP-17515",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17504",
@@ -5866,7 +6658,10 @@
     ],
     "components": [],
     "description": "CAMDP - K1 Prod Local Datalake\r\n\r\nDocumentación diagrama de arquitectura\r\n\r\nhttps://confluence.walmart.com/pages/viewpage.action?spaceKey=CAMINPRO&title=K1+Local+Datalake+-+Draft\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-17504"
+    "url": "https://jira.walmart.com/browse/CAMDP-17504",
+    "start_date": "2024-01-23",
+    "planned_done_date": "2024-04-23",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17438",
@@ -5885,7 +6680,10 @@
     ],
     "components": [],
     "description": "Esta epica se crea con el objeto de documentar todos los releases que se hagan a airflow",
-    "url": "https://jira.walmart.com/browse/CAMDP-17438"
+    "url": "https://jira.walmart.com/browse/CAMDP-17438",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17340",
@@ -5906,7 +6704,10 @@
       "DP_Interno"
     ],
     "description": "Creación de nuevos requerimientos para ingestar datos desde o hacia el dataLake",
-    "url": "https://jira.walmart.com/browse/CAMDP-17340"
+    "url": "https://jira.walmart.com/browse/CAMDP-17340",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17339",
@@ -5927,7 +6728,10 @@
       "DP_Interno"
     ],
     "description": "Manejo de tickets relacionados a impuestos para el año 2023",
-    "url": "https://jira.walmart.com/browse/CAMDP-17339"
+    "url": "https://jira.walmart.com/browse/CAMDP-17339",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17338",
@@ -5948,7 +6752,10 @@
       "A-Team"
     ],
     "description": "En esta epica se van a manejar tickets relacionados a tablas que actualmente se están viendo campos null en BigQuery",
-    "url": "https://jira.walmart.com/browse/CAMDP-17338"
+    "url": "https://jira.walmart.com/browse/CAMDP-17338",
+    "start_date": "2025-08-28",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17337",
@@ -5968,7 +6775,10 @@
     ],
     "components": [],
     "description": "Épica para reportar todos los ajustes que se deban hacer al api, ya sean mejoras o cambios por cumplimiento(SR, Gates, Seguridad, etc).\r\nPara un manejo control los tickets deben ser creados bajo la siguiente nomenclatura:\r\n\r\ncódigo de la tarea - nombre del api - descripción del cambio\r\n\r\n*Códigos*\r\n",
-    "url": "https://jira.walmart.com/browse/CAMDP-17337"
+    "url": "https://jira.walmart.com/browse/CAMDP-17337",
+    "start_date": "2026-01-07",
+    "planned_done_date": "2023-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17318",
@@ -5987,7 +6797,10 @@
     ],
     "components": [],
     "description": "Épica relacionada a todas las tareas sobre claims",
-    "url": "https://jira.walmart.com/browse/CAMDP-17318"
+    "url": "https://jira.walmart.com/browse/CAMDP-17318",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17801",
@@ -6006,7 +6819,10 @@
       "Celuladatos"
     ],
     "description": "Epica creada para todos los requerimientos del Dominio de Recursos Humanos",
-    "url": "https://jira.walmart.com/browse/CAMDP-17801"
+    "url": "https://jira.walmart.com/browse/CAMDP-17801",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17197",
@@ -6025,7 +6841,10 @@
       "DP_Interno"
     ],
     "description": "Épica asociada a la INICIATIVA - BigQuery - k1_adhoc_tables - Discovery/Generar Insumos de tablas AdHoc a Catalogar  asociado al ticket base\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-13781\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-17197"
+    "url": "https://jira.walmart.com/browse/CAMDP-17197",
+    "start_date": "2023-12-04",
+    "planned_done_date": "2023-12-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17116",
@@ -6042,7 +6861,10 @@
     "labels": [],
     "components": [],
     "description": "Mejoras RAE basado en los tickets:\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-16222\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-16220\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-17116"
+    "url": "https://jira.walmart.com/browse/CAMDP-17116",
+    "start_date": "2023-12-19",
+    "planned_done_date": "2024-01-19",
+    "due_date": ""
   },
   {
     "key": "CAMDP-17007",
@@ -6061,7 +6883,10 @@
     ],
     "components": [],
     "description": "Políticas de gobierno Power BI Workspaces",
-    "url": "https://jira.walmart.com/browse/CAMDP-17007"
+    "url": "https://jira.walmart.com/browse/CAMDP-17007",
+    "start_date": "2023-11-20",
+    "planned_done_date": "2024-05-28",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16925",
@@ -6078,7 +6903,10 @@
     "labels": [],
     "components": [],
     "description": "Infowave 2023",
-    "url": "https://jira.walmart.com/browse/CAMDP-16925"
+    "url": "https://jira.walmart.com/browse/CAMDP-16925",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16907",
@@ -6098,7 +6926,10 @@
     ],
     "components": [],
     "description": "Épica asociada al ticket de iniciativa https://jira.walmart.com/browse/CAMDP-16707\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-16907"
+    "url": "https://jira.walmart.com/browse/CAMDP-16907",
+    "start_date": "2023-11-08",
+    "planned_done_date": "2024-02-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16861",
@@ -6119,7 +6950,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica asociada al ticket de iniciativa Traslado de FL Reports en SCO tiendas hacia Data Analytics\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-16393",
-    "url": "https://jira.walmart.com/browse/CAMDP-16861"
+    "url": "https://jira.walmart.com/browse/CAMDP-16861",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16851",
@@ -6139,7 +6973,10 @@
     ],
     "components": [],
     "description": "Épica realacionada con el ticket Llevar datos de GTM (SQL DICAM) hacia Data Lake ( GCP )\r\n\r\nhttps://jira.walmart.com/browse/CAMDP-16623\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-16851"
+    "url": "https://jira.walmart.com/browse/CAMDP-16851",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16849",
@@ -6156,7 +6993,10 @@
     "labels": [],
     "components": [],
     "description": "Épica relacionada al ticket Estudio de factibilidad data Fabricas https://jira.walmart.com/browse/CAMDP-16520",
-    "url": "https://jira.walmart.com/browse/CAMDP-16849"
+    "url": "https://jira.walmart.com/browse/CAMDP-16849",
+    "start_date": "2023-11-22",
+    "planned_done_date": "2023-12-29",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16832",
@@ -6177,7 +7017,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica relacionada con ticket Migración data de congo a Dataflow https://jira.walmart.com/browse/CAMDP-16669",
-    "url": "https://jira.walmart.com/browse/CAMDP-16832"
+    "url": "https://jira.walmart.com/browse/CAMDP-16832",
+    "start_date": "2023-12-19",
+    "planned_done_date": "2024-01-19",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16730",
@@ -6196,7 +7039,10 @@
     ],
     "components": [],
     "description": "Épica asociada al ticket de iniciativa https://jira.walmart.com/browse/CAMDP-16355\r\n\r\n \r\n\r\n \r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-16730"
+    "url": "https://jira.walmart.com/browse/CAMDP-16730",
+    "start_date": "2023-10-24",
+    "planned_done_date": "2024-02-12",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16712",
@@ -6217,7 +7063,10 @@
       "CAM Data Portal"
     ],
     "description": "Épica correspondiente a los ticket de requerimientos y/o solicitudes tanto externas como internas recibidas desde form jira para ser atendidas por el equipo de Architectura",
-    "url": "https://jira.walmart.com/browse/CAMDP-16712"
+    "url": "https://jira.walmart.com/browse/CAMDP-16712",
+    "start_date": "2023-12-19",
+    "planned_done_date": "2024-12-19",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16641",
@@ -6239,7 +7088,10 @@
       "Data Lake"
     ],
     "description": "SAP to Google Cloud Migration",
-    "url": "https://jira.walmart.com/browse/CAMDP-16641"
+    "url": "https://jira.walmart.com/browse/CAMDP-16641",
+    "start_date": "2023-10-09",
+    "planned_done_date": "2024-04-30",
+    "due_date": "2024-04-30"
   },
   {
     "key": "CAMDP-16545",
@@ -6259,7 +7111,10 @@
     ],
     "components": [],
     "description": "Epica creada para la agrupación de nuevos requerimientos ",
-    "url": "https://jira.walmart.com/browse/CAMDP-16545"
+    "url": "https://jira.walmart.com/browse/CAMDP-16545",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16544",
@@ -6278,7 +7133,10 @@
       "CAM Data Portal"
     ],
     "description": "CIMS",
-    "url": "https://jira.walmart.com/browse/CAMDP-16544"
+    "url": "https://jira.walmart.com/browse/CAMDP-16544",
+    "start_date": "2026-01-06",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-16122",
@@ -6295,7 +7153,10 @@
     "labels": [],
     "components": [],
     "description": "Se crea este ticket para manejar todas las tareas relacionadas a ecommerce",
-    "url": "https://jira.walmart.com/browse/CAMDP-16122"
+    "url": "https://jira.walmart.com/browse/CAMDP-16122",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-15937",
@@ -6316,7 +7177,10 @@
     ],
     "components": [],
     "description": "Esta épica se creó para analizar y desarrollar una solución para el manejo de los datos de descuentos asociados.\r\n\r\nDescuento de asociados:\r\n\r\nDiagrama de arquitectura: [https://confluence.walmart.com/x/tRZRLQ]\r\n\r\nDocumentación tecnica del API actual: [https://confluence.walmart.com/x/c6WAMg]\r\n\r\nDoc",
-    "url": "https://jira.walmart.com/browse/CAMDP-15937"
+    "url": "https://jira.walmart.com/browse/CAMDP-15937",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-15409",
@@ -6335,7 +7199,10 @@
     ],
     "components": [],
     "description": "Corresponde a la versión de Margen center para MAC 2.0 ",
-    "url": "https://jira.walmart.com/browse/CAMDP-15409"
+    "url": "https://jira.walmart.com/browse/CAMDP-15409",
+    "start_date": "2026-01-07",
+    "planned_done_date": "",
+    "due_date": ""
   },
   {
     "key": "CAMDP-13623",
@@ -6354,7 +7221,10 @@
     ],
     "components": [],
     "description": "Épica relacionada a todas las solicitudes internas del equipo de arquitectura que se generan directamente dentro del dashboard CAMDP - Arquitectura.",
-    "url": "https://jira.walmart.com/browse/CAMDP-13623"
+    "url": "https://jira.walmart.com/browse/CAMDP-13623",
+    "start_date": "2024-01-02",
+    "planned_done_date": "2024-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-12545",
@@ -6373,7 +7243,10 @@
     ],
     "components": [],
     "description": "API Core Migration Java to Nodejs",
-    "url": "https://jira.walmart.com/browse/CAMDP-12545"
+    "url": "https://jira.walmart.com/browse/CAMDP-12545",
+    "start_date": "2022-08-01",
+    "planned_done_date": "2022-10-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-6765",
@@ -6392,7 +7265,10 @@
     ],
     "components": [],
     "description": "Nuevas funcionalidades de SpotCAM que deberan ser atendidas como generalizadades, despues del lanzamiento oficial del SPOTCAM 1.0 (2021/08/31)\r\n\r\n ",
-    "url": "https://jira.walmart.com/browse/CAMDP-6765"
+    "url": "https://jira.walmart.com/browse/CAMDP-6765",
+    "start_date": "2021-09-01",
+    "planned_done_date": "2021-12-31",
+    "due_date": ""
   },
   {
     "key": "CAMDP-5550",
@@ -6411,7 +7287,10 @@
     ],
     "components": [],
     "description": "Epica generica, creada para que las solicitudes de ServiceDesk, puedan estar asociadas a una epica (campo requerido).\r\n\r\nUna vez que se entienda que es lo que se esta solicitando, se debera de asignar a la Epica correcta.",
-    "url": "https://jira.walmart.com/browse/CAMDP-5550"
+    "url": "https://jira.walmart.com/browse/CAMDP-5550",
+    "start_date": "2021-06-01",
+    "planned_done_date": "2022-12-30",
+    "due_date": ""
   },
   {
     "key": "CAMDP-4610",
@@ -6428,6 +7307,9 @@
     "labels": [],
     "components": [],
     "description": "Onboard CAM schemas and tables to DQAF and setup quality rules.",
-    "url": "https://jira.walmart.com/browse/CAMDP-4610"
+    "url": "https://jira.walmart.com/browse/CAMDP-4610",
+    "start_date": "2021-01-27",
+    "planned_done_date": "2021-06-30",
+    "due_date": ""
   }
 ]

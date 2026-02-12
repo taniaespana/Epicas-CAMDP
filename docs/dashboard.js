@@ -135,6 +135,118 @@ function makeChart(canvasId, type, labels, values, bgColors, dataField) {
   return chart;
 }
 
+// ---------------------- Gantt Chart ----------------------
+function buildGantt() {
+  const STATUS_COLORS = {
+    'Work in Progress': '#0053e2',
+    'In Progress': '#0053e2',
+    'Blocked': '#ea1100',
+    'Listo': '#2a8703',
+    'Backlog': '#6B7280',
+  };
+
+  const labels = GANTT_DATA.map(e => `${e.key} — ${e.summary}`);
+  const data = GANTT_DATA.map(e => {
+    const start = new Date(e.start + 'T00:00:00').getTime();
+    const end = new Date(e.end + 'T00:00:00').getTime();
+    return [start, end];
+  });
+  const bgColors = GANTT_DATA.map(e => STATUS_COLORS[e.status] || '#6B7280');
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  new Chart(document.getElementById('ganttChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        data,
+        backgroundColor: bgColors,
+        borderColor: bgColors,
+        borderWidth: 1,
+        borderRadius: 4,
+        borderSkipped: false,
+        barPercentage: 0.7,
+      }],
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const e = GANTT_DATA[ctx.dataIndex];
+              return [
+                `${e.key}: ${e.summary}`,
+                `Inicio: ${e.start}`,
+                `Fin: ${e.end}`,
+                `Estado: ${e.status}`,
+                `Assignee: ${e.assignee}`,
+              ];
+            },
+          },
+        },
+        // Today line annotation via custom plugin
+        todayLine: {},
+      },
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'top',
+          ticks: {
+            callback: (val) => {
+              const d = new Date(val);
+              return d.toLocaleDateString('es-MX', { month: 'short', day: 'numeric' });
+            },
+            font: { size: 10 },
+            maxRotation: 0,
+          },
+          grid: { color: '#f0f0f0' },
+        },
+        y: {
+          ticks: {
+            font: { size: 10 },
+            callback: function(val, idx) {
+              const label = this.getLabelForValue(val);
+              return label.length > 55 ? label.substring(0, 55) + '...' : label;
+            },
+          },
+          grid: { display: false },
+        },
+      },
+    },
+    plugins: [{
+      id: 'todayLine',
+      afterDraw: (chart) => {
+        const xScale = chart.scales.x;
+        const todayX = xScale.getPixelForValue(today.getTime());
+        if (todayX < xScale.left || todayX > xScale.right) return;
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.strokeStyle = '#ea1100';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 3]);
+        ctx.beginPath();
+        ctx.moveTo(todayX, chart.scales.y.top);
+        ctx.lineTo(todayX, chart.scales.y.bottom);
+        ctx.stroke();
+        // Label
+        ctx.fillStyle = '#ea1100';
+        ctx.font = 'bold 10px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('HOY', todayX, chart.scales.y.top - 5);
+        ctx.restore();
+      },
+    }],
+  });
+}
+
+if (GANTT_DATA.length > 0) buildGantt();
+
 // ---------------------- Build all charts ----------------------
 const CD = CHART_DATA;
 
