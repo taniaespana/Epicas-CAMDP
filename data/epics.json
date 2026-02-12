@@ -1,18 +1,17 @@
 [
   {
     "key": "CAMDP-26618",
-    "summary": "Ecomm | Disponibilidad de Fuentes",
-    "status": "Backlog",
-    "status_category": "Por hacer",
+    "summary": "Proyecto Ecomm | Disponibilidad de Fuentes",
+    "status": "Work in Progress",
+    "status_category": "En curso",
     "assignee": "Ericka Artavia",
     "assignee_email": "Ericka.Artavia@walmart.com",
     "priority": "None",
     "created": "2026-02-11",
-    "updated": "2026-02-11",
+    "updated": "2026-02-12",
     "resolution": "",
     "resolution_date": "",
     "labels": [
-      "1.ETL",
       "New_Request"
     ],
     "components": [
@@ -23,8 +22,8 @@
     ],
     "description": "Mapeo y disponibilización de fuentes de datos prioritarias a nivel del Data Lake, con el objetivo de habilitar el acceso centralizado a la información clave para el crecimiento del negocio de eCommerce. Incluye el monitoreo continuo de la salud y disponibilidad de cada fuente.\r\n \r\nObjetivo de Negoci",
     "url": "https://jira.walmart.com/browse/CAMDP-26618",
-    "start_date": "2026-01-08",
-    "planned_done_date": "2026-03-26",
+    "start_date": "2026-02-12",
+    "planned_done_date": "2026-04-30",
     "due_date": ""
   },
   {
@@ -498,14 +497,14 @@
   },
   {
     "key": "CAMDP-26242",
-    "summary": "E-Comm - Proy. Conciliación [2026]",
+    "summary": "Proyecto Ecomm | Reporte 3 patas",
     "status": "Work in Progress",
     "status_category": "En curso",
     "assignee": "Francisco Martinez",
     "assignee_email": "Francisco.Martinez4@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-02-11",
+    "updated": "2026-02-12",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -7279,7 +7278,7 @@
     "assignee_email": "Alejandro.Piedra0@walmart.com",
     "priority": "P4",
     "created": "2021-05-27",
-    "updated": "2026-02-11",
+    "updated": "2026-02-12",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [

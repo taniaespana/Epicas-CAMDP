@@ -37,7 +37,35 @@ uv pip install -r requirements.txt --index-url https://pypi.ci.artifacts.walmart
 python src/build.py
 ```
 
-El sitio generado estará en `site/index.html`.
+El sitio generado estará en `docs/index.html`.
+
+## Actualización Automática (Scheduling)
+
+Hay dos formas de programar la regeneración del sitio:
+
+### Opción A: Script Python (recomendada para desarrollo)
+
+```bash
+# Horarios por defecto: 8:00, 12:00 y 17:00
+python src/scheduler.py
+
+# Horarios personalizados
+python src/scheduler.py 09:00 13:00 18:00
+```
+
+El script corre en foreground y regenera el sitio a las horas indicadas.
+
+### Opción B: Windows Task Scheduler (recomendada para producción)
+
+```bash
+# Ejecutar como Administrador para crear las tareas
+scripts\setup_scheduled_tasks.bat
+
+# Para eliminarlas
+scripts\remove_scheduled_tasks.bat
+```
+
+Esto crea 5 tareas programadas (8AM, 10AM, 12PM, 2PM, 4PM) que sobreviven reinicios.
 
 ## Licencia
 

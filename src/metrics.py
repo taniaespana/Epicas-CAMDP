@@ -1,7 +1,8 @@
-"""Calcula métricas y estadísticas de las épicas CAMDP.
+"""Calcula métricas y estadísticas de las épicas y issues CAMDP.
 
-Filtra por épicas activas (no-Listo o cerradas >= 2026-01-15).
+Filtra por épicas activas (no-Listo o cerradas >= CUTOFF_DATE).
 Clasifica componentes y labels según su prefijo numérico.
+Genera métricas por dominio para la vista de pestañas.
 """
 
 import json
@@ -44,7 +45,6 @@ def _classify(name: str, mapping: dict) -> tuple[str, str]:
 
 
 def parse_components(components: list[str]) -> dict[str, list[str]]:
-    """Clasifica lista de componentes en sus categorías."""
     result: dict[str, list[str]] = {}
     for comp in components:
         cat, val = _classify(comp, COMP_CATEGORIES)
@@ -53,12 +53,19 @@ def parse_components(components: list[str]) -> dict[str, list[str]]:
 
 
 def parse_labels(labels: list[str]) -> dict[str, list[str]]:
-    """Clasifica lista de labels en sus categorías."""
     result: dict[str, list[str]] = {}
     for lbl in labels:
         cat, val = _classify(lbl, LABEL_CATEGORIES)
         result.setdefault(cat, []).append(val)
     return result
+
+
+def _get_dominios(components: list[str]) -> list[str]:
+    """Extrae nombres de dominio (prefijo 1.) de componentes."""
+    return [
+        c.split(".", 1)[1].replace("_", " ")
+        for c in components if c.startswith("1.")
+    ]
 
 
 # ------------------------------------------------------------------ #
@@ -67,6 +74,13 @@ def parse_labels(labels: list[str]) -> dict[str, list[str]]:
 
 def load_epics() -> list[dict]:
     path = ROOT / "data" / "epics.json"
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_all_issues() -> list[dict]:
+    path = ROOT / "data" / "all_issues.json"
+    if not path.exists():
+        return []
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -80,19 +94,13 @@ def filter_relevant(epics: list[dict]) -> list[dict]:
 
 
 def _effective_end_date(epic: dict) -> str:
-    """Calcula fecha fin efectiva para Gantt.
-
-    Prioridad: planned_done_date si existe y no vencido, sino due_date.
-    """
     today = date.today().isoformat()
     planned = epic.get("planned_done_date", "")
     due = epic.get("due_date", "")
-
     if planned and planned >= today:
         return planned
     if due:
         return due
-    # Fallback: si planned existe pero vencido y no hay due, usar planned
     if planned:
         return planned
     return ""
@@ -103,6 +111,7 @@ def enrich_epic(epic: dict) -> dict:
     epic["comp_parsed"] = parse_components(epic.get("components", []))
     epic["label_parsed"] = parse_labels(epic.get("labels", []))
     epic["gantt_end"] = _effective_end_date(epic)
+    epic["dominios"] = _get_dominios(epic.get("components", []))
 
     epic["dominio"] = ", ".join(epic["comp_parsed"].get("Dominio", []))
     epic["equipo_df"] = ", ".join(epic["comp_parsed"].get("Equipo DF", []))
@@ -127,8 +136,15 @@ def enrich_epic(epic: dict) -> dict:
     return epic
 
 
+def enrich_issue(issue: dict) -> dict:
+    """Agrega dominios a un issue cualquiera."""
+    issue["dominios"] = _get_dominios(issue.get("components", []))
+    issue["dominio"] = ", ".join(issue["dominios"])
+    return issue
+
+
 # ------------------------------------------------------------------ #
-#  Métricas                                                           #
+#  Helpers de conteo                                                  #
 # ------------------------------------------------------------------ #
 
 def _count(items: list) -> dict:
@@ -136,7 +152,6 @@ def _count(items: list) -> dict:
 
 
 def _count_nested(epics: list[dict], *keys: str) -> dict:
-    """Cuenta valores de campos clasificados (comp_parsed/label_parsed)."""
     c: Counter = Counter()
     for e in epics:
         for k in keys:
@@ -147,18 +162,12 @@ def _count_nested(epics: list[dict], *keys: str) -> dict:
     return dict(c.most_common())
 
 
-def compute_all_metrics() -> dict:
-    """Pipeline completo: carga -> filtra -> enriquece -> métricas."""
-    raw = load_epics()
-    filtered = filter_relevant(raw)
-    epics = [enrich_epic(e) for e in filtered]
-    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+# ------------------------------------------------------------------ #
+#  Gantt                                                              #
+# ------------------------------------------------------------------ #
 
-    active = [e for e in epics if e["status"] in {"Work in Progress", "In Progress"}]
-    blocked = [e for e in epics if e["status"] == "Blocked"]
-    done_recent = [e for e in epics if e["status"] == "Listo"]
-
-    # Gantt: excluir Listo, solo épicas con fechas válidas
+def build_gantt_items(epics: list[dict]) -> list[dict]:
+    """Construye datos Gantt a partir de épicas enriquecidas."""
     gantt = []
     for e in sorted(epics, key=lambda x: x.get("start_date", "")):
         if e["status"] == "Listo":
@@ -167,13 +176,12 @@ def compute_all_metrics() -> dict:
             continue
         planned = e.get("planned_done_date", "")
         due = e.get("due_date", "")
-        # Color: azul si extendida (planned < due), verde si iguales/sin due
         if e["status"] == "Blocked":
             color = "blocked"
         elif planned and due and planned < due:
-            color = "extended"   # azul — se extendió
+            color = "extended"
         else:
-            color = "on_track"   # verde — en tiempo
+            color = "on_track"
         gantt.append({
             "key": e["key"],
             "summary": e["summary"][:60],
@@ -190,12 +198,95 @@ def compute_all_metrics() -> dict:
             "app": e["app_producto"],
             "tipo": e["tipo"],
         })
+    return gantt
+
+
+# ------------------------------------------------------------------ #
+#  Métricas por dominio                                               #
+# ------------------------------------------------------------------ #
+
+def compute_domain_metrics(
+    domain_name: str,
+    epics: list[dict],
+    all_issues: list[dict],
+) -> dict:
+    """Calcula métricas para un dominio específico."""
+    # Filtrar epicas de este dominio
+    dom_epics = [e for e in epics if domain_name in e.get("dominios", [])]
+    # Filtrar todos los issues de este dominio
+    dom_issues = [i for i in all_issues if domain_name in i.get("dominios", [])]
+
+    active = [e for e in dom_epics if e["status"] in {"Work in Progress", "In Progress"}]
+    blocked = [e for e in dom_epics if e["status"] == "Blocked"]
+    resolved = sum(1 for e in dom_epics if e["resolution"])
+
+    return {
+        "name": domain_name,
+        "slug": domain_name.lower().replace(" ", "-"),
+        "total_epics": len(dom_epics),
+        "total_issues": len(dom_issues),
+        "active": len(active),
+        "blocked": len(blocked),
+        "blocked_epics": blocked,
+        "resolved": resolved,
+        "resolution_rate": round(resolved / len(dom_epics) * 100, 1) if dom_epics else 0,
+        "gantt": build_gantt_items(dom_epics),
+        "epics": dom_epics,
+        "issuetype_dist": _count([i["issuetype"] for i in dom_issues]),
+        "status_dist": _count([i["status"] for i in dom_issues]),
+        "epic_status_dist": _count([e["status"] for e in dom_epics]),
+        "assignee_dist": _count([i["assignee"] for i in dom_issues]),
+        "priority_dist": _count([i["priority"] for i in dom_issues]),
+        "monthly": dict(sorted(
+            Counter(i["created"][:7] for i in dom_issues if i["created"]).items()
+        )),
+    }
+
+
+# ------------------------------------------------------------------ #
+#  Pipeline principal                                                 #
+# ------------------------------------------------------------------ #
+
+def compute_all_metrics() -> dict:
+    """Pipeline completo: carga -> filtra -> enriquece -> métricas."""
+    raw = load_epics()
+    filtered = filter_relevant(raw)
+    epics = [enrich_epic(e) for e in filtered]
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    # Cargar y enriquecer todos los issues
+    all_issues_raw = load_all_issues()
+    all_issues = [enrich_issue(i) for i in all_issues_raw]
+
+    active = [e for e in epics if e["status"] in {"Work in Progress", "In Progress"}]
+    blocked = [e for e in epics if e["status"] == "Blocked"]
+    done_recent = [e for e in epics if e["status"] == "Listo"]
+
+    # Descubrir dominios
+    domain_names: set[str] = set()
+    for e in epics:
+        domain_names.update(e.get("dominios", []))
+    for i in all_issues:
+        domain_names.update(i.get("dominios", []))
+    domain_names_sorted = sorted(domain_names)
+
+    # Métricas por dominio
+    domains = [
+        compute_domain_metrics(d, epics, all_issues)
+        for d in domain_names_sorted
+    ]
+
+    # Issue type distribution global
+    issuetype_dist = _count([i["issuetype"] for i in all_issues])
+
+    gantt = build_gantt_items(epics)
 
     return {
         "generated_at": now,
         "cutoff_date": CUTOFF_DATE,
         "total_raw": len(raw),
         "total_epics": len(epics),
+        "total_all_issues": len(all_issues),
         "epics": epics,
         "status_dist": _count([e["status"] for e in epics]),
         "dominio_dist": _count_nested(epics, "comp_parsed.Dominio"),
@@ -225,11 +316,14 @@ def compute_all_metrics() -> dict:
             "resolved": sum(1 for e in epics if e["resolution"]),
             "unresolved": sum(1 for e in epics if not e["resolution"]),
             "rate_pct": round(
-                sum(1 for e in epics if e["resolution"]) / len(epics) * 100, 1
+                sum(1 for e in epics if e["resolution"]) / len(epics) * 100, 1,
             ) if epics else 0,
         },
         "active_epics": active,
         "blocked_epics": blocked,
         "done_recent": done_recent,
         "gantt": gantt,
+        "issuetype_dist": issuetype_dist,
+        "domains": domains,
+        "domain_names": domain_names_sorted,
     }

@@ -1,6 +1,5 @@
 /* =========================================================
-   CAMDP Dashboard — Interactive Charts & Filtering
-   Click any chart segment to filter the epic table.
+   CAMDP Dashboard — Tabs, Gantt Charts & Domain Views
    ========================================================= */
 
 const WM = { blue: '#0053e2', spark: '#ffc220', green: '#2a8703', red: '#ea1100' };
@@ -9,94 +8,65 @@ const PALETTE = [
   '#8b5cf6','#f97316','#ec4899','#14b8a6','#a855f7','#0891b2',
 ];
 
+const GANTT_COLORS = {
+  on_track: '#2a8703',
+  extended: '#0053e2',
+  blocked:  '#ea1100',
+};
+
 // ---------------------- State ----------------------
-let activeFilter = { field: null, value: null };
+let activeTab = 'general';
+const ganttCharts = {};   // domain -> Chart instance
+const ganttFilters = {};  // domain -> status filter
+const domainCharts = {};  // domain -> { chartName: Chart }
 
 // ---------------------- DOM helpers ----------------------
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
-function updateVisibleCount() {
-  const visible = $$('#epicTable tbody tr:not([style*="display: none"])').length;
-  $('#visibleCount').textContent = visible;
-}
+// ---------------------- Tab Switching ----------------------
+function switchTab(slug) {
+  activeTab = slug;
 
-function showFilterBanner(label) {
-  $('#filterBanner').classList.remove('hidden');
-  $('#filterLabel').textContent = label;
-}
-
-function hideFilterBanner() {
-  $('#filterBanner').classList.add('hidden');
-}
-
-// ---------------------- Filtering ----------------------
-function applyFilter(field, value) {
-  activeFilter = { field, value };
-  showFilterBanner(`${field}: ${value}`);
-
-  $$('#epicTable tbody tr').forEach(row => {
-    const cellValue = row.dataset[field] || '';
-    const match = cellValue.toLowerCase().includes(value.toLowerCase());
-    row.style.display = match ? '' : 'none';
+  // Update tab buttons
+  $$('.domain-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === slug);
   });
-  updateVisibleCount();
-  // Also filter Gantt
-  buildGantt();
-}
 
-function clearAllFilters() {
-  activeFilter = { field: null, value: null };
-  hideFilterBanner();
-  $('#searchInput').value = '';
-  $$('#epicTable tbody tr').forEach(row => { row.style.display = ''; });
-  updateVisibleCount();
-  // Reset Gantt
-  buildGantt();
-}
-// Expose globally for the HTML onclick
-window.clearAllFilters = clearAllFilters;
+  // Show/hide tab content
+  $$('.tab-content').forEach(div => {
+    div.classList.toggle('active', div.id === `tab-${slug}`);
+  });
 
-// ---------------------- Search ----------------------
-$('#searchInput').addEventListener('input', function() {
-  const q = this.value.toLowerCase();
-  if (!q) {
-    // If had chart filter, reapply it; else show all
-    if (activeFilter.field) {
-      applyFilter(activeFilter.field, activeFilter.value);
-    } else {
-      $$('#epicTable tbody tr').forEach(r => { r.style.display = ''; });
-    }
-    updateVisibleCount();
-    return;
+  // Build charts for this tab if not built yet
+  if (!domainCharts[slug]) {
+    buildDomainCharts(slug);
   }
-  // Text search overrides chart filter
-  $$('#epicTable tbody tr').forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-  });
-  updateVisibleCount();
-});
 
-// ---------------------- Sort ----------------------
-let sortDir = {};
-function sortTable(colIdx) {
-  const tbody = $('#epicTable tbody');
-  const rows = Array.from(tbody.rows);
-  const dir = sortDir[colIdx] = !(sortDir[colIdx] || false);
-
-  rows.sort((a, b) => {
-    const av = (a.cells[colIdx]?.textContent || '').trim().toLowerCase();
-    const bv = (b.cells[colIdx]?.textContent || '').trim().toLowerCase();
-    return dir ? av.localeCompare(bv) : bv.localeCompare(av);
-  });
-  rows.forEach(r => tbody.appendChild(r));
+  // Build/rebuild gantt for this tab
+  if (GANTT_DATA[slug] && GANTT_DATA[slug].length > 0) {
+    buildGantt(slug);
+  }
 }
-window.sortTable = sortTable;
+window.switchTab = switchTab;
+
+// ---------------------- Search (general tab) ----------------------
+const searchInput = $('#searchInput-general');
+if (searchInput) {
+  searchInput.addEventListener('input', function () {
+    const q = this.value.toLowerCase();
+    $$('#epicTable-general tbody tr').forEach(row => {
+      row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+}
 
 // ---------------------- Chart factory ----------------------
-function makeChart(canvasId, type, labels, values, bgColors, dataField) {
-  const ctx = document.getElementById(canvasId);
-  const chart = new Chart(ctx, {
+function makeChart(canvasId, type, labels, values, bgColors) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return null;
+
+  return new Chart(canvas, {
     type,
     data: {
       labels,
@@ -112,23 +82,8 @@ function makeChart(canvasId, type, labels, values, bgColors, dataField) {
       responsive: true,
       maintainAspectRatio: false,
       indexAxis: type === 'bar' && labels.length > 6 ? 'y' : 'x',
-      onClick: (_evt, elements) => {
-        if (!elements.length) return;
-        const idx = elements[0].index;
-        const clickedLabel = labels[idx];
-        if (activeFilter.field === dataField && activeFilter.value === clickedLabel) {
-          clearAllFilters();
-        } else {
-          applyFilter(dataField, clickedLabel);
-        }
-      },
       plugins: {
         legend: { display: type === 'doughnut', position: 'right' },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => ` ${ctx.label}: ${ctx.parsed || ctx.raw}`,
-          },
-        },
       },
       scales: type === 'doughnut' ? {} : {
         x: { ticks: { maxRotation: 45, font: { size: 11 } } },
@@ -136,91 +91,96 @@ function makeChart(canvasId, type, labels, values, bgColors, dataField) {
       },
     },
   });
-  return chart;
+}
+
+// ---------------------- Build charts for a domain ----------------------
+function buildDomainCharts(slug) {
+  const cd = CHART_DATA[slug];
+  if (!cd) return;
+
+  domainCharts[slug] = {};
+
+  if (cd.status) {
+    domainCharts[slug].status = makeChart(
+      `statusChart-${slug}`, 'doughnut', cd.status.labels, cd.status.values, PALETTE,
+    );
+  }
+  if (cd.issuetype) {
+    domainCharts[slug].issuetype = makeChart(
+      `issuetypeChart-${slug}`, 'doughnut', cd.issuetype.labels, cd.issuetype.values, PALETTE,
+    );
+  }
+  if (cd.dominio) {
+    domainCharts[slug].dominio = makeChart(
+      `dominioChart-${slug}`, 'bar', cd.dominio.labels, cd.dominio.values, [WM.blue],
+    );
+  }
+  if (cd.equipo) {
+    domainCharts[slug].equipo = makeChart(
+      `equipoChart-${slug}`, 'bar', cd.equipo.labels, cd.equipo.values, [WM.spark],
+    );
+  }
+  if (cd.assignee) {
+    domainCharts[slug].assignee = makeChart(
+      `assigneeChart-${slug}`, 'bar', cd.assignee.labels, cd.assignee.values, [WM.blue],
+    );
+  }
+  if (cd.monthly) {
+    domainCharts[slug].monthly = makeChart(
+      `monthlyChart-${slug}`, 'bar', cd.monthly.labels, cd.monthly.values, [WM.green],
+    );
+  }
 }
 
 // ---------------------- Gantt Chart ----------------------
-const GANTT_COLORS = {
-  on_track:  '#2a8703',  // verde  — en tiempo
-  extended:  '#0053e2',  // azul   — extendida (planned < due)
-  blocked:   '#ea1100',  // rojo   — bloqueada
-};
-
-let ganttChart = null;
-let ganttFilter = 'all';  // status filter
-
 function parseDate(str) {
   const [y, m, d] = str.split('-').map(Number);
   return new Date(y, m - 1, d);
 }
 
-function ganttMatchesChartFilter(e) {
-  if (!activeFilter.field) return true;
-  const f = activeFilter.field;
-  const v = activeFilter.value.toLowerCase();
-  // Direct field match first
-  const directVal = (e[f] || '').toLowerCase();
-  if (directVal.includes(v)) return true;
-  // For month filter, match start date prefix
-  if (f === 'month') return (e.start || '').startsWith(activeFilter.value);
-  return false;
-}
+function buildGantt(slug) {
+  const statusFilter = ganttFilters[slug] || 'all';
+  let items = GANTT_DATA[slug] || [];
 
-function filteredGantt() {
-  let items = GANTT_DATA;
-  // Apply status pill filter
-  if (ganttFilter !== 'all') {
-    items = items.filter(e => e.status === ganttFilter);
+  if (statusFilter !== 'all') {
+    items = items.filter(e => e.status === statusFilter);
   }
-  // Apply chart click filter
-  if (activeFilter.field) {
-    items = items.filter(e => ganttMatchesChartFilter(e));
-  }
-  return items;
-}
-
-function buildGantt() {
-  const items = filteredGantt();
   if (!items.length) return;
 
   const labels = items.map(e => `${e.key} — ${e.summary}`);
-
-  // Compute global min/max for stable axis
-  let allDates = [];
+  const allDates = [];
   items.forEach(e => {
     allDates.push(parseDate(e.start));
     allDates.push(parseDate(e.end));
   });
   const minDate = new Date(Math.min(...allDates));
   const maxDate = new Date(Math.max(...allDates));
-  // Add 7-day padding
   minDate.setDate(minDate.getDate() - 7);
   maxDate.setDate(maxDate.getDate() + 14);
 
-  const data = items.map(e => {
-    return [parseDate(e.start).getTime(), parseDate(e.end).getTime()];
-  });
+  const data = items.map(e => [parseDate(e.start).getTime(), parseDate(e.end).getTime()]);
   const bgColors = items.map(e => GANTT_COLORS[e.color] || '#6B7280');
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // Resize container
-  const container = document.getElementById('ganttContainer');
-  const h = Math.max(items.length * 34 + 60, 280);
-  container.style.height = h + 'px';
+  const container = document.getElementById(`ganttContainer-${slug}`);
+  if (!container) return;
+  container.style.height = Math.max(items.length * 34 + 60, 280) + 'px';
 
-  // Destroy previous chart if exists
-  if (ganttChart) { ganttChart.destroy(); ganttChart = null; }
+  if (ganttCharts[slug]) {
+    ganttCharts[slug].destroy();
+    ganttCharts[slug] = null;
+  }
 
-  ganttChart = new Chart(document.getElementById('ganttChart'), {
+  ganttCharts[slug] = new Chart(document.getElementById(`ganttChart-${slug}`), {
     type: 'bar',
     data: {
       labels,
       datasets: [{
         data,
         backgroundColor: bgColors,
-        borderColor: bgColors.map(c => c),
+        borderColor: bgColors,
         borderWidth: 1,
         borderRadius: 4,
         borderSkipped: false,
@@ -240,17 +200,14 @@ function buildGantt() {
             title: () => '',
             label: (ctx) => {
               const e = items[ctx.dataIndex];
-              const lines = [
+              return [
                 `${e.key}: ${e.summary}`,
                 `Inicio: ${e.start}`,
                 `Fin planeado: ${e.planned_done || '-'}`,
                 `Due date: ${e.due || '-'}`,
-                `Fin efectivo: ${e.end}`,
                 `Estado: ${e.status}`,
                 `Assignee: ${e.assignee}`,
               ];
-              if (e.color === 'extended') lines.push('Extendida (planned < due)');
-              return lines;
             },
           },
         },
@@ -262,20 +219,17 @@ function buildGantt() {
           min: minDate.getTime(),
           max: maxDate.getTime(),
           ticks: {
-            callback: (val) => {
-              const d = new Date(val);
-              return d.toLocaleDateString('es-MX', { month: 'short', day: 'numeric' });
-            },
+            callback: (val) => new Date(val).toLocaleDateString('es-MX', { month: 'short', day: 'numeric' }),
             font: { size: 10 },
             maxRotation: 0,
-            stepSize: 7 * 24 * 3600 * 1000,  // weekly ticks
+            stepSize: 7 * 24 * 3600 * 1000,
           },
           grid: { color: '#f3f4f6' },
         },
         y: {
           ticks: {
             font: { size: 10 },
-            callback: function(val) {
+            callback: function (val) {
               const lbl = this.getLabelForValue(val);
               return lbl.length > 50 ? lbl.substring(0, 50) + '...' : lbl;
             },
@@ -290,45 +244,37 @@ function buildGantt() {
         const xScale = chart.scales.x;
         const px = xScale.getPixelForValue(today.getTime());
         if (px < xScale.left || px > xScale.right) return;
-        const ctx = chart.ctx;
-        ctx.save();
-        ctx.strokeStyle = '#ea1100';
-        ctx.lineWidth = 2;
-        ctx.setLineDash([6, 3]);
-        ctx.beginPath();
-        ctx.moveTo(px, chart.scales.y.top);
-        ctx.lineTo(px, chart.scales.y.bottom);
-        ctx.stroke();
-        ctx.fillStyle = '#ea1100';
-        ctx.font = 'bold 10px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('HOY', px, chart.scales.y.top - 6);
-        ctx.restore();
+        const ctx2 = chart.ctx;
+        ctx2.save();
+        ctx2.strokeStyle = '#ea1100';
+        ctx2.lineWidth = 2;
+        ctx2.setLineDash([6, 3]);
+        ctx2.beginPath();
+        ctx2.moveTo(px, chart.scales.y.top);
+        ctx2.lineTo(px, chart.scales.y.bottom);
+        ctx2.stroke();
+        ctx2.fillStyle = '#ea1100';
+        ctx2.font = 'bold 10px sans-serif';
+        ctx2.textAlign = 'center';
+        ctx2.fillText('HOY', px, chart.scales.y.top - 6);
+        ctx2.restore();
       },
     }],
   });
 }
 
-function setGanttFilter(status) {
-  ganttFilter = status;
-  // Update pills UI
-  document.querySelectorAll('.gantt-pill').forEach(pill => {
+function setGanttFilter(domain, status) {
+  ganttFilters[domain] = status;
+  // Update pills for this domain only
+  $$(`[data-domain="${domain}"].gantt-pill`).forEach(pill => {
     pill.classList.toggle('active', pill.dataset.status === status);
   });
-  buildGantt();
+  buildGantt(domain);
 }
 window.setGanttFilter = setGanttFilter;
 
-if (GANTT_DATA.length > 0) buildGantt();
-
-// ---------------------- Build all charts ----------------------
-const CD = CHART_DATA;
-
-makeChart('statusChart',   'doughnut', CD.status.labels,   CD.status.values,   PALETTE, 'status');
-makeChart('dominioChart',  'bar',      CD.dominio.labels,  CD.dominio.values,  [WM.blue], 'dominio');
-makeChart('equipoChart',   'bar',      CD.equipo.labels,   CD.equipo.values,   [WM.spark], 'equipo');
-makeChart('servicioChart', 'bar',      CD.servicio.labels, CD.servicio.values, ['#6366f1'], 'servicio');
-makeChart('appChart',      'bar',      CD.app.labels,      CD.app.values,      ['#06b6d4'], 'app');
-makeChart('tipoChart',     'doughnut', CD.tipo.labels,     CD.tipo.values,     [WM.blue, WM.spark, WM.green, WM.red], 'tipo');
-makeChart('assigneeChart', 'bar',      CD.assignee.labels, CD.assignee.values, [WM.blue], 'assignee');
-makeChart('monthlyChart',  'bar',      CD.monthly.labels,  CD.monthly.values,  [WM.green], 'month');
+// ---------------------- Initialize General tab ----------------------
+buildDomainCharts('general');
+if (GANTT_DATA.general && GANTT_DATA.general.length > 0) {
+  buildGantt('general');
+}
