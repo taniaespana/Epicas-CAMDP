@@ -92,6 +92,114 @@ function makeChart(canvasId, type, labels, values, bgColors, opts = {}) {
   });
 }
 
+// ---------------------- Control Chart (SPC) ----------------------
+function makeControlChart(canvasId, data, color) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || !data?.points?.length) return null;
+
+  const points = data.points;
+  const labels = points.map((p, i) => i);
+  const values = points.map(p => p.y);
+  const meanLine = points.map(() => data.mean);
+  const uclLine = points.map(() => data.ucl);
+  const lclLine = points.map(() => data.lcl);
+
+  return new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Días',
+          data: values,
+          backgroundColor: values.map(v =>
+            v > data.ucl ? '#ea1100' : (v > data.mean ? color + '99' : color + '66')
+          ),
+          borderWidth: 0,
+          borderRadius: 1,
+          barPercentage: 1.0,
+          categoryPercentage: 1.0,
+        },
+        {
+          label: `Media (${data.mean}d)`,
+          data: meanLine,
+          type: 'line',
+          borderColor: '#000',
+          borderWidth: 2,
+          borderDash: [6, 3],
+          pointRadius: 0,
+          fill: false,
+        },
+        {
+          label: `UCL (${data.ucl}d)`,
+          data: uclLine,
+          type: 'line',
+          borderColor: '#ea1100',
+          borderWidth: 1.5,
+          borderDash: [4, 4],
+          pointRadius: 0,
+          fill: false,
+        },
+        {
+          label: `LCL (${data.lcl}d)`,
+          data: lclLine,
+          type: 'line',
+          borderColor: '#2a8703',
+          borderWidth: 1.5,
+          borderDash: [4, 4],
+          pointRadius: 0,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } },
+        },
+        tooltip: {
+          callbacks: {
+            title: (items) => {
+              const idx = items[0]?.dataIndex;
+              const p = points[idx];
+              return p ? `${p.key} (${p.x})` : '';
+            },
+            label: (ctx) => {
+              if (ctx.datasetIndex === 0) return ` ${ctx.raw} días`;
+              return null;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          display: true,
+          ticks: {
+            maxTicksLimit: 15,
+            callback: (val) => {
+              const p = points[val];
+              return p ? p.x : '';
+            },
+            font: { size: 9 },
+            maxRotation: 45,
+          },
+          grid: { display: false },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { font: { size: 10 } },
+          grid: { color: '#f3f4f6' },
+        },
+      },
+    },
+  });
+}
+
 // ---------------------- Build Charts for Tab ----------------------
 function buildTabCharts(slug) {
   const cd = CHART_DATA[slug];
@@ -104,21 +212,11 @@ function buildTabCharts(slug) {
   if (cd.status?.labels?.length) {
     makeChart(`statusChart-${slug}`, 'doughnut', cd.status.labels, cd.status.values, PALETTE);
   }
-  if (cd.cycleTime?.labels?.length) {
-    makeChart(`cycleTimeChart-${slug}`, 'bar', cd.cycleTime.labels, cd.cycleTime.values,
-      ['#6366f1'], {
-        horizontal: true,
-        label: 'Días promedio',
-        tooltipCb: { label: (ctx) => ` ${ctx.label}: ${ctx.raw} días` },
-      });
+  if (cd.cycleTime?.points?.length) {
+    makeControlChart(`cycleTimeChart-${slug}`, cd.cycleTime, '#6366f1');
   }
-  if (cd.leadTime?.labels?.length) {
-    makeChart(`leadTimeChart-${slug}`, 'bar', cd.leadTime.labels, cd.leadTime.values,
-      ['#f97316'], {
-        horizontal: true,
-        label: 'Días promedio',
-        tooltipCb: { label: (ctx) => ` ${ctx.label}: ${ctx.raw} días` },
-      });
+  if (cd.leadTime?.points?.length) {
+    makeControlChart(`leadTimeChart-${slug}`, cd.leadTime, '#f97316');
   }
 }
 

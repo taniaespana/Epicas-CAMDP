@@ -121,6 +121,61 @@ def _time_by_service(issues: list[dict], time_fn) -> dict[str, float]:
     return {k: _avg(v) for k, v in sorted(buckets.items(), key=lambda x: -_avg(x[1]))}
 
 
+def _stddev(values: list[int | float]) -> float:
+    """Desviación estándar poblacional."""
+    if len(values) < 2:
+        return 0.0
+    mean = sum(values) / len(values)
+    variance = sum((x - mean) ** 2 for x in values) / len(values)
+    return variance ** 0.5
+
+
+def build_time_series(issues: list[dict]) -> dict:
+    """Construye series de cycle/lead time por ticket en orden de creación.
+
+    Retorna datos para control charts (SPC): puntos, media, UCL, LCL.
+    """
+    sorted_issues = sorted(issues, key=lambda i: i.get("created", ""))
+
+    ct_points = []
+    lt_points = []
+    ct_vals: list[int] = []
+    lt_vals: list[int] = []
+
+    for iss in sorted_issues:
+        ct = iss.get("cycle_time")
+        lt = iss.get("lead_time")
+        created = iss.get("created", "")
+        key = iss.get("key", "")
+
+        if ct is not None:
+            ct_points.append({"x": created, "y": ct, "key": key})
+            ct_vals.append(ct)
+        if lt is not None:
+            lt_points.append({"x": created, "y": lt, "key": key})
+            lt_vals.append(lt)
+
+    ct_mean = _avg(ct_vals)
+    lt_mean = _avg(lt_vals)
+    ct_std = round(_stddev(ct_vals), 1)
+    lt_std = round(_stddev(lt_vals), 1)
+
+    return {
+        "cycle_time": {
+            "points": ct_points,
+            "mean": ct_mean,
+            "ucl": round(ct_mean + 2 * ct_std, 1),
+            "lcl": round(max(ct_mean - 2 * ct_std, 0), 1),
+        },
+        "lead_time": {
+            "points": lt_points,
+            "mean": lt_mean,
+            "ucl": round(lt_mean + 2 * lt_std, 1),
+            "lcl": round(max(lt_mean - 2 * lt_std, 0), 1),
+        },
+    }
+
+
 # ------------------------------------------------------------------ #
 #  Carga y filtrado                                                   #
 # ------------------------------------------------------------------ #
@@ -289,6 +344,7 @@ def compute_domain_metrics(
         "assignee_dist": _count([i["assignee"] for i in dom_issues]),
         "cycle_time_by_service": _time_by_service(dom_issues, compute_cycle_time),
         "lead_time_by_service": _time_by_service(dom_issues, compute_lead_time),
+        "time_series": build_time_series(dom_issues),
     }
 
 
@@ -366,6 +422,7 @@ def compute_all_metrics() -> dict:
         "service_dist_global": _count(
             [s for i in all_issues for s in i.get("servicios", [])]
         ),
+        "time_series": build_time_series(all_issues),
         "active_epics": active,
         "blocked_epics": blocked,
         "done_recent": done_recent,

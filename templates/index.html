@@ -142,16 +142,16 @@
         </div>
       </section>
 
-      <!-- Charts: Cycle Time + Lead Time -->
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#6366f1">⏱️ Cycle Time por Servicio <span class="text-xs font-normal text-gray-400">(promedio días)</span></h3>
-          <div style="height:300px"><canvas id="cycleTimeChart-general"></canvas></div>
-        </div>
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#f97316">📈 Lead Time por Servicio <span class="text-xs font-normal text-gray-400">(promedio días)</span></h3>
-          <div style="height:300px"><canvas id="leadTimeChart-general"></canvas></div>
-        </div>
+      <!-- Control Charts: Cycle Time + Lead Time -->
+      <section class="card">
+        <h3 class="font-bold mb-1" style="color:#6366f1">⏱️ Cycle Time <span class="text-xs font-normal text-gray-400">(días por ticket en orden de creación — Start → Resolución)</span></h3>
+        <p class="text-xs text-gray-400 mb-3">Media: <strong>{{ avg_cycle_time }}d</strong> &nbsp;|&nbsp; UCL: {{ time_series.cycle_time.ucl }}d &nbsp;|&nbsp; LCL: {{ time_series.cycle_time.lcl }}d</p>
+        <div style="height:320px"><canvas id="cycleTimeChart-general"></canvas></div>
+      </section>
+      <section class="card">
+        <h3 class="font-bold mb-1" style="color:#f97316">📈 Lead Time <span class="text-xs font-normal text-gray-400">(días por ticket en orden de creación — Creación → Resolución)</span></h3>
+        <p class="text-xs text-gray-400 mb-3">Media: <strong>{{ avg_lead_time }}d</strong> &nbsp;|&nbsp; UCL: {{ time_series.lead_time.ucl }}d &nbsp;|&nbsp; LCL: {{ time_series.lead_time.lcl }}d</p>
+        <div style="height:320px"><canvas id="leadTimeChart-general"></canvas></div>
       </section>
 
       <!-- Table -->
@@ -240,16 +240,16 @@
         </div>
       </section>
 
-      <!-- Charts: Cycle Time + Lead Time -->
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#6366f1">⏱️ Cycle Time por Servicio <span class="text-xs font-normal text-gray-400">(promedio días)</span></h3>
-          <div style="height:300px"><canvas id="cycleTimeChart-{{ dom.slug }}"></canvas></div>
-        </div>
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#f97316">📈 Lead Time por Servicio <span class="text-xs font-normal text-gray-400">(promedio días)</span></h3>
-          <div style="height:300px"><canvas id="leadTimeChart-{{ dom.slug }}"></canvas></div>
-        </div>
+      <!-- Control Charts: Cycle Time + Lead Time -->
+      <section class="card">
+        <h3 class="font-bold mb-1" style="color:#6366f1">⏱️ Cycle Time <span class="text-xs font-normal text-gray-400">(días por ticket — Start → Resolución)</span></h3>
+        <p class="text-xs text-gray-400 mb-3">Media: <strong>{{ dom.avg_cycle_time }}d</strong> &nbsp;|&nbsp; UCL: {{ dom.time_series.cycle_time.ucl }}d &nbsp;|&nbsp; LCL: {{ dom.time_series.cycle_time.lcl }}d</p>
+        <div style="height:320px"><canvas id="cycleTimeChart-{{ dom.slug }}"></canvas></div>
+      </section>
+      <section class="card">
+        <h3 class="font-bold mb-1" style="color:#f97316">📈 Lead Time <span class="text-xs font-normal text-gray-400">(días por ticket — Creación → Resolución)</span></h3>
+        <p class="text-xs text-gray-400 mb-3">Media: <strong>{{ dom.avg_lead_time }}d</strong> &nbsp;|&nbsp; UCL: {{ dom.time_series.lead_time.ucl }}d &nbsp;|&nbsp; LCL: {{ dom.time_series.lead_time.lcl }}d</p>
+        <div style="height:320px"><canvas id="leadTimeChart-{{ dom.slug }}"></canvas></div>
       </section>
 
       <!-- Blocked -->
@@ -321,15 +321,15 @@
     general: {
       service:   { labels: {{ service_dist_global.keys()|list|tojson }}, values: {{ service_dist_global.values()|list|tojson }} },
       status:    { labels: {{ status_dist.keys()|list|tojson }},         values: {{ status_dist.values()|list|tojson }} },
-      cycleTime: { labels: {{ cycle_time_by_service.keys()|list|tojson }}, values: {{ cycle_time_by_service.values()|list|tojson }} },
-      leadTime:  { labels: {{ lead_time_by_service.keys()|list|tojson }},  values: {{ lead_time_by_service.values()|list|tojson }} },
+      cycleTime: {{ time_series.cycle_time|tojson }},
+      leadTime:  {{ time_series.lead_time|tojson }},
     },
     {% for dom in domains %}
     '{{ dom.slug }}': {
-      service:   { labels: {{ dom.service_dist.keys()|list|tojson }},          values: {{ dom.service_dist.values()|list|tojson }} },
-      status:    { labels: {{ dom.status_dist.keys()|list|tojson }},           values: {{ dom.status_dist.values()|list|tojson }} },
-      cycleTime: { labels: {{ dom.cycle_time_by_service.keys()|list|tojson }}, values: {{ dom.cycle_time_by_service.values()|list|tojson }} },
-      leadTime:  { labels: {{ dom.lead_time_by_service.keys()|list|tojson }},  values: {{ dom.lead_time_by_service.values()|list|tojson }} },
+      service:   { labels: {{ dom.service_dist.keys()|list|tojson }}, values: {{ dom.service_dist.values()|list|tojson }} },
+      status:    { labels: {{ dom.status_dist.keys()|list|tojson }}, values: {{ dom.status_dist.values()|list|tojson }} },
+      cycleTime: {{ dom.time_series.cycle_time|tojson }},
+      leadTime:  {{ dom.time_series.lead_time|tojson }},
     },
     {% endfor %}
   };
