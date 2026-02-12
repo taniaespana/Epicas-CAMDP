@@ -158,20 +158,34 @@ def compute_all_metrics() -> dict:
     blocked = [e for e in epics if e["status"] == "Blocked"]
     done_recent = [e for e in epics if e["status"] == "Listo"]
 
-    # Gantt: solo épicas con start_date y gantt_end
-    gantt = [
-        {
+    # Gantt: excluir Listo, solo épicas con fechas válidas
+    gantt = []
+    for e in sorted(epics, key=lambda x: x.get("start_date", "")):
+        if e["status"] == "Listo":
+            continue
+        if not e.get("start_date") or not e.get("gantt_end"):
+            continue
+        planned = e.get("planned_done_date", "")
+        due = e.get("due_date", "")
+        # Color: azul si extendida (planned < due), verde si iguales/sin due
+        if e["status"] == "Blocked":
+            color = "blocked"
+        elif planned and due and planned < due:
+            color = "extended"   # azul — se extendió
+        else:
+            color = "on_track"   # verde — en tiempo
+        gantt.append({
             "key": e["key"],
             "summary": e["summary"][:60],
             "start": e["start_date"],
             "end": e["gantt_end"],
+            "planned_done": planned,
+            "due": due,
             "status": e["status"],
+            "color": color,
             "assignee": e["assignee"],
             "dominio": e["dominio"],
-        }
-        for e in sorted(epics, key=lambda x: x.get("start_date", ""))
-        if e.get("start_date") and e.get("gantt_end")
-    ]
+        })
 
     return {
         "generated_at": now,

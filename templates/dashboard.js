@@ -136,67 +136,107 @@ function makeChart(canvasId, type, labels, values, bgColors, dataField) {
 }
 
 // ---------------------- Gantt Chart ----------------------
-function buildGantt() {
-  const STATUS_COLORS = {
-    'Work in Progress': '#0053e2',
-    'In Progress': '#0053e2',
-    'Blocked': '#ea1100',
-    'Listo': '#2a8703',
-    'Backlog': '#6B7280',
-  };
+const GANTT_COLORS = {
+  on_track:  '#2a8703',  // verde  — en tiempo
+  extended:  '#0053e2',  // azul   — extendida (planned < due)
+  blocked:   '#ea1100',  // rojo   — bloqueada
+};
 
-  const labels = GANTT_DATA.map(e => `${e.key} — ${e.summary}`);
-  const data = GANTT_DATA.map(e => {
-    const start = new Date(e.start + 'T00:00:00').getTime();
-    const end = new Date(e.end + 'T00:00:00').getTime();
-    return [start, end];
+let ganttChart = null;
+let ganttFilter = 'all';  // status filter
+
+function parseDate(str) {
+  const [y, m, d] = str.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function filteredGantt() {
+  if (ganttFilter === 'all') return GANTT_DATA;
+  return GANTT_DATA.filter(e => e.status === ganttFilter);
+}
+
+function buildGantt() {
+  const items = filteredGantt();
+  if (!items.length) return;
+
+  const labels = items.map(e => `${e.key} — ${e.summary}`);
+
+  // Compute global min/max for stable axis
+  let allDates = [];
+  items.forEach(e => {
+    allDates.push(parseDate(e.start));
+    allDates.push(parseDate(e.end));
   });
-  const bgColors = GANTT_DATA.map(e => STATUS_COLORS[e.status] || '#6B7280');
+  const minDate = new Date(Math.min(...allDates));
+  const maxDate = new Date(Math.max(...allDates));
+  // Add 7-day padding
+  minDate.setDate(minDate.getDate() - 7);
+  maxDate.setDate(maxDate.getDate() + 14);
+
+  const data = items.map(e => {
+    return [parseDate(e.start).getTime(), parseDate(e.end).getTime()];
+  });
+  const bgColors = items.map(e => GANTT_COLORS[e.color] || '#6B7280');
 
   const today = new Date();
-  today.setHours(0,0,0,0);
+  today.setHours(0, 0, 0, 0);
 
-  new Chart(document.getElementById('ganttChart'), {
+  // Resize container
+  const container = document.getElementById('ganttContainer');
+  const h = Math.max(items.length * 34 + 60, 280);
+  container.style.height = h + 'px';
+
+  // Destroy previous chart if exists
+  if (ganttChart) { ganttChart.destroy(); ganttChart = null; }
+
+  ganttChart = new Chart(document.getElementById('ganttChart'), {
     type: 'bar',
     data: {
       labels,
       datasets: [{
         data,
         backgroundColor: bgColors,
-        borderColor: bgColors,
+        borderColor: bgColors.map(c => c),
         borderWidth: 1,
         borderRadius: 4,
         borderSkipped: false,
-        barPercentage: 0.7,
+        barPercentage: 0.65,
+        categoryPercentage: 0.85,
       }],
     },
     options: {
       indexAxis: 'y',
       responsive: true,
       maintainAspectRatio: false,
+      layout: { padding: { top: 20 } },
       plugins: {
         legend: { display: false },
         tooltip: {
           callbacks: {
+            title: () => '',
             label: (ctx) => {
-              const e = GANTT_DATA[ctx.dataIndex];
-              return [
+              const e = items[ctx.dataIndex];
+              const lines = [
                 `${e.key}: ${e.summary}`,
                 `Inicio: ${e.start}`,
-                `Fin: ${e.end}`,
+                `Fin planeado: ${e.planned_done || '-'}`,
+                `Due date: ${e.due || '-'}`,
+                `Fin efectivo: ${e.end}`,
                 `Estado: ${e.status}`,
                 `Assignee: ${e.assignee}`,
               ];
+              if (e.color === 'extended') lines.push('Extendida (planned < due)');
+              return lines;
             },
           },
         },
-        // Today line annotation via custom plugin
-        todayLine: {},
       },
       scales: {
         x: {
           type: 'linear',
           position: 'top',
+          min: minDate.getTime(),
+          max: maxDate.getTime(),
           ticks: {
             callback: (val) => {
               const d = new Date(val);
@@ -204,15 +244,16 @@ function buildGantt() {
             },
             font: { size: 10 },
             maxRotation: 0,
+            stepSize: 7 * 24 * 3600 * 1000,  // weekly ticks
           },
-          grid: { color: '#f0f0f0' },
+          grid: { color: '#f3f4f6' },
         },
         y: {
           ticks: {
             font: { size: 10 },
-            callback: function(val, idx) {
-              const label = this.getLabelForValue(val);
-              return label.length > 55 ? label.substring(0, 55) + '...' : label;
+            callback: function(val) {
+              const lbl = this.getLabelForValue(val);
+              return lbl.length > 50 ? lbl.substring(0, 50) + '...' : lbl;
             },
           },
           grid: { display: false },
@@ -223,27 +264,36 @@ function buildGantt() {
       id: 'todayLine',
       afterDraw: (chart) => {
         const xScale = chart.scales.x;
-        const todayX = xScale.getPixelForValue(today.getTime());
-        if (todayX < xScale.left || todayX > xScale.right) return;
+        const px = xScale.getPixelForValue(today.getTime());
+        if (px < xScale.left || px > xScale.right) return;
         const ctx = chart.ctx;
         ctx.save();
         ctx.strokeStyle = '#ea1100';
         ctx.lineWidth = 2;
         ctx.setLineDash([6, 3]);
         ctx.beginPath();
-        ctx.moveTo(todayX, chart.scales.y.top);
-        ctx.lineTo(todayX, chart.scales.y.bottom);
+        ctx.moveTo(px, chart.scales.y.top);
+        ctx.lineTo(px, chart.scales.y.bottom);
         ctx.stroke();
-        // Label
         ctx.fillStyle = '#ea1100';
         ctx.font = 'bold 10px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText('HOY', todayX, chart.scales.y.top - 5);
+        ctx.fillText('HOY', px, chart.scales.y.top - 6);
         ctx.restore();
       },
     }],
   });
 }
+
+function setGanttFilter(status) {
+  ganttFilter = status;
+  // Update pills UI
+  document.querySelectorAll('.gantt-pill').forEach(pill => {
+    pill.classList.toggle('active', pill.dataset.status === status);
+  });
+  buildGantt();
+}
+window.setGanttFilter = setGanttFilter;
 
 if (GANTT_DATA.length > 0) buildGantt();
 

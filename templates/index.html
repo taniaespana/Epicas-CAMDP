@@ -99,12 +99,25 @@
 
     <!-- GANTT CHART -->
     <section class="card" aria-label="Gantt de épicas">
-      <div class="flex items-center justify-between mb-3">
-        <h3 class="font-bold" style="color:#0053e2">📅 Gantt — Timeline de Épicas</h3>
-        <div class="text-xs text-gray-400">Línea roja = hoy</div>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
+        <div>
+          <h3 class="font-bold text-lg" style="color:#0053e2">📅 Gantt — Timeline de Épicas</h3>
+          <p class="text-xs text-gray-400 mt-1">
+            Línea roja = hoy &nbsp;|&nbsp;
+            <span style="color:#2a8703">● En tiempo</span> &nbsp;
+            <span style="color:#0053e2">● Extendida</span> &nbsp;
+            <span style="color:#ea1100">● Bloqueada</span>
+          </p>
+        </div>
+        <div class="flex gap-2 flex-wrap" aria-label="Filtrar Gantt por estado">
+          <button class="gantt-pill filter-pill active" data-status="all" onclick="setGanttFilter('all')">Todos</button>
+          <button class="gantt-pill filter-pill" data-status="Work in Progress" onclick="setGanttFilter('Work in Progress')">En Progreso</button>
+          <button class="gantt-pill filter-pill" data-status="Blocked" onclick="setGanttFilter('Blocked')">Bloqueadas</button>
+          <button class="gantt-pill filter-pill" data-status="Backlog" onclick="setGanttFilter('Backlog')">Backlog</button>
+        </div>
       </div>
-      <div style="height:{{ [gantt|length * 32 + 60, 300]|max }}px; max-height:900px; overflow-y:auto;">
-        <div style="height:{{ gantt|length * 32 + 60 }}px; min-height:280px;">
+      <div style="max-height:900px; overflow-y:auto;">
+        <div id="ganttContainer" style="min-height:280px;">
           <canvas id="ganttChart"></canvas>
         </div>
       </div>
