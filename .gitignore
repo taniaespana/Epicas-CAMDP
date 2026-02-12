@@ -1,21 +1,4 @@
-# Python
+.env
 __pycache__/
+site/
 *.pyc
-.venv/
-venv/
-
-# Generated site (rebuild anytime)
-site/*.html
-site/assets/
-
-# Reports may contain sensitive data
-reports/*.csv
-reports/*.xlsx
-
-# OS junk
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
