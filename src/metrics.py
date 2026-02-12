@@ -1,123 +1,181 @@
 """Calcula métricas y estadísticas de las épicas CAMDP.
 
-Lee data/epics.json y produce un dict con todas las métricas
-para consumo de las plantillas.
+Filtra por épicas activas (no-Listo o cerradas >= 2026-01-15).
+Clasifica componentes y labels según su prefijo numérico.
 """
 
 import json
+import re
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+CUTOFF_DATE = "2026-01-15"
 
+# ------------------------------------------------------------------ #
+#  Clasificación de componentes y labels por prefijo                  #
+# ------------------------------------------------------------------ #
+COMP_CATEGORIES = {
+    "1": "Dominio",
+    "2": "Equipo DF",
+    "3": "Servicio",
+    "4": "App / Producto",
+    "5": "Tipo (Ext/Int)",
+}
+
+LABEL_CATEGORIES = {
+    "1": "Servicio",
+    "2": "App / Producto",
+    "3": "Tipo (Ext/Int)",
+}
+
+_PREFIX_RE = re.compile(r"^(\d+)\.(.+)$")
+
+
+def _classify(name: str, mapping: dict) -> tuple[str, str]:
+    """Clasifica un componente/label por su prefijo numérico."""
+    m = _PREFIX_RE.match(name)
+    if m:
+        prefix, value = m.group(1), m.group(2).replace("_", " ")
+        category = mapping.get(prefix, f"Grupo {prefix}")
+        return category, value
+    return "Sin clasificar", name.replace("_", " ")
+
+
+def parse_components(components: list[str]) -> dict[str, list[str]]:
+    """Clasifica lista de componentes en sus categorías."""
+    result: dict[str, list[str]] = {}
+    for comp in components:
+        cat, val = _classify(comp, COMP_CATEGORIES)
+        result.setdefault(cat, []).append(val)
+    return result
+
+
+def parse_labels(labels: list[str]) -> dict[str, list[str]]:
+    """Clasifica lista de labels en sus categorías."""
+    result: dict[str, list[str]] = {}
+    for lbl in labels:
+        cat, val = _classify(lbl, LABEL_CATEGORIES)
+        result.setdefault(cat, []).append(val)
+    return result
+
+
+# ------------------------------------------------------------------ #
+#  Carga y filtrado                                                   #
+# ------------------------------------------------------------------ #
 
 def load_epics() -> list[dict]:
-    """Carga las épicas limpias desde JSON."""
     path = ROOT / "data" / "epics.json"
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def status_distribution(epics: list[dict]) -> dict:
-    """Conteo por status."""
-    return dict(Counter(e["status"] for e in epics).most_common())
-
-
-def status_category_distribution(epics: list[dict]) -> dict:
-    """Conteo por categoría de status (Por hacer, En curso, Listo)."""
-    return dict(Counter(e["status_category"] for e in epics).most_common())
-
-
-def component_distribution(epics: list[dict]) -> dict:
-    """Conteo por componente (una épica puede tener múltiples)."""
-    counter: Counter = Counter()
-    for e in epics:
-        for comp in e["components"]:
-            counter[comp] += 1
-    return dict(counter.most_common(20))
-
-
-def assignee_distribution(epics: list[dict]) -> dict:
-    """Top 15 assignees por cantidad de épicas."""
-    return dict(Counter(e["assignee"] for e in epics).most_common(15))
-
-
-def label_distribution(epics: list[dict]) -> dict:
-    """Top 15 labels más usados."""
-    counter: Counter = Counter()
-    for e in epics:
-        for label in e["labels"]:
-            counter[label] += 1
-    return dict(counter.most_common(15))
-
-
-def monthly_creation(epics: list[dict]) -> dict:
-    """Cantidad de épicas creadas por mes (YYYY-MM)."""
-    counter: Counter = Counter()
-    for e in epics:
-        if e["created"]:
-            month = e["created"][:7]  # YYYY-MM
-            counter[month] += 1
-    return dict(sorted(counter.items()))
-
-
-def quarterly_creation(epics: list[dict]) -> dict:
-    """Cantidad de épicas creadas por trimestre."""
-    counter: Counter = Counter()
-    for e in epics:
-        if e["created"]:
-            try:
-                dt = datetime.strptime(e["created"][:10], "%Y-%m-%d")
-                q = (dt.month - 1) // 3 + 1
-                counter[f"{dt.year}-Q{q}"] += 1
-            except ValueError:
-                continue
-    return dict(sorted(counter.items()))
-
-
-def resolution_rate(epics: list[dict]) -> dict:
-    """Tasa de resolución."""
-    total = len(epics)
-    resolved = sum(1 for e in epics if e["resolution"])
-    return {
-        "total": total,
-        "resolved": resolved,
-        "unresolved": total - resolved,
-        "rate_pct": round(resolved / total * 100, 1) if total else 0,
-    }
-
-
-def active_epics(epics: list[dict]) -> list[dict]:
-    """Epicas actualmente en progreso (no Listo, no Backlog)."""
-    active_statuses = {"Work in Progress", "In Progress", "Blocked"}
+def filter_relevant(epics: list[dict]) -> list[dict]:
+    """Epicas abiertas + cerradas desde CUTOFF_DATE."""
     return [
         e for e in epics
-        if e["status"] in active_statuses
+        if e["status"] != "Listo"
+        or e.get("resolution_date", "") >= CUTOFF_DATE
     ]
 
 
-def blocked_epics(epics: list[dict]) -> list[dict]:
-    """Epicas bloqueadas."""
-    return [e for e in epics if e["status"] == "Blocked"]
+def enrich_epic(epic: dict) -> dict:
+    """Agrega campos clasificados al epic."""
+    epic["comp_parsed"] = parse_components(epic.get("components", []))
+    epic["label_parsed"] = parse_labels(epic.get("labels", []))
+
+    epic["dominio"] = ", ".join(epic["comp_parsed"].get("Dominio", []))
+    epic["equipo_df"] = ", ".join(epic["comp_parsed"].get("Equipo DF", []))
+    epic["servicio"] = ", ".join(
+        list(dict.fromkeys(
+            epic["comp_parsed"].get("Servicio", [])
+            + epic["label_parsed"].get("Servicio", [])
+        ))
+    )
+    epic["app_producto"] = ", ".join(
+        list(dict.fromkeys(
+            epic["comp_parsed"].get("App / Producto", [])
+            + epic["label_parsed"].get("App / Producto", [])
+        ))
+    )
+    epic["tipo"] = ", ".join(
+        list(dict.fromkeys(
+            epic["comp_parsed"].get("Tipo (Ext/Int)", [])
+            + epic["label_parsed"].get("Tipo (Ext/Int)", [])
+        ))
+    )
+    return epic
+
+
+# ------------------------------------------------------------------ #
+#  Métricas                                                           #
+# ------------------------------------------------------------------ #
+
+def _count(items: list) -> dict:
+    return dict(Counter(items).most_common())
+
+
+def _count_nested(epics: list[dict], *keys: str) -> dict:
+    """Cuenta valores de campos clasificados (comp_parsed/label_parsed)."""
+    c: Counter = Counter()
+    for e in epics:
+        for k in keys:
+            parts = k.split(".")
+            vals = e.get(parts[0], {}).get(parts[1], []) if len(parts) == 2 else []
+            for v in vals:
+                c[v] += 1
+    return dict(c.most_common())
 
 
 def compute_all_metrics() -> dict:
-    """Calcula todas las métricas y las empaqueta."""
-    epics = load_epics()
+    """Pipeline completo: carga -> filtra -> enriquece -> métricas."""
+    raw = load_epics()
+    filtered = filter_relevant(raw)
+    epics = [enrich_epic(e) for e in filtered]
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    active = [e for e in epics if e["status"] in {"Work in Progress", "In Progress"}]
+    blocked = [e for e in epics if e["status"] == "Blocked"]
+    done_recent = [e for e in epics if e["status"] == "Listo"]
 
     return {
         "generated_at": now,
+        "cutoff_date": CUTOFF_DATE,
+        "total_raw": len(raw),
         "total_epics": len(epics),
         "epics": epics,
-        "status_dist": status_distribution(epics),
-        "status_cat_dist": status_category_distribution(epics),
-        "component_dist": component_distribution(epics),
-        "assignee_dist": assignee_distribution(epics),
-        "label_dist": label_distribution(epics),
-        "monthly": monthly_creation(epics),
-        "quarterly": quarterly_creation(epics),
-        "resolution": resolution_rate(epics),
-        "active_epics": active_epics(epics),
-        "blocked_epics": blocked_epics(epics),
+        "status_dist": _count([e["status"] for e in epics]),
+        "dominio_dist": _count_nested(epics, "comp_parsed.Dominio"),
+        "equipo_df_dist": _count_nested(epics, "comp_parsed.Equipo DF"),
+        "servicio_dist": _count_nested(
+            epics, "comp_parsed.Servicio", "label_parsed.Servicio",
+        ),
+        "app_dist": _count_nested(
+            epics, "comp_parsed.App / Producto", "label_parsed.App / Producto",
+        ),
+        "tipo_dist": _count_nested(
+            epics, "comp_parsed.Tipo (Ext/Int)", "label_parsed.Tipo (Ext/Int)",
+        ),
+        "assignee_dist": _count([e["assignee"] for e in epics]),
+        "monthly": dict(sorted(
+            Counter(e["created"][:7] for e in epics if e["created"]).items()
+        )),
+        "quarterly": dict(sorted(
+            Counter(
+                f"{datetime.strptime(e['created'][:10], '%Y-%m-%d').year}"
+                f"-Q{(datetime.strptime(e['created'][:10], '%Y-%m-%d').month - 1) // 3 + 1}"
+                for e in epics if e["created"]
+            ).items()
+        )),
+        "resolution": {
+            "total": len(epics),
+            "resolved": sum(1 for e in epics if e["resolution"]),
+            "unresolved": sum(1 for e in epics if not e["resolution"]),
+            "rate_pct": round(
+                sum(1 for e in epics if e["resolution"]) / len(epics) * 100, 1
+            ) if epics else 0,
+        },
+        "active_epics": active,
+        "blocked_epics": blocked,
+        "done_recent": done_recent,
     }
