@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAMDP — Epics Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    .wm-blue { color: #0053e2; }
+    .wm-bg-blue { background-color: #0053e2; }
+    .wm-bg-spark { background-color: #ffc220; }
+    .wm-border-blue { border-color: #0053e2; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+    .card { @apply bg-white rounded-xl shadow-md p-6 border border-gray-100; }
+    .kpi { @apply text-center; }
+    .kpi-value { @apply text-4xl font-bold; color: #0053e2; }
+    .kpi-label { @apply text-sm text-gray-500 mt-1 uppercase tracking-wide; }
+    .badge-wip { @apply bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-xs font-medium; }
+    .badge-done { @apply bg-green-100 text-green-800 px-2 py-0.5 rounded-full text-xs font-medium; }
+    .badge-blocked { @apply bg-red-100 text-red-800 px-2 py-0.5 rounded-full text-xs font-medium; }
+    .badge-backlog { @apply bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs font-medium; }
+    #epicTable tr { cursor: pointer; transition: background 0.15s; }
+    #epicTable tr:hover { background-color: #f0f6ff; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- HEADER -->
+  <header class="wm-bg-blue text-white py-6 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight">
+          ⚡ CAMDP Epics Dashboard
+        </h1>
+        <p class="text-blue-200 text-sm mt-1">Centro de Analítica, Machine Learning & Data Platform</p>
+      </div>
+      <div class="text-right text-sm text-blue-200">
+        <p>Generado: {{ generated_at }}</p>
+        <p>Total Épicas: <span class="text-white font-bold">{{ total_epics }}</span></p>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+
+    <!-- KPI CARDS -->
+    <section class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" aria-label="Indicadores clave">
+      <div class="card kpi">
+        <div class="kpi-value">{{ total_epics }}</div>
+        <div class="kpi-label">Total Épicas</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value" style="color:#2a8703">{{ resolution.resolved }}</div>
+        <div class="kpi-label">Resueltas</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value">{{ active_epics|length }}</div>
+        <div class="kpi-label">En Progreso</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value" style="color:#ea1100">{{ blocked_epics|length }}</div>
+        <div class="kpi-label">Bloqueadas</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value" style="color:#995213">{{ resolution.unresolved }}</div>
+        <div class="kpi-label">Sin Resolver</div>
+      </div>
+      <div class="card kpi">
+        <div class="kpi-value" style="color:#2a8703">{{ resolution.rate_pct }}%</div>
+        <div class="kpi-label">Tasa Resol.</div>
+      </div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section class="card" style="border-left: 4px solid #0053e2;" aria-label="Análisis ejecutivo">
+      <h2 class="text-lg font-bold wm-blue mb-2">📊 Análisis Ejecutivo</h2>
+      <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
+        <li>De <strong>{{ total_epics }}</strong> épicas totales, <strong>{{ resolution.rate_pct }}%</strong> están resueltas.</li>
+        <li><strong>{{ active_epics|length }}</strong> épicas están activamente en progreso.</li>
+        {% if blocked_epics|length > 0 %}
+        <li class="text-red-700">⚠️ <strong>{{ blocked_epics|length }}</strong> épica(s) bloqueada(s) requieren atención inmediata:
+          {% for e in blocked_epics %}<code>{{ e.key }}</code>{% if not loop.last %}, {% endif %}{% endfor %}
+        </li>
+        {% endif %}
+        <li>El componente más activo es <strong>{{ component_dist.keys()|list|first|default('N/A') }}</strong> con {{ component_dist.values()|list|first|default(0) }} épicas.</li>
+        <li>El assignee con más carga es <strong>{{ assignee_dist.keys()|list|first|default('N/A') }}</strong> ({{ assignee_dist.values()|list|first|default(0) }} épicas).</li>
+      </ul>
+    </section>
+
+    <!-- CHARTS ROW 1 -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card">
+        <h3 class="font-bold mb-3 wm-blue">🟢 Distribución por Estado</h3>
+        <div style="height:300px;"><canvas id="statusChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h3 class="font-bold mb-3 wm-blue">📅 Épicas Creadas por Mes</h3>
+        <div style="height:300px;"><canvas id="monthlyChart"></canvas></div>
+      </div>
+    </section>
+
+    <!-- CHARTS ROW 2 -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card">
+        <h3 class="font-bold mb-3 wm-blue">🧩 Top Componentes</h3>
+        <div style="height:300px;"><canvas id="componentChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h3 class="font-bold mb-3 wm-blue">👤 Top Assignees</h3>
+        <div style="height:300px;"><canvas id="assigneeChart"></canvas></div>
+      </div>
+    </section>
+
+    <!-- CHARTS ROW 3 -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card">
+        <h3 class="font-bold mb-3 wm-blue">📊 Épicas por Trimestre</h3>
+        <div style="height:300px;"><canvas id="quarterlyChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h3 class="font-bold mb-3 wm-blue">🏷️ Top Labels</h3>
+        <div style="height:300px;"><canvas id="labelChart"></canvas></div>
+      </div>
+    </section>
+
+    <!-- BLOCKED ALERT -->
+    {% if blocked_epics|length > 0 %}
+    <section class="card" style="border-left: 4px solid #ea1100; background: #fef2f2;" aria-label="Épicas bloqueadas">
+      <h2 class="text-lg font-bold text-red-700 mb-3">🚫 Épicas Bloqueadas</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead><tr class="text-left text-red-800">
+            <th class="py-2 pr-4">Key</th><th class="pr-4">Summary</th><th class="pr-4">Assignee</th><th>Updated</th>
+          </tr></thead>
+          <tbody>
+          {% for e in blocked_epics %}
+            <tr class="border-t border-red-200">
+              <td class="py-2 pr-4"><a href="{{ e.url }}" target="_blank" class="text-red-700 underline font-mono">{{ e.key }}</a></td>
+              <td class="pr-4">{{ e.summary }}</td>
+              <td class="pr-4">{{ e.assignee }}</td>
+              <td>{{ e.updated }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ACTIVE EPICS TABLE -->
+    <section class="card" aria-label="Épicas en progreso">
+      <h2 class="text-lg font-bold wm-blue mb-3">🚀 Épicas en Progreso ({{ active_epics|length }})</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead><tr class="text-left text-gray-500 border-b">
+            <th class="py-2 pr-4">Key</th><th class="pr-4">Summary</th><th class="pr-4">Status</th><th class="pr-4">Assignee</th><th>Updated</th>
+          </tr></thead>
+          <tbody>
+          {% for e in active_epics %}
+            <tr class="border-t border-gray-100">
+              <td class="py-2 pr-4"><a href="{{ e.url }}" target="_blank" class="wm-blue underline font-mono">{{ e.key }}</a></td>
+              <td class="pr-4">{{ e.summary }}</td>
+              <td class="pr-4">
+                {% if e.status == 'Blocked' %}<span class="badge-blocked">{{ e.status }}</span>
+                {% else %}<span class="badge-wip">{{ e.status }}</span>{% endif %}
+              </td>
+              <td class="pr-4">{{ e.assignee }}</td>
+              <td>{{ e.updated }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FULL TABLE -->
+    <section class="card" aria-label="Todas las épicas">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold wm-blue">📝 Todas las Épicas ({{ total_epics }})</h2>
+        <input id="searchInput" type="text" placeholder="Buscar épica..."
+               class="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 w-64"
+               aria-label="Buscar épica" />
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm" id="epicTable">
+          <thead><tr class="text-left text-gray-500 border-b">
+            <th class="py-2 pr-3">Key</th>
+            <th class="pr-3">Summary</th>
+            <th class="pr-3">Status</th>
+            <th class="pr-3">Componentes</th>
+            <th class="pr-3">Assignee</th>
+            <th class="pr-3">Creada</th>
+            <th>Updated</th>
+          </tr></thead>
+          <tbody>
+          {% for e in epics %}
+            <tr class="border-t border-gray-100" onclick="window.open('{{ e.url }}','_blank')">
+              <td class="py-2 pr-3 font-mono text-xs"><a href="{{ e.url }}" target="_blank" class="wm-blue underline">{{ e.key }}</a></td>
+              <td class="pr-3">{{ e.summary }}</td>
+              <td class="pr-3">
+                {% if e.status == 'Listo' %}<span class="badge-done">{{ e.status }}</span>
+                {% elif e.status == 'Blocked' %}<span class="badge-blocked">{{ e.status }}</span>
+                {% elif e.status == 'Backlog' %}<span class="badge-backlog">{{ e.status }}</span>
+                {% else %}<span class="badge-wip">{{ e.status }}</span>{% endif %}
+              </td>
+              <td class="pr-3 text-xs text-gray-500">{{ e.components|join(', ') }}</td>
+              <td class="pr-3">{{ e.assignee }}</td>
+              <td class="pr-3 text-xs">{{ e.created }}</td>
+              <td class="text-xs">{{ e.updated }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FOOTER INSIGHTS -->
+    <section class="card" style="border-left: 4px solid #ffc220;" aria-label="Recomendaciones">
+      <h2 class="text-lg font-bold mb-2" style="color:#995213;">💡 Recomendaciones para Liderazgo</h2>
+      <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
+        <li>Priorizar la resolución de las <strong>{{ blocked_epics|length }}</strong> épicas bloqueadas para desbloquear flujo de trabajo.</li>
+        <li>Revisar la distribución de carga por assignee — puede haber cuellos de botella.</li>
+        <li>Los componentes con mayor volumen podrían beneficiarse de squads dedicados.</li>
+        <li>La tendencia trimestral muestra el ritmo de creación de iniciativas — útil para planificación de capacidad.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="wm-bg-blue text-blue-200 text-center py-4 text-sm mt-8">
+    CAMDP Epics Dashboard &bull; Walmart México &bull; Generado {{ generated_at }}
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+  // Search filter
+  document.getElementById('searchInput').addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    document.querySelectorAll('#epicTable tbody tr').forEach(row => {
+      row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+
+  const WM_BLUE = '#0053e2';
+  const WM_SPARK = '#ffc220';
+  const COLORS = ['#0053e2','#2a8703','#ea1100','#ffc220','#6B7280','#06b6d4','#8b5cf6','#f97316','#ec4899','#14b8a6'];
+
+  // Status donut
+  new Chart(document.getElementById('statusChart'), {
+    type: 'doughnut',
+    data: {
+      labels: {{ status_dist.keys()|list|tojson }},
+      datasets: [{ data: {{ status_dist.values()|list|tojson }}, backgroundColor: COLORS }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
+  });
+
+  // Monthly bar
+  new Chart(document.getElementById('monthlyChart'), {
+    type: 'bar',
+    data: {
+      labels: {{ monthly.keys()|list|tojson }},
+      datasets: [{ label: 'Épicas creadas', data: {{ monthly.values()|list|tojson }}, backgroundColor: WM_BLUE }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+      scales: { x: { ticks: { maxRotation: 45 } } } }
+  });
+
+  // Components horizontal bar
+  new Chart(document.getElementById('componentChart'), {
+    type: 'bar',
+    data: {
+      labels: {{ component_dist.keys()|list|tojson }},
+      datasets: [{ label: 'Épicas', data: {{ component_dist.values()|list|tojson }}, backgroundColor: WM_SPARK }]
+    },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+  });
+
+  // Assignees horizontal bar
+  new Chart(document.getElementById('assigneeChart'), {
+    type: 'bar',
+    data: {
+      labels: {{ assignee_dist.keys()|list|tojson }},
+      datasets: [{ label: 'Épicas', data: {{ assignee_dist.values()|list|tojson }}, backgroundColor: WM_BLUE }]
+    },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+  });
+
+  // Quarterly bar
+  new Chart(document.getElementById('quarterlyChart'), {
+    type: 'bar',
+    data: {
+      labels: {{ quarterly.keys()|list|tojson }},
+      datasets: [{ label: 'Épicas', data: {{ quarterly.values()|list|tojson }}, backgroundColor: '#2a8703' }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+  });
+
+  // Labels bar
+  new Chart(document.getElementById('labelChart'), {
+    type: 'bar',
+    data: {
+      labels: {{ label_dist.keys()|list|tojson }},
+      datasets: [{ label: 'Épicas', data: {{ label_dist.values()|list|tojson }}, backgroundColor: '#8b5cf6' }]
+    },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+  });
+  </script>
+</body>
+</html>

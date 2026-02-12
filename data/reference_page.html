@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  
+  data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"
+  data-a11y-animated-images="system" data-a11y-link-underlines="true"
+  >
+
+
+  <head>
+    <meta charset="utf-8">
+
+  <title>Initiating SAML single sign-on</title>
+  <meta http-equiv="refresh" content="0;url=https://pfedprod.wal-mart.com/idp/SSO.saml2?RelayState=fW1fUxIlGmPielJMrVuLPKWTFNhwtJsBUEgtgXZ3HYtwNzHaJRKV4-V8_gyxeRyN0WH7wLHxdBW_8_8RAybOhgjGCqgG-1YlYB7Z_AaNaNU&amp;SAMLRequest=hZJbT%2BMwEIXf%2BRWR33Ox2%2BZiNUWBakUloBEpPOzLynUmraXEztpO2f3364SyICHgdXzO%2BHwzs7z807XeCbQRSuYIBxG6XF0sDevanhaDPcoH%2BD2AsZ7TSUOnhxwNWlLFjDBUsg4MtZxWxd0tJUFEe62s4qpF7yxfO5gxoK0LgLzNOke%2FSEPiOc8I4Uk2j%2BKkhkWTJjjKCI5rluJFAvM0iWczwPM9ziBOk4jgBKf7WZzGWeLaGDPARhrLpM0RiUjsR8THZIcXFM8oyX4i7%2BkV2kVA3toxCsnsVDla2xsahn0DtcOpg2fW%2Bh3TNuCqC0Xdh1W1DUYwMv5VOgBxghw1rDWAvPI8gSshayEPX8PvX0SG3ux2pV9uqx3yiteBXCtphg50BfokODw%2B3L6FOwA%2FCHsc9hEe8%2F2PN8YK%2BYsRraZV0mkeevWNdRm%2BF5%2BP4N4l3qxL1Qr%2B1yvaVj1fa2DW0Vo9ONgfSnfMfs6IAzxVRO03k5QO0vTARSOgRuE5oAOtxUhsvHtlr8BJ4bPFOcFWbnXRWNAfNOmkcW3Djze8uvgH&amp;SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&amp;Signature=Ybz4hOWxLUNHEghtIMdEXwshQLCwrkpS7TVamJ%2B7EkBhCAOUuhF4jahmcbrFPWffkT0TiE%2BAkfJJZS4sNCQCh4hm43kZ5NtSuFutxAdmtLyV7XsSLqAw7Do2Xscp5HSDhlu2Tw1HJl8TvzocswxfIdfw69jzjWpEccqFQCxc2KsF5eH2XcmsBdzauCd3z4SiAwrexY610kWdD%2F7n7v57l%2BFnRO6rkk7TV6DYAA%2FtVNTH4S6QqSs8yRvPrTLZVIpu6%2FdPnHhdkvrhk%2BbQKtd%2Fa2EfqJZOQGFechFC%2Buo1bLT%2FRhVt4Qs6Me9sE7fT9zKhqWDfZYWAFbd4Lu9LIpoGhS%2FHkdm1zt%2FMaRRwGjvubcEg%2FQYJA9NhZLSniZWFOfMwl3lCK2iNtp1JYAFqTnYpvLvFsPo1o1KXfK54wvggKz3ARWCYxPOONEFl98oY%2BG5StF3BPsUiY14LIGIwV%2FT%2FDdsLn4QYERy0xUoqTs3IZrqOY63o62qywj5niMsHM8QAw3XOxrbv6RRpS%2F9HvlTl3QQk21sO5wA2MclPj7XJPDmOjtWu4CPquvxTNoKFvlU9J1tmtQehsZhTqgnmQOxG5wOI4z5MUe20CHNsrM8eAlSPxO4ymuzeSf3TN8GygN3sVYo3seul6MOEMS%2BQ2%2FSu8kSG0ZjZ5qSK%2FqM6fdACT6E%3D" data-url="https://pfedprod.wal-mart.com/idp/SSO.saml2?RelayState=fW1fUxIlGmPielJMrVuLPKWTFNhwtJsBUEgtgXZ3HYtwNzHaJRKV4-V8_gyxeRyN0WH7wLHxdBW_8_8RAybOhgjGCqgG-1YlYB7Z_AaNaNU&amp;SAMLRequest=hZJbT%2BMwEIXf%2BRWR33Ox2%2BZiNUWBakUloBEpPOzLynUmraXEztpO2f3364SyICHgdXzO%2BHwzs7z807XeCbQRSuYIBxG6XF0sDevanhaDPcoH%2BD2AsZ7TSUOnhxwNWlLFjDBUsg4MtZxWxd0tJUFEe62s4qpF7yxfO5gxoK0LgLzNOke%2FSEPiOc8I4Uk2j%2BKkhkWTJjjKCI5rluJFAvM0iWczwPM9ziBOk4jgBKf7WZzGWeLaGDPARhrLpM0RiUjsR8THZIcXFM8oyX4i7%2BkV2kVA3toxCsnsVDla2xsahn0DtcOpg2fW%2Bh3TNuCqC0Xdh1W1DUYwMv5VOgBxghw1rDWAvPI8gSshayEPX8PvX0SG3ux2pV9uqx3yiteBXCtphg50BfokODw%2B3L6FOwA%2FCHsc9hEe8%2F2PN8YK%2BYsRraZV0mkeevWNdRm%2BF5%2BP4N4l3qxL1Qr%2B1yvaVj1fa2DW0Vo9ONgfSnfMfs6IAzxVRO03k5QO0vTARSOgRuE5oAOtxUhsvHtlr8BJ4bPFOcFWbnXRWNAfNOmkcW3Djze8uvgH&amp;SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&amp;Signature=Ybz4hOWxLUNHEghtIMdEXwshQLCwrkpS7TVamJ%2B7EkBhCAOUuhF4jahmcbrFPWffkT0TiE%2BAkfJJZS4sNCQCh4hm43kZ5NtSuFutxAdmtLyV7XsSLqAw7Do2Xscp5HSDhlu2Tw1HJl8TvzocswxfIdfw69jzjWpEccqFQCxc2KsF5eH2XcmsBdzauCd3z4SiAwrexY610kWdD%2F7n7v57l%2BFnRO6rkk7TV6DYAA%2FtVNTH4S6QqSs8yRvPrTLZVIpu6%2FdPnHhdkvrhk%2BbQKtd%2Fa2EfqJZOQGFechFC%2Buo1bLT%2FRhVt4Qs6Me9sE7fT9zKhqWDfZYWAFbd4Lu9LIpoGhS%2FHkdm1zt%2FMaRRwGjvubcEg%2FQYJA9NhZLSniZWFOfMwl3lCK2iNtp1JYAFqTnYpvLvFsPo1o1KXfK54wvggKz3ARWCYxPOONEFl98oY%2BG5StF3BPsUiY14LIGIwV%2FT%2FDdsLn4QYERy0xUoqTs3IZrqOY63o62qywj5niMsHM8QAw3XOxrbv6RRpS%2F9HvlTl3QQk21sO5wA2MclPj7XJPDmOjtWu4CPquvxTNoKFvlU9J1tmtQehsZhTqgnmQOxG5wOI4z5MUe20CHNsrM8eAlSPxO4ymuzeSf3TN8GygN3sVYo3seul6MOEMS%2BQ2%2FSu8kSG0ZjZ5qSK%2FqM6fdACT6E%3D">
+  <meta name="viewport" content="width=device-width">
+  <link crossorigin="use-credentials" media="all" rel="stylesheet" href="https://gecgithub01.walmart.com/assets/light-f552bab6ce72.css" /><link crossorigin="use-credentials" media="all" rel="stylesheet" href="https://gecgithub01.walmart.com/assets/dark-4589f64a2275.css" /><link data-color-theme="dark_dimmed" crossorigin="use-credentials" media="all" rel="stylesheet" data-href="https://gecgithub01.walmart.com/assets/dark_dimmed-a7246d2d6733.css" /><link data-color-theme="dark_high_contrast" crossorigin="use-credentials" media="all" rel="stylesheet" data-href="https://gecgithub01.walmart.com/assets/dark_high_contrast-f2ef05cef2f1.css" /><link data-color-theme="dark_colorblind" crossorigin="use-credentials" media="all" rel="stylesheet" data-href="https://gecgithub01.walmart.com/assets/dark_colorblind-daa1fe317131.css" /><link data-color-theme="light_colorblind" crossorigin="use-credentials" media="all" rel="stylesheet" data-href="https://gecgithub01.walmart.com/assets/light_colorblind-1ab6fcc64845.css" /><link data-color-theme="light_high_contrast" crossorigin="use-credentials" media="all" rel="stylesheet" data-href="https://gecgithub01.walmart.com/assets/light_high_contrast-46de871e876c.css" /><link data-color-theme="light_tritanopia" crossorigin="use-credentials" media="all" rel="stylesheet" data-href="https://gecgithub01.walmart.com/assets/light_tritanopia-c9754fef2a31.css" /><link data-color-theme="dark_tritanopia" crossorigin="use-credentials" media="all" rel="stylesheet" data-href="https://gecgithub01.walmart.com/assets/dark_tritanopia-dba748981a29.css" />
+  <link crossorigin="use-credentials" media="all" rel="stylesheet" href="https://gecgithub01.walmart.com/assets/primer-87f353b17355.css" />
+  <link crossorigin="use-credentials" media="all" rel="stylesheet" href="https://gecgithub01.walmart.com/assets/global-3bc9106fb3ff.css" />
+
+
+
+  <link rel="mask-icon" href="https://gecgithub01.walmart.com/assets/pinned-octocat-093da3e6fa40.svg" color="#000000">
+  <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://gecgithub01.walmart.com/favicons/favicon-ent.png">
+  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://gecgithub01.walmart.com/favicons/favicon-ent.svg">
+
+<meta name="theme-color" content="#1e2327">
+<meta name="color-scheme" content="light dark" />
+
+
+  <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
+
+  </head>
+
+  <body  style="word-wrap: break-word;">
+    <div data-turbo-body  style="word-wrap: break-word;">
+      
+  
+<div class="container-md px-3">
+  <div data-view-component="true" class="blankslate mt-5">
+    <svg aria-hidden="true" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-shield-lock blankslate-icon">
+    <path d="M11.46 1.137a1.748 1.748 0 0 1 1.08 0l8.25 2.675A1.75 1.75 0 0 1 22 5.476V10.5c0 6.19-3.77 10.705-9.401 12.83a1.704 1.704 0 0 1-1.198 0C5.771 21.204 2 16.69 2 10.5V5.476c0-.76.49-1.43 1.21-1.664Zm.617 1.426a.253.253 0 0 0-.154 0L3.673 5.24a.25.25 0 0 0-.173.237V10.5c0 5.461 3.28 9.483 8.43 11.426a.199.199 0 0 0 .14 0c5.15-1.943 8.43-5.965 8.43-11.426V5.476a.25.25 0 0 0-.173-.237ZM13 12.232V15a1 1 0 0 1-2 0v-2.768a2 2 0 1 1 2 0Z"></path>
+</svg>
+    <h3 data-view-component="true" class="mb-1">You are being redirected to your identity provider in order to authenticate.</h3>
+  
+    <p>
+      If your browser does not redirect you back, please <a id="redirect" aria-label="click here to redirect you back" class="Link--inTextBlock" href="https://pfedprod.wal-mart.com/idp/SSO.saml2?RelayState=fW1fUxIlGmPielJMrVuLPKWTFNhwtJsBUEgtgXZ3HYtwNzHaJRKV4-V8_gyxeRyN0WH7wLHxdBW_8_8RAybOhgjGCqgG-1YlYB7Z_AaNaNU&amp;SAMLRequest=hZJbT%2BMwEIXf%2BRWR33Ox2%2BZiNUWBakUloBEpPOzLynUmraXEztpO2f3364SyICHgdXzO%2BHwzs7z807XeCbQRSuYIBxG6XF0sDevanhaDPcoH%2BD2AsZ7TSUOnhxwNWlLFjDBUsg4MtZxWxd0tJUFEe62s4qpF7yxfO5gxoK0LgLzNOke%2FSEPiOc8I4Uk2j%2BKkhkWTJjjKCI5rluJFAvM0iWczwPM9ziBOk4jgBKf7WZzGWeLaGDPARhrLpM0RiUjsR8THZIcXFM8oyX4i7%2BkV2kVA3toxCsnsVDla2xsahn0DtcOpg2fW%2Bh3TNuCqC0Xdh1W1DUYwMv5VOgBxghw1rDWAvPI8gSshayEPX8PvX0SG3ux2pV9uqx3yiteBXCtphg50BfokODw%2B3L6FOwA%2FCHsc9hEe8%2F2PN8YK%2BYsRraZV0mkeevWNdRm%2BF5%2BP4N4l3qxL1Qr%2B1yvaVj1fa2DW0Vo9ONgfSnfMfs6IAzxVRO03k5QO0vTARSOgRuE5oAOtxUhsvHtlr8BJ4bPFOcFWbnXRWNAfNOmkcW3Djze8uvgH&amp;SigAlg=http%3A%2F%2Fwww.w3.org%2F2001%2F04%2Fxmldsig-more%23rsa-sha256&amp;Signature=Ybz4hOWxLUNHEghtIMdEXwshQLCwrkpS7TVamJ%2B7EkBhCAOUuhF4jahmcbrFPWffkT0TiE%2BAkfJJZS4sNCQCh4hm43kZ5NtSuFutxAdmtLyV7XsSLqAw7Do2Xscp5HSDhlu2Tw1HJl8TvzocswxfIdfw69jzjWpEccqFQCxc2KsF5eH2XcmsBdzauCd3z4SiAwrexY610kWdD%2F7n7v57l%2BFnRO6rkk7TV6DYAA%2FtVNTH4S6QqSs8yRvPrTLZVIpu6%2FdPnHhdkvrhk%2BbQKtd%2Fa2EfqJZOQGFechFC%2Buo1bLT%2FRhVt4Qs6Me9sE7fT9zKhqWDfZYWAFbd4Lu9LIpoGhS%2FHkdm1zt%2FMaRRwGjvubcEg%2FQYJA9NhZLSniZWFOfMwl3lCK2iNtp1JYAFqTnYpvLvFsPo1o1KXfK54wvggKz3ARWCYxPOONEFl98oY%2BG5StF3BPsUiY14LIGIwV%2FT%2FDdsLn4QYERy0xUoqTs3IZrqOY63o62qywj5niMsHM8QAw3XOxrbv6RRpS%2F9HvlTl3QQk21sO5wA2MclPj7XJPDmOjtWu4CPquvxTNoKFvlU9J1tmtQehsZhTqgnmQOxG5wOI4z5MUe20CHNsrM8eAlSPxO4ymuzeSf3TN8GygN3sVYo3seul6MOEMS%2BQ2%2FSu8kSG0ZjZ5qSK%2FqM6fdACT6E%3D">click here</a> to continue.
+    </p>
+
+</div></div>
+
+
+    </div>
+
+    <div id="js-global-screen-reader-notice" class="sr-only" aria-live="polite" aria-atomic="true" ></div>
+    <div id="js-global-screen-reader-notice-assertive" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+  </body>
+</html>
