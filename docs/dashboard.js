@@ -1,5 +1,5 @@
 /* =========================================================
-   CAMDP Dashboard — Dynamic charts, week slicer, Gantt click
+   CAMDP Dashboard — Dynamic charts, week slicer, cross-filter
    ========================================================= */
 
 const WM = { blue: '#0053e2', spark: '#ffc220', green: '#2a8703', red: '#ea1100' };
@@ -9,25 +9,28 @@ const PALETTE = [
 ];
 const GANTT_COLORS = { on_track: '#2a8703', extended: '#0053e2', blocked: '#ea1100' };
 
-// ---------------------- State ----------------------
+// ------------------------------------------------------------------ //
+//  STATE                                                              //
+// ------------------------------------------------------------------ //
 const ganttCharts = {};
 const ganttFilters = {};
-const chartInstances = {};   // chartInstances['serviceChart-general'] = Chart
-const activeFilters = {};    // activeFilters['general'] = { week: 'all', epicKey: '' }
+const chartInstances = {};
+const activeFilters = {};
 
-DOMAIN_SLUGS.forEach(s => { activeFilters[s] = { week: 'all', epicKey: '' }; });
+DOMAIN_SLUGS.forEach(s => {
+  activeFilters[s] = { week: 'all', epicKey: '', service: '', status: '' };
+});
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
-// ================================================================= //
-//  1. AGGREGATION — compute chart data from filtered issues          //
-// ================================================================= //
+// ------------------------------------------------------------------ //
+//  AGGREGATION                                                        //
+// ------------------------------------------------------------------ //
 
 function countBy(items, keyFn) {
   const m = {};
   items.forEach(i => { const k = keyFn(i) || 'Sin dato'; m[k] = (m[k] || 0) + 1; });
-  // sort descending by count
   return Object.fromEntries(Object.entries(m).sort((a, b) => b[1] - a[1]));
 }
 
@@ -42,12 +45,12 @@ function aggregateIssues(issues) {
   const serviceDist = countBy(issues, i => i.sv);
   const statusDist  = countBy(issues, i => i.s);
 
-  // Build control chart series sorted by created
-  const sorted = [...issues].sort((a, b) => a.c.localeCompare(b.c));
+  // Control chart series sorted by UPDATED (so all points are 2026+)
+  const sorted = [...issues].sort((a, b) => a.u.localeCompare(b.u));
   const ctPoints = [], ltPoints = [], ctVals = [], ltVals = [];
   sorted.forEach(i => {
-    if (i.ct != null) { ctPoints.push({ x: i.c, y: i.ct, key: i.k }); ctVals.push(i.ct); }
-    if (i.lt != null) { ltPoints.push({ x: i.c, y: i.lt, key: i.k }); ltVals.push(i.lt); }
+    if (i.ct != null) { ctPoints.push({ x: i.u, y: i.ct, key: i.k }); ctVals.push(i.ct); }
+    if (i.lt != null) { ltPoints.push({ x: i.u, y: i.lt, key: i.k }); ltVals.push(i.lt); }
   });
   const ctMean = avg(ctVals), ltMean = avg(ltVals);
   const ctStd = stddev(ctVals), ltStd = stddev(ltVals);
@@ -68,19 +71,17 @@ function aggregateIssues(issues) {
   };
 }
 
-// ================================================================= //
-//  2. FILTERING                                                      //
-// ================================================================= //
+// ------------------------------------------------------------------ //
+//  FILTERING                                                          //
+// ------------------------------------------------------------------ //
 
 function getFilteredIssues(slug) {
   let issues = ISSUES_DATA[slug] || [];
   const f = activeFilters[slug];
-  if (f.week && f.week !== 'all') {
-    issues = issues.filter(i => i.w === f.week);
-  }
-  if (f.epicKey) {
-    issues = issues.filter(i => i.ek === f.epicKey);
-  }
+  if (f.week && f.week !== 'all') issues = issues.filter(i => i.w === f.week);
+  if (f.epicKey)  issues = issues.filter(i => i.ek === f.epicKey);
+  if (f.service)  issues = issues.filter(i => i.sv === f.service || i.sv.includes(f.service));
+  if (f.status)   issues = issues.filter(i => i.s === f.status);
   return issues;
 }
 
@@ -88,11 +89,44 @@ function applyFilters(slug) {
   const issues = getFilteredIssues(slug);
   const agg = aggregateIssues(issues);
   rebuildCharts(slug, agg);
+  updateFilterBadges(slug);
 }
 
-// ================================================================= //
-//  3. CHART BUILDING                                                 //
-// ================================================================= //
+function updateFilterBadges(slug) {
+  const f = activeFilters[slug];
+  const container = $(`#activeFilters-${slug}`);
+  if (!container) return;
+  let html = '';
+  if (f.epicKey)  html += makeBadge(slug, 'epicKey', `🎯 ${f.epicKey}`);
+  if (f.service)  html += makeBadge(slug, 'service', `⚙️ ${f.service}`);
+  if (f.status)   html += makeBadge(slug, 'status', `🟢 ${f.status}`);
+  container.innerHTML = html;
+  container.classList.toggle('hidden', !html);
+}
+
+function makeBadge(slug, key, label) {
+  return `<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 mr-2">
+    ${label}
+    <button onclick="clearFilter('${slug}','${key}')" class="ml-1 text-blue-500 hover:text-red-600 font-bold" aria-label="Quitar filtro">&times;</button>
+  </span>`;
+}
+
+function clearFilter(slug, key) {
+  activeFilters[slug][key] = '';
+  applyFilters(slug);
+}
+window.clearFilter = clearFilter;
+
+function clearAllFilters(slug) {
+  const f = activeFilters[slug];
+  f.epicKey = ''; f.service = ''; f.status = '';
+  applyFilters(slug);
+}
+window.clearAllFilters = clearAllFilters;
+
+// ------------------------------------------------------------------ //
+//  CHART FACTORY                                                      //
+// ------------------------------------------------------------------ //
 
 function destroyChart(id) {
   if (chartInstances[id]) { chartInstances[id].destroy(); delete chartInstances[id]; }
@@ -103,6 +137,9 @@ function makeBarOrDoughnut(canvasId, type, labels, values, bgColors, opts = {}) 
   const canvas = document.getElementById(canvasId);
   if (!canvas || !labels.length) return null;
   const isH = type === 'bar' && (labels.length > 6 || opts.horizontal);
+  const slug = canvasId.split('-').slice(1).join('-');
+  const chartType = canvasId.split('-')[0].replace('Chart','');
+
   const chart = new Chart(canvas, {
     type,
     data: {
@@ -115,7 +152,22 @@ function makeBarOrDoughnut(canvasId, type, labels, values, bgColors, opts = {}) 
     },
     options: {
       responsive: true, maintainAspectRatio: false, indexAxis: isH ? 'y' : 'x',
-      plugins: { legend: { display: type === 'doughnut', position: 'right' } },
+      onClick: (evt, elements) => {
+        if (!elements.length) return;
+        const idx = elements[0].index;
+        const clicked = labels[idx];
+        // Cross-filter: service chart -> filter by service, status -> filter by status
+        if (chartType === 'service') {
+          activeFilters[slug].service = activeFilters[slug].service === clicked ? '' : clicked;
+        } else if (chartType === 'status') {
+          activeFilters[slug].status = activeFilters[slug].status === clicked ? '' : clicked;
+        }
+        applyFilters(slug);
+      },
+      plugins: {
+        legend: { display: type === 'doughnut', position: 'right' },
+        tooltip: { callbacks: { afterLabel: () => '👉 Clic para filtrar' } },
+      },
       scales: type === 'doughnut' ? {} : {
         x: { ticks: { maxRotation: 45, font: { size: 11 } } },
         y: { ticks: { font: { size: 11 } }, beginAtZero: true },
@@ -166,7 +218,7 @@ function makeControlChart(canvasId, data, color) {
         }},
       },
       scales: {
-        x: { display: true, ticks: { maxTicksLimit: 15, callback: v => { const p = pts[v]; return p ? p.x : ''; }, font: { size: 9 }, maxRotation: 45 }, grid: { display: false } },
+        x: { display: true, ticks: { maxTicksLimit: 15, callback: v => pts[v]?.x || '', font: { size: 9 }, maxRotation: 45 }, grid: { display: false } },
         y: { beginAtZero: true, ticks: { font: { size: 10 } }, grid: { color: '#f3f4f6' } },
       },
     },
@@ -184,9 +236,9 @@ function rebuildCharts(slug, agg) {
   makeControlChart(`leadTimeChart-${slug}`, agg.leadTime, '#f97316');
 }
 
-// ================================================================= //
-//  4. TAB SWITCHING                                                  //
-// ================================================================= //
+// ------------------------------------------------------------------ //
+//  TAB SWITCHING                                                      //
+// ------------------------------------------------------------------ //
 
 const builtTabs = {};
 
@@ -197,54 +249,36 @@ function switchTab(slug) {
     applyFilters(slug);
     builtTabs[slug] = true;
   }
-  if (GANTT_DATA[slug]?.length) buildGantt(slug);
+  if (GANTT_DATA[slug]?.length && !ganttCharts[slug]) buildGantt(slug);
 }
 window.switchTab = switchTab;
 
-// ================================================================= //
-//  5. WEEK SLICER                                                    //
-// ================================================================= //
+// ------------------------------------------------------------------ //
+//  WEEK SLICER                                                        //
+// ------------------------------------------------------------------ //
 
 $$('.week-slicer').forEach(sel => {
   sel.addEventListener('change', function () {
     const slug = this.dataset.domain;
     activeFilters[slug].week = this.value;
-    builtTabs[slug] = false;  // force rebuild
+    builtTabs[slug] = false;
     applyFilters(slug);
     builtTabs[slug] = true;
   });
 });
 
-// ================================================================= //
-//  6. EPIC FILTER (Gantt click)                                      //
-// ================================================================= //
+// ------------------------------------------------------------------ //
+//  EPIC FILTER (Gantt click)                                          //
+// ------------------------------------------------------------------ //
 
 function setEpicFilter(slug, epicKey) {
-  activeFilters[slug].epicKey = epicKey;
-  const badge = $(`#epicFilter-${slug}`);
-  const name  = $(`#epicName-${slug}`);
-  if (badge && name) {
-    badge.classList.remove('hidden');
-    name.textContent = epicKey;
-  }
-  builtTabs[slug] = false;
+  activeFilters[slug].epicKey = activeFilters[slug].epicKey === epicKey ? '' : epicKey;
   applyFilters(slug);
-  builtTabs[slug] = true;
 }
 
-function clearEpicFilter(slug) {
-  activeFilters[slug].epicKey = '';
-  const badge = $(`#epicFilter-${slug}`);
-  if (badge) badge.classList.add('hidden');
-  builtTabs[slug] = false;
-  applyFilters(slug);
-  builtTabs[slug] = true;
-}
-window.clearEpicFilter = clearEpicFilter;
-
-// ================================================================= //
-//  7. SEARCH                                                         //
-// ================================================================= //
+// ------------------------------------------------------------------ //
+//  SEARCH                                                             //
+// ------------------------------------------------------------------ //
 
 function setupSearch() {
   const gi = $('#searchInput-general');
@@ -265,9 +299,9 @@ function setupSearch() {
 }
 setupSearch();
 
-// ================================================================= //
-//  8. GANTT                                                          //
-// ================================================================= //
+// ------------------------------------------------------------------ //
+//  GANTT                                                              //
+// ------------------------------------------------------------------ //
 
 function parseDate(str) {
   const [y, m, d] = str.split('-').map(Number);
@@ -327,7 +361,7 @@ function buildGantt(slug) {
                 `${e.key}: ${e.summary}`, `Inicio: ${e.start}`,
                 `Fin planeado: ${e.planned_done || '-'}`, `Due: ${e.due || '-'}`,
                 `Estado: ${e.status}`, `Assignee: ${e.assignee}`,
-                '', '\u{1f449} Clic para filtrar gráficos por esta épica',
+                '', '\ud83d\udc49 Clic para filtrar por esta \u00e9pica',
               ];
             },
           },
@@ -373,13 +407,14 @@ function setGanttFilter(domain, status) {
   $$(`[data-domain="${domain}"].gantt-pill`).forEach(p =>
     p.classList.toggle('active', p.dataset.status === status)
   );
+  if (ganttCharts[domain]) { ganttCharts[domain].destroy(); ganttCharts[domain] = null; }
   buildGantt(domain);
 }
 window.setGanttFilter = setGanttFilter;
 
-// ================================================================= //
-//  9. INIT                                                           //
-// ================================================================= //
+// ------------------------------------------------------------------ //
+//  INIT                                                               //
+// ------------------------------------------------------------------ //
 
 applyFilters('general');
 builtTabs.general = true;

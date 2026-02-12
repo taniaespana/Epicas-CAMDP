@@ -116,23 +116,17 @@
         </div>
       </section>
 
-      <!-- SLICER DE SEMANA + EPIC FILTER (mostrado al hacer clic en Gantt) -->
-      <section class="flex flex-wrap items-center gap-4" id="slicerBar-general">
+      <!-- SLICER + FILTROS ACTIVOS -->
+      <section class="flex flex-wrap items-center gap-4">
         <div class="flex items-center gap-2">
-          <label class="text-sm font-semibold text-gray-600">📆 Semana (updated):</label>
+          <label class="text-sm font-semibold text-gray-600">📆 Semana:</label>
           <select class="slicer-select week-slicer" data-domain="general">
-            <option value="all">Todas las semanas</option>
-            {% for w in weeks %}
-            <option value="{{ w }}">{{ w }}</option>
-            {% endfor %}
+            <option value="all">Todas</option>
+            {% for w in weeks %}<option value="{{ w }}">{{ w }}</option>{% endfor %}
           </select>
         </div>
-        <div id="epicFilter-general" class="hidden">
-          <span class="epic-filter-badge bg-blue-100 text-blue-800" id="epicBadge-general">
-            🎯 Filtrando: <span id="epicName-general"></span>
-            <button onclick="clearEpicFilter('general')" class="ml-1 text-blue-500 hover:text-red-600 font-bold" aria-label="Quitar filtro">&times;</button>
-          </span>
-        </div>
+        <div id="activeFilters-general" class="hidden flex flex-wrap items-center gap-1"></div>
+        <button onclick="clearAllFilters('general')" class="text-xs text-gray-400 hover:text-red-500 underline">❌ Limpiar filtros</button>
       </section>
 
       <!-- Charts: Servicio + Status -->
@@ -222,8 +216,8 @@
       </section>
       {% endif %}
 
-      <!-- SLICER -->
-      <section class="flex flex-wrap items-center gap-4" id="slicerBar-{{ dom.slug }}">
+      <!-- SLICER + FILTROS ACTIVOS -->
+      <section class="flex flex-wrap items-center gap-4">
         <div class="flex items-center gap-2">
           <label class="text-sm font-semibold text-gray-600">📆 Semana:</label>
           <select class="slicer-select week-slicer" data-domain="{{ dom.slug }}">
@@ -231,12 +225,8 @@
             {% for w in dom.weeks %}<option value="{{ w }}">{{ w }}</option>{% endfor %}
           </select>
         </div>
-        <div id="epicFilter-{{ dom.slug }}" class="hidden">
-          <span class="epic-filter-badge bg-blue-100 text-blue-800">
-            🎯 Filtrando: <span id="epicName-{{ dom.slug }}"></span>
-            <button onclick="clearEpicFilter('{{ dom.slug }}')" class="ml-1 text-blue-500 hover:text-red-600 font-bold" aria-label="Quitar filtro">&times;</button>
-          </span>
-        </div>
+        <div id="activeFilters-{{ dom.slug }}" class="hidden flex flex-wrap items-center gap-1"></div>
+        <button onclick="clearAllFilters('{{ dom.slug }}')" class="text-xs text-gray-400 hover:text-red-500 underline">❌ Limpiar filtros</button>
       </section>
 
       <!-- Charts: Servicio + Status -->
