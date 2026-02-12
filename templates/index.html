@@ -20,21 +20,25 @@
     .filter-pill { @apply px-3 py-1 rounded-full text-xs font-medium cursor-pointer border transition-all; }
     .filter-pill.active { @apply bg-gray-700 text-white border-gray-700; }
     .filter-pill:not(.active) { @apply bg-gray-100 text-gray-500 border-gray-200 hover:bg-gray-200 hover:text-gray-700; }
-    .chart-clickable canvas { cursor: pointer; }
-    .domain-tab {
-      @apply px-4 py-2 text-sm font-semibold cursor-pointer border-b-2 transition-all whitespace-nowrap;
+    /* Domain tab buttons */
+    .domain-btn {
+      @apply px-4 py-2 text-sm font-semibold rounded-lg border-2 transition-all;
     }
-    .domain-tab.active {
+    .domain-btn.active {
+      background: #0053e2;
+      border-color: #0053e2;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0,83,226,0.3);
+    }
+    .domain-btn:not(.active) {
+      background: white;
+      border-color: #e5e7eb;
+      color: #4b5563;
+    }
+    .domain-btn:not(.active):hover {
       border-color: #0053e2;
       color: #0053e2;
-    }
-    .domain-tab:not(.active) {
-      border-color: transparent;
-      color: #6b7280;
-    }
-    .domain-tab:not(.active):hover {
-      color: #0053e2;
-      border-color: #d1d5db;
+      background: #eff6ff;
     }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
@@ -46,29 +50,26 @@
   <header style="background:#0053e2" class="text-white py-6 shadow-lg">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
       <div>
-        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">
-          ⚡ CAMDP Epics Dashboard
-        </h1>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">⚡ CAMDP Epics Dashboard</h1>
         <p class="text-blue-200 text-sm mt-1">Centro de Analítica, Machine Learning & Data Platform</p>
       </div>
       <div class="text-right text-sm text-blue-200 space-y-0.5">
         <p>Generado: <span class="text-white">{{ generated_at }}</span></p>
         <p>Épicas: <span class="text-white font-bold">{{ total_epics }}</span> de {{ total_raw }}
            &bull; Issues: <span class="text-white font-bold">{{ total_all_issues }}</span></p>
-        <p class="text-xs">Filtro épicas: abiertas + cerradas desde {{ cutoff_date }}</p>
       </div>
     </div>
   </header>
 
-  <!-- DOMAIN TABS -->
-  <nav class="bg-white shadow-sm border-b sticky top-0 z-50" aria-label="Pestañas de dominio">
-    <div class="max-w-7xl mx-auto px-4 flex overflow-x-auto gap-1">
-      <button class="domain-tab active" data-tab="general" onclick="switchTab('general')">
+  <!-- DOMAIN TABS AS BUTTONS -->
+  <nav class="bg-white shadow-sm border-b sticky top-0 z-50 py-3" aria-label="Dominios">
+    <div class="max-w-7xl mx-auto px-4 flex flex-wrap gap-2">
+      <button class="domain-btn active" data-tab="general" onclick="switchTab('general')">
         🌐 General
       </button>
       {% for dom in domains %}
-      <button class="domain-tab" data-tab="{{ dom.slug }}" onclick="switchTab('{{ dom.slug }}')">
-        {{ dom.name }} <span class="text-xs opacity-60">({{ dom.total_issues }})</span>
+      <button class="domain-btn" data-tab="{{ dom.slug }}" onclick="switchTab('{{ dom.slug }}')">
+        {{ dom.name }} <span class="opacity-60 text-xs">({{ dom.total_issues }})</span>
       </button>
       {% endfor %}
     </div>
@@ -76,55 +77,38 @@
 
   <main class="max-w-7xl mx-auto px-4 py-8">
 
-    <!-- ======================== TAB: GENERAL ======================== -->
+    <!-- ==================== TAB: GENERAL ==================== -->
     <div id="tab-general" class="tab-content active space-y-6">
 
-      <!-- KPI CARDS -->
-      <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4" aria-label="KPIs">
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#0053e2">{{ total_epics }}</div>
-          <div class="kpi-label">Total Épicas</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#2a8703">{{ resolution.resolved }}</div>
-          <div class="kpi-label">Resueltas</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#0053e2">{{ active_epics|length }}</div>
-          <div class="kpi-label">En Progreso</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#ea1100">{{ blocked_epics|length }}</div>
-          <div class="kpi-label">Bloqueadas</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#995213">{{ total_all_issues }}</div>
-          <div class="kpi-label">Issues Totales</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#2a8703">{{ resolution.rate_pct }}%</div>
-          <div class="kpi-label">Tasa Resol.</div>
-        </div>
+      <!-- KPIs -->
+      <section class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+        <div class="card text-center"><div class="kpi-value" style="color:#0053e2">{{ total_epics }}</div><div class="kpi-label">Épicas</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#2a8703">{{ resolution.resolved }}</div><div class="kpi-label">Resueltas</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#0053e2">{{ active_epics|length }}</div><div class="kpi-label">En Progreso</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#ea1100">{{ blocked_epics|length }}</div><div class="kpi-label">Bloqueadas</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#995213">{{ total_all_issues }}</div><div class="kpi-label">Issues</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#2a8703">{{ resolution.rate_pct }}%</div><div class="kpi-label">Resolución</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#6366f1">{{ avg_cycle_time }}d</div><div class="kpi-label">Cycle Time</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#f97316">{{ avg_lead_time }}d</div><div class="kpi-label">Lead Time</div></div>
       </section>
 
-      <!-- EXECUTIVE INSIGHTS -->
-      <section class="card" style="border-left:4px solid #0053e2" aria-label="Insights">
+      <!-- Insights -->
+      <section class="card" style="border-left:4px solid #0053e2">
         <h2 class="text-lg font-bold mb-2" style="color:#0053e2">📊 Análisis Ejecutivo</h2>
         <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
-          <li>De <strong>{{ total_raw }}</strong> épicas históricas, se muestran <strong>{{ total_epics }}</strong> relevantes.</li>
-          <li><strong>{{ total_all_issues }}</strong> issues totales en el proyecto CAMDP.</li>
-          <li><strong>{{ active_epics|length }}</strong> en progreso activo, <strong>{{ resolution.rate_pct }}%</strong> tasa de resolución.</li>
+          <li><strong>{{ total_all_issues }}</strong> issues totales &bull; <strong>{{ total_epics }}</strong> épicas relevantes &bull; <strong>{{ active_epics|length }}</strong> en progreso</li>
+          <li>Cycle Time promedio: <strong>{{ avg_cycle_time }} días</strong> &bull; Lead Time promedio: <strong>{{ avg_lead_time }} días</strong></li>
           {% if blocked_epics|length > 0 %}
-          <li class="text-red-700">⚠️ <strong>{{ blocked_epics|length }}</strong> épica(s) bloqueada(s):
+          <li class="text-red-700">⚠️ <strong>{{ blocked_epics|length }}</strong> bloqueada(s):
             {% for e in blocked_epics %}<code class="bg-red-50 px-1 rounded">{{ e.key }}</code>{% if not loop.last %}, {% endif %}{% endfor %}
           </li>
           {% endif %}
-          <li>💡 <em>Usa las pestañas de arriba para ver cada dominio.</em></li>
+          <li>💡 <em>Usa los botones de arriba para ver cada dominio en detalle.</em></li>
         </ul>
       </section>
 
-      <!-- GANTT GENERAL -->
-      <section class="card" aria-label="Gantt general">
+      <!-- Gantt General -->
+      <section class="card">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
           <div>
             <h3 class="font-bold text-lg" style="color:#0053e2">📅 Gantt — Timeline General</h3>
@@ -142,81 +126,54 @@
           </div>
         </div>
         <div style="max-height:900px; overflow-y:auto;">
-          <div id="ganttContainer-general" style="min-height:280px;">
-            <canvas id="ganttChart-general"></canvas>
-          </div>
+          <div id="ganttContainer-general" style="min-height:280px;"><canvas id="ganttChart-general"></canvas></div>
         </div>
       </section>
 
-      <!-- CHARTS: Status + Issue Types -->
+      <!-- Charts: Servicio + Status -->
       <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">🟢 Estado (Épicas)</h3>
-          <div style="height:280px"><canvas id="statusChart-general"></canvas></div>
+          <h3 class="font-bold mb-3" style="color:#0053e2">⚙️ Tickets por Servicio</h3>
+          <div style="height:300px"><canvas id="serviceChart-general"></canvas></div>
         </div>
         <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">📋 Tipos de Issue (Todo CAMDP)</h3>
-          <div style="height:280px"><canvas id="issuetypeChart-general"></canvas></div>
+          <h3 class="font-bold mb-3" style="color:#0053e2">🟢 Estado</h3>
+          <div style="height:300px"><canvas id="statusChart-general"></canvas></div>
         </div>
       </section>
 
-      <!-- CHARTS: Dominio + Equipo -->
+      <!-- Charts: Cycle Time + Lead Time -->
       <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">🏢 Dominio (Área)</h3>
-          <div style="height:280px"><canvas id="dominioChart-general"></canvas></div>
+          <h3 class="font-bold mb-3" style="color:#6366f1">⏱️ Cycle Time por Servicio <span class="text-xs font-normal text-gray-400">(promedio días)</span></h3>
+          <div style="height:300px"><canvas id="cycleTimeChart-general"></canvas></div>
         </div>
         <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">👥 Equipo Data Fabric</h3>
-          <div style="height:280px"><canvas id="equipoChart-general"></canvas></div>
+          <h3 class="font-bold mb-3" style="color:#f97316">📈 Lead Time por Servicio <span class="text-xs font-normal text-gray-400">(promedio días)</span></h3>
+          <div style="height:300px"><canvas id="leadTimeChart-general"></canvas></div>
         </div>
       </section>
 
-      <!-- CHARTS: Assignee + Monthly -->
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">👤 Top Assignees</h3>
-          <div style="height:300px"><canvas id="assigneeChart-general"></canvas></div>
-        </div>
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">📅 Creación Mensual</h3>
-          <div style="height:300px"><canvas id="monthlyChart-general"></canvas></div>
-        </div>
-      </section>
-
-      <!-- FULL TABLE -->
-      <section class="card" aria-label="Tabla de épicas">
+      <!-- Table -->
+      <section class="card">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
           <h2 class="text-lg font-bold" style="color:#0053e2">📝 Épicas ({{ total_epics }})</h2>
-          <input id="searchInput-general" type="text" placeholder="Buscar..."
-                 class="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 w-full sm:w-72"
-                 style="--tw-ring-color:#0053e2" aria-label="Buscar épica" />
+          <input id="searchInput-general" type="text" placeholder="Buscar..." class="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 w-full sm:w-72" style="--tw-ring-color:#0053e2" />
         </div>
         <div class="overflow-x-auto">
           <table class="w-full text-sm" id="epicTable-general">
-            <thead>
-              <tr class="text-left text-gray-500 border-b text-xs uppercase tracking-wide">
-                <th class="py-2 pr-3">Key</th><th class="pr-3">Summary</th>
-                <th class="pr-3">Status</th><th class="pr-3">Dominio</th>
-                <th class="pr-3">Equipo DF</th><th class="pr-3">Assignee</th>
-                <th class="pr-3">Creada</th>
-              </tr>
-            </thead>
+            <thead><tr class="text-left text-gray-500 border-b text-xs uppercase tracking-wide">
+              <th class="py-2 pr-3">Key</th><th class="pr-3">Summary</th><th class="pr-3">Status</th>
+              <th class="pr-3">Dominio</th><th class="pr-3">Servicio</th><th class="pr-3">Assignee</th><th class="pr-3">Creada</th>
+            </tr></thead>
             <tbody>
             {% for e in epics %}
             <tr class="border-t border-gray-100 hover:bg-blue-50 cursor-pointer" onclick="window.open('{{ e.url }}','_blank')">
-              <td class="py-2 pr-3 font-mono text-xs">
-                <a href="{{ e.url }}" target="_blank" rel="noopener" class="underline" style="color:#0053e2">{{ e.key }}</a>
-              </td>
+              <td class="py-2 pr-3 font-mono text-xs"><a href="{{ e.url }}" target="_blank" class="underline" style="color:#0053e2">{{ e.key }}</a></td>
               <td class="pr-3">{{ e.summary }}</td>
-              <td class="pr-3">
-                {% if e.status == 'Listo' %}<span class="badge badge-done">{{ e.status }}</span>
-                {% elif e.status == 'Blocked' %}<span class="badge badge-blocked">{{ e.status }}</span>
-                {% elif e.status == 'Backlog' %}<span class="badge badge-backlog">{{ e.status }}</span>
-                {% else %}<span class="badge badge-wip">{{ e.status }}</span>{% endif %}
-              </td>
+              <td class="pr-3">{% if e.status == 'Listo' %}<span class="badge badge-done">{{ e.status }}</span>{% elif e.status == 'Blocked' %}<span class="badge badge-blocked">{{ e.status }}</span>{% else %}<span class="badge badge-wip">{{ e.status }}</span>{% endif %}</td>
               <td class="pr-3 text-xs">{{ e.dominio or '-' }}</td>
-              <td class="pr-3 text-xs">{{ e.equipo_df or '-' }}</td>
+              <td class="pr-3 text-xs">{{ e.servicio or '-' }}</td>
               <td class="pr-3 text-xs">{{ e.assignee }}</td>
               <td class="pr-3 text-xs">{{ e.created }}</td>
             </tr>
@@ -225,41 +182,25 @@
           </table>
         </div>
       </section>
-    </div>{# /tab-general #}
+    </div>
 
-    <!-- ======================== DOMAIN TABS ======================== -->
+    <!-- ==================== DOMAIN TABS ==================== -->
     {% for dom in domains %}
     <div id="tab-{{ dom.slug }}" class="tab-content space-y-6">
 
       <!-- KPIs -->
-      <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#0053e2">{{ dom.total_epics }}</div>
-          <div class="kpi-label">Épicas</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#2a8703">{{ dom.resolved }}</div>
-          <div class="kpi-label">Resueltas</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#0053e2">{{ dom.active }}</div>
-          <div class="kpi-label">En Progreso</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#ea1100">{{ dom.blocked }}</div>
-          <div class="kpi-label">Bloqueadas</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#995213">{{ dom.total_issues }}</div>
-          <div class="kpi-label">Issues Totales</div>
-        </div>
-        <div class="card text-center">
-          <div class="kpi-value" style="color:#2a8703">{{ dom.resolution_rate }}%</div>
-          <div class="kpi-label">Tasa Resol.</div>
-        </div>
+      <section class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+        <div class="card text-center"><div class="kpi-value" style="color:#0053e2">{{ dom.total_epics }}</div><div class="kpi-label">Épicas</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#2a8703">{{ dom.resolved }}</div><div class="kpi-label">Resueltas</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#0053e2">{{ dom.active }}</div><div class="kpi-label">En Progreso</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#ea1100">{{ dom.blocked }}</div><div class="kpi-label">Bloqueadas</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#995213">{{ dom.total_issues }}</div><div class="kpi-label">Issues</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#2a8703">{{ dom.resolution_rate }}%</div><div class="kpi-label">Resolución</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#6366f1">{{ dom.avg_cycle_time }}d</div><div class="kpi-label">Cycle Time</div></div>
+        <div class="card text-center"><div class="kpi-value" style="color:#f97316">{{ dom.avg_lead_time }}d</div><div class="kpi-label">Lead Time</div></div>
       </section>
 
-      <!-- GANTT por dominio -->
+      <!-- Gantt -->
       {% if dom.gantt %}
       <section class="card">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
@@ -278,58 +219,51 @@
           </div>
         </div>
         <div style="max-height:700px; overflow-y:auto;">
-          <div id="ganttContainer-{{ dom.slug }}" style="min-height:280px;">
-            <canvas id="ganttChart-{{ dom.slug }}"></canvas>
-          </div>
+          <div id="ganttContainer-{{ dom.slug }}" style="min-height:280px;"><canvas id="ganttChart-{{ dom.slug }}"></canvas></div>
         </div>
       </section>
       {% else %}
-      <section class="card text-center py-12 text-gray-400">
-        <p class="text-lg">📅 Sin datos de Gantt para este dominio</p>
-        <p class="text-sm">Las épicas no tienen fechas de inicio/fin configuradas.</p>
+      <section class="card text-center py-8 text-gray-400">
+        <p>📅 Sin datos de Gantt — las épicas no tienen fechas configuradas.</p>
       </section>
       {% endif %}
 
-      <!-- CHARTS por dominio -->
+      <!-- Charts: Servicio + Status -->
       <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">📋 Tipos de Issue</h3>
-          <div style="height:280px"><canvas id="issuetypeChart-{{ dom.slug }}"></canvas></div>
+          <h3 class="font-bold mb-3" style="color:#0053e2">⚙️ Tickets por Servicio</h3>
+          <div style="height:300px"><canvas id="serviceChart-{{ dom.slug }}"></canvas></div>
         </div>
         <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">🟢 Estado (Issues)</h3>
-          <div style="height:280px"><canvas id="statusChart-{{ dom.slug }}"></canvas></div>
+          <h3 class="font-bold mb-3" style="color:#0053e2">🟢 Estado</h3>
+          <div style="height:300px"><canvas id="statusChart-{{ dom.slug }}"></canvas></div>
         </div>
       </section>
 
+      <!-- Charts: Cycle Time + Lead Time -->
       <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">👤 Assignees</h3>
-          <div style="height:300px"><canvas id="assigneeChart-{{ dom.slug }}"></canvas></div>
+          <h3 class="font-bold mb-3" style="color:#6366f1">⏱️ Cycle Time por Servicio <span class="text-xs font-normal text-gray-400">(promedio días)</span></h3>
+          <div style="height:300px"><canvas id="cycleTimeChart-{{ dom.slug }}"></canvas></div>
         </div>
         <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">📅 Creación Mensual</h3>
-          <div style="height:300px"><canvas id="monthlyChart-{{ dom.slug }}"></canvas></div>
+          <h3 class="font-bold mb-3" style="color:#f97316">📈 Lead Time por Servicio <span class="text-xs font-normal text-gray-400">(promedio días)</span></h3>
+          <div style="height:300px"><canvas id="leadTimeChart-{{ dom.slug }}"></canvas></div>
         </div>
       </section>
 
-      <!-- Blocked alert -->
+      <!-- Blocked -->
       {% if dom.blocked_epics %}
       <section class="card" style="border-left:4px solid #ea1100; background:#fef2f2">
         <h2 class="text-lg font-bold text-red-700 mb-3">🚫 Bloqueadas en {{ dom.name }}</h2>
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
-            <thead><tr class="text-left text-red-800">
-              <th class="py-2 pr-4">Key</th><th class="pr-4">Summary</th>
-              <th class="pr-4">Assignee</th><th>Updated</th>
-            </tr></thead>
+            <thead><tr class="text-left text-red-800"><th class="py-2 pr-4">Key</th><th class="pr-4">Summary</th><th class="pr-4">Assignee</th><th>Updated</th></tr></thead>
             <tbody>
             {% for e in dom.blocked_epics %}
             <tr class="border-t border-red-200">
-              <td class="py-2 pr-4"><a href="{{ e.url }}" target="_blank" rel="noopener" class="text-red-700 underline font-mono">{{ e.key }}</a></td>
-              <td class="pr-4">{{ e.summary }}</td>
-              <td class="pr-4">{{ e.assignee }}</td>
-              <td class="text-xs">{{ e.updated }}</td>
+              <td class="py-2 pr-4"><a href="{{ e.url }}" target="_blank" class="text-red-700 underline font-mono">{{ e.key }}</a></td>
+              <td class="pr-4">{{ e.summary }}</td><td class="pr-4">{{ e.assignee }}</td><td class="text-xs">{{ e.updated }}</td>
             </tr>
             {% endfor %}
             </tbody>
@@ -338,39 +272,37 @@
       </section>
       {% endif %}
 
-      <!-- Epic table per domain -->
+      <!-- Detail table: ALL issues per domain -->
       <section class="card">
-        <h2 class="text-lg font-bold mb-4" style="color:#0053e2">📝 Épicas de {{ dom.name }} ({{ dom.total_epics }})</h2>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="text-left text-gray-500 border-b text-xs uppercase tracking-wide">
-                <th class="py-2 pr-3">Key</th><th class="pr-3">Summary</th>
-                <th class="pr-3">Status</th><th class="pr-3">Assignee</th><th class="pr-3">Creada</th>
-              </tr>
-            </thead>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
+          <h2 class="text-lg font-bold" style="color:#0053e2">📝 Tickets de {{ dom.name }} ({{ dom.total_issues }})</h2>
+          <input type="text" placeholder="Buscar..." class="domain-search border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 w-full sm:w-72" style="--tw-ring-color:#0053e2" data-table="issueTable-{{ dom.slug }}" />
+        </div>
+        <div class="overflow-x-auto" style="max-height:500px; overflow-y:auto;">
+          <table class="w-full text-sm" id="issueTable-{{ dom.slug }}">
+            <thead class="sticky top-0 bg-white"><tr class="text-left text-gray-500 border-b text-xs uppercase tracking-wide">
+              <th class="py-2 pr-3">Key</th><th class="pr-3">Tipo</th><th class="pr-3">Summary</th>
+              <th class="pr-3">Status</th><th class="pr-3">Servicio</th><th class="pr-3">Assignee</th>
+              <th class="pr-3">Cycle T.</th><th class="pr-3">Lead T.</th>
+            </tr></thead>
             <tbody>
-            {% for e in dom.epics %}
-            <tr class="border-t border-gray-100 hover:bg-blue-50 cursor-pointer" onclick="window.open('{{ e.url }}','_blank')">
-              <td class="py-2 pr-3 font-mono text-xs">
-                <a href="{{ e.url }}" target="_blank" rel="noopener" class="underline" style="color:#0053e2">{{ e.key }}</a>
-              </td>
-              <td class="pr-3">{{ e.summary }}</td>
-              <td class="pr-3">
-                {% if e.status == 'Listo' %}<span class="badge badge-done">{{ e.status }}</span>
-                {% elif e.status == 'Blocked' %}<span class="badge badge-blocked">{{ e.status }}</span>
-                {% else %}<span class="badge badge-wip">{{ e.status }}</span>{% endif %}
-              </td>
-              <td class="pr-3 text-xs">{{ e.assignee }}</td>
-              <td class="pr-3 text-xs">{{ e.created }}</td>
+            {% for i in dom.issues %}
+            <tr class="border-t border-gray-100 hover:bg-blue-50 cursor-pointer" onclick="window.open('{{ i.url }}','_blank')">
+              <td class="py-1.5 pr-3 font-mono text-xs"><a href="{{ i.url }}" target="_blank" class="underline" style="color:#0053e2">{{ i.key }}</a></td>
+              <td class="pr-3 text-xs">{{ i.issuetype }}</td>
+              <td class="pr-3 text-xs">{{ i.summary[:80] }}</td>
+              <td class="pr-3">{% if i.status == 'Listo' %}<span class="badge badge-done">{{ i.status }}</span>{% elif i.status == 'Blocked' %}<span class="badge badge-blocked">{{ i.status }}</span>{% else %}<span class="badge badge-wip">{{ i.status }}</span>{% endif %}</td>
+              <td class="pr-3 text-xs">{{ i.servicio or '-' }}</td>
+              <td class="pr-3 text-xs">{{ i.assignee }}</td>
+              <td class="pr-3 text-xs text-center">{{ i.cycle_time if i.cycle_time is not none else '-' }}</td>
+              <td class="pr-3 text-xs text-center">{{ i.lead_time if i.lead_time is not none else '-' }}</td>
             </tr>
             {% endfor %}
             </tbody>
           </table>
         </div>
       </section>
-
-    </div>{# /tab-domain #}
+    </div>
     {% endfor %}
 
   </main>
@@ -379,34 +311,28 @@
     CAMDP Epics Dashboard &bull; Walmart México &bull; {{ generated_at }}
   </footer>
 
-  <!-- ======================== DATA ======================== -->
+  <!-- ==================== DATA ==================== -->
   <script>
   const GANTT_DATA = {
     general: {{ gantt|tojson }},
-    {% for dom in domains %}
-    '{{ dom.slug }}': {{ dom.gantt|tojson }},
-    {% endfor %}
+    {% for dom in domains %}'{{ dom.slug }}': {{ dom.gantt|tojson }},{% endfor %}
   };
-
   const CHART_DATA = {
     general: {
-      status:    { labels: {{ status_dist.keys()|list|tojson }},    values: {{ status_dist.values()|list|tojson }} },
-      issuetype: { labels: {{ issuetype_dist.keys()|list|tojson }}, values: {{ issuetype_dist.values()|list|tojson }} },
-      dominio:   { labels: {{ dominio_dist.keys()|list|tojson }},   values: {{ dominio_dist.values()|list|tojson }} },
-      equipo:    { labels: {{ equipo_df_dist.keys()|list|tojson }}, values: {{ equipo_df_dist.values()|list|tojson }} },
-      assignee:  { labels: {{ assignee_dist.keys()|list|tojson }},  values: {{ assignee_dist.values()|list|tojson }} },
-      monthly:   { labels: {{ monthly.keys()|list|tojson }},        values: {{ monthly.values()|list|tojson }} },
+      service:   { labels: {{ service_dist_global.keys()|list|tojson }}, values: {{ service_dist_global.values()|list|tojson }} },
+      status:    { labels: {{ status_dist.keys()|list|tojson }},         values: {{ status_dist.values()|list|tojson }} },
+      cycleTime: { labels: {{ cycle_time_by_service.keys()|list|tojson }}, values: {{ cycle_time_by_service.values()|list|tojson }} },
+      leadTime:  { labels: {{ lead_time_by_service.keys()|list|tojson }},  values: {{ lead_time_by_service.values()|list|tojson }} },
     },
     {% for dom in domains %}
     '{{ dom.slug }}': {
-      issuetype: { labels: {{ dom.issuetype_dist.keys()|list|tojson }}, values: {{ dom.issuetype_dist.values()|list|tojson }} },
-      status:    { labels: {{ dom.status_dist.keys()|list|tojson }},    values: {{ dom.status_dist.values()|list|tojson }} },
-      assignee:  { labels: {{ dom.assignee_dist.keys()|list|tojson }},  values: {{ dom.assignee_dist.values()|list|tojson }} },
-      monthly:   { labels: {{ dom.monthly.keys()|list|tojson }},        values: {{ dom.monthly.values()|list|tojson }} },
+      service:   { labels: {{ dom.service_dist.keys()|list|tojson }},          values: {{ dom.service_dist.values()|list|tojson }} },
+      status:    { labels: {{ dom.status_dist.keys()|list|tojson }},           values: {{ dom.status_dist.values()|list|tojson }} },
+      cycleTime: { labels: {{ dom.cycle_time_by_service.keys()|list|tojson }}, values: {{ dom.cycle_time_by_service.values()|list|tojson }} },
+      leadTime:  { labels: {{ dom.lead_time_by_service.keys()|list|tojson }},  values: {{ dom.lead_time_by_service.values()|list|tojson }} },
     },
     {% endfor %}
   };
-
   const DOMAIN_SLUGS = ['general', {% for dom in domains %}'{{ dom.slug }}'{% if not loop.last %}, {% endif %}{% endfor %}];
   </script>
   <script src="dashboard.js"></script>
