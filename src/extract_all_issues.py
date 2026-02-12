@@ -33,7 +33,8 @@ def fetch_all_issues(session: requests.Session) -> list[dict]:
     fields = (
         "summary,status,issuetype,assignee,created,updated,"
         "priority,labels,components,resolution,resolutiondate,"
-        "duedate,customfield_10400,customfield_11805"
+        "duedate,customfield_10400,customfield_11805,"
+        "customfield_10008"  # Epic Link
     )
 
     all_issues: list[dict] = []
@@ -94,6 +95,7 @@ def clean_issue(issue: dict) -> dict:
         "start_date": (f.get("customfield_11805") or "")[:10],
         "planned_done_date": (f.get("customfield_10400") or "")[:10],
         "due_date": (f.get("duedate") or "")[:10],
+        "epic_key": f.get("customfield_10008") or "",
     }
 
 

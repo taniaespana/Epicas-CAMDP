@@ -20,28 +20,14 @@
     .filter-pill { @apply px-3 py-1 rounded-full text-xs font-medium cursor-pointer border transition-all; }
     .filter-pill.active { @apply bg-gray-700 text-white border-gray-700; }
     .filter-pill:not(.active) { @apply bg-gray-100 text-gray-500 border-gray-200 hover:bg-gray-200 hover:text-gray-700; }
-    /* Domain tab buttons */
-    .domain-btn {
-      @apply px-4 py-2 text-sm font-semibold rounded-lg border-2 transition-all;
-    }
-    .domain-btn.active {
-      background: #0053e2;
-      border-color: #0053e2;
-      color: white;
-      box-shadow: 0 2px 8px rgba(0,83,226,0.3);
-    }
-    .domain-btn:not(.active) {
-      background: white;
-      border-color: #e5e7eb;
-      color: #4b5563;
-    }
-    .domain-btn:not(.active):hover {
-      border-color: #0053e2;
-      color: #0053e2;
-      background: #eff6ff;
-    }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
+    .domain-btn { @apply px-4 py-2 text-sm font-semibold rounded-lg border-2 transition-all; }
+    .domain-btn.active { background:#0053e2; border-color:#0053e2; color:white; box-shadow:0 2px 8px rgba(0,83,226,0.3); }
+    .domain-btn:not(.active) { background:white; border-color:#e5e7eb; color:#4b5563; }
+    .domain-btn:not(.active):hover { border-color:#0053e2; color:#0053e2; background:#eff6ff; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
+    .slicer-select { @apply border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2; --tw-ring-color:#0053e2; }
+    .epic-filter-badge { @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold cursor-pointer transition-all; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -55,18 +41,17 @@
       </div>
       <div class="text-right text-sm text-blue-200 space-y-0.5">
         <p>Generado: <span class="text-white">{{ generated_at }}</span></p>
-        <p>Épicas: <span class="text-white font-bold">{{ total_epics }}</span> de {{ total_raw }}
-           &bull; Issues: <span class="text-white font-bold">{{ total_all_issues }}</span></p>
+        <p>Épicas: <span class="text-white font-bold">{{ total_epics }}</span>
+           &bull; Issues: <span class="text-white font-bold">{{ total_all_issues }}</span>
+           <span class="text-blue-300 text-xs">(updated ≥ 05-Ene-2026)</span></p>
       </div>
     </div>
   </header>
 
-  <!-- DOMAIN TABS AS BUTTONS -->
+  <!-- DOMAIN TABS -->
   <nav class="bg-white shadow-sm border-b sticky top-0 z-50 py-3" aria-label="Dominios">
     <div class="max-w-7xl mx-auto px-4 flex flex-wrap gap-2">
-      <button class="domain-btn active" data-tab="general" onclick="switchTab('general')">
-        🌐 General
-      </button>
+      <button class="domain-btn active" data-tab="general" onclick="switchTab('general')">🌐 General</button>
       {% for dom in domains %}
       <button class="domain-btn" data-tab="{{ dom.slug }}" onclick="switchTab('{{ dom.slug }}')">
         {{ dom.name }} <span class="opacity-60 text-xs">({{ dom.total_issues }})</span>
@@ -96,14 +81,14 @@
       <section class="card" style="border-left:4px solid #0053e2">
         <h2 class="text-lg font-bold mb-2" style="color:#0053e2">📊 Análisis Ejecutivo</h2>
         <ul class="text-sm text-gray-700 space-y-1 list-disc list-inside">
-          <li><strong>{{ total_all_issues }}</strong> issues totales &bull; <strong>{{ total_epics }}</strong> épicas relevantes &bull; <strong>{{ active_epics|length }}</strong> en progreso</li>
+          <li><strong>{{ total_all_issues }}</strong> issues (updated ≥ 05-Ene-2026) &bull; <strong>{{ total_epics }}</strong> épicas relevantes</li>
           <li>Cycle Time promedio: <strong>{{ avg_cycle_time }} días</strong> &bull; Lead Time promedio: <strong>{{ avg_lead_time }} días</strong></li>
           {% if blocked_epics|length > 0 %}
           <li class="text-red-700">⚠️ <strong>{{ blocked_epics|length }}</strong> bloqueada(s):
             {% for e in blocked_epics %}<code class="bg-red-50 px-1 rounded">{{ e.key }}</code>{% if not loop.last %}, {% endif %}{% endfor %}
           </li>
           {% endif %}
-          <li>💡 <em>Usa los botones de arriba para ver cada dominio en detalle.</em></li>
+          <li>💡 <em>Usa el segmentador de semana y haz clic en las barras del Gantt para filtrar.</em></li>
         </ul>
       </section>
 
@@ -117,6 +102,7 @@
               <span style="color:#2a8703">● En tiempo</span> &nbsp;
               <span style="color:#0053e2">● Extendida</span> &nbsp;
               <span style="color:#ea1100">● Bloqueada</span>
+              &nbsp;|&nbsp; 👉 <em>Haz clic en una barra para filtrar los gráficos</em>
             </p>
           </div>
           <div class="flex gap-2 flex-wrap">
@@ -130,31 +116,42 @@
         </div>
       </section>
 
-      <!-- Charts: Servicio + Status -->
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">⚙️ Tickets por Servicio</h3>
-          <div style="height:300px"><canvas id="serviceChart-general"></canvas></div>
+      <!-- SLICER DE SEMANA + EPIC FILTER (mostrado al hacer clic en Gantt) -->
+      <section class="flex flex-wrap items-center gap-4" id="slicerBar-general">
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-semibold text-gray-600">📆 Semana (updated):</label>
+          <select class="slicer-select week-slicer" data-domain="general">
+            <option value="all">Todas las semanas</option>
+            {% for w in weeks %}
+            <option value="{{ w }}">{{ w }}</option>
+            {% endfor %}
+          </select>
         </div>
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">🟢 Estado</h3>
-          <div style="height:300px"><canvas id="statusChart-general"></canvas></div>
+        <div id="epicFilter-general" class="hidden">
+          <span class="epic-filter-badge bg-blue-100 text-blue-800" id="epicBadge-general">
+            🎯 Filtrando: <span id="epicName-general"></span>
+            <button onclick="clearEpicFilter('general')" class="ml-1 text-blue-500 hover:text-red-600 font-bold" aria-label="Quitar filtro">&times;</button>
+          </span>
         </div>
       </section>
 
-      <!-- Control Charts: Cycle Time + Lead Time -->
+      <!-- Charts: Servicio + Status -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card"><h3 class="font-bold mb-3" style="color:#0053e2">⚙️ Tickets por Servicio</h3><div style="height:300px"><canvas id="serviceChart-general"></canvas></div></div>
+        <div class="card"><h3 class="font-bold mb-3" style="color:#0053e2">🟢 Estado</h3><div style="height:300px"><canvas id="statusChart-general"></canvas></div></div>
+      </section>
+
+      <!-- Control Charts -->
       <section class="card">
-        <h3 class="font-bold mb-1" style="color:#6366f1">⏱️ Cycle Time <span class="text-xs font-normal text-gray-400">(días por ticket en orden de creación — Start → Resolución)</span></h3>
-        <p class="text-xs text-gray-400 mb-3">Media: <strong>{{ avg_cycle_time }}d</strong> &nbsp;|&nbsp; UCL: {{ time_series.cycle_time.ucl }}d &nbsp;|&nbsp; LCL: {{ time_series.cycle_time.lcl }}d</p>
+        <h3 class="font-bold mb-1" style="color:#6366f1">⏱️ Cycle Time <span class="text-xs font-normal text-gray-400">(días por ticket — Start → Resolución)</span></h3>
         <div style="height:320px"><canvas id="cycleTimeChart-general"></canvas></div>
       </section>
       <section class="card">
-        <h3 class="font-bold mb-1" style="color:#f97316">📈 Lead Time <span class="text-xs font-normal text-gray-400">(días por ticket en orden de creación — Creación → Resolución)</span></h3>
-        <p class="text-xs text-gray-400 mb-3">Media: <strong>{{ avg_lead_time }}d</strong> &nbsp;|&nbsp; UCL: {{ time_series.lead_time.ucl }}d &nbsp;|&nbsp; LCL: {{ time_series.lead_time.lcl }}d</p>
+        <h3 class="font-bold mb-1" style="color:#f97316">📈 Lead Time <span class="text-xs font-normal text-gray-400">(días por ticket — Creación → Resolución)</span></h3>
         <div style="height:320px"><canvas id="leadTimeChart-general"></canvas></div>
       </section>
 
-      <!-- Table -->
+      <!-- Epic Table -->
       <section class="card">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
           <h2 class="text-lg font-bold" style="color:#0053e2">📝 Épicas ({{ total_epics }})</h2>
@@ -210,6 +207,7 @@
               <span style="color:#2a8703">● En tiempo</span> &nbsp;
               <span style="color:#0053e2">● Extendida</span> &nbsp;
               <span style="color:#ea1100">● Bloqueada</span>
+              &nbsp;|&nbsp; 👉 <em>Clic en barra = filtrar gráficos</em>
             </p>
           </div>
           <div class="flex gap-2 flex-wrap">
@@ -222,33 +220,38 @@
           <div id="ganttContainer-{{ dom.slug }}" style="min-height:280px;"><canvas id="ganttChart-{{ dom.slug }}"></canvas></div>
         </div>
       </section>
-      {% else %}
-      <section class="card text-center py-8 text-gray-400">
-        <p>📅 Sin datos de Gantt — las épicas no tienen fechas configuradas.</p>
-      </section>
       {% endif %}
+
+      <!-- SLICER -->
+      <section class="flex flex-wrap items-center gap-4" id="slicerBar-{{ dom.slug }}">
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-semibold text-gray-600">📆 Semana:</label>
+          <select class="slicer-select week-slicer" data-domain="{{ dom.slug }}">
+            <option value="all">Todas</option>
+            {% for w in dom.weeks %}<option value="{{ w }}">{{ w }}</option>{% endfor %}
+          </select>
+        </div>
+        <div id="epicFilter-{{ dom.slug }}" class="hidden">
+          <span class="epic-filter-badge bg-blue-100 text-blue-800">
+            🎯 Filtrando: <span id="epicName-{{ dom.slug }}"></span>
+            <button onclick="clearEpicFilter('{{ dom.slug }}')" class="ml-1 text-blue-500 hover:text-red-600 font-bold" aria-label="Quitar filtro">&times;</button>
+          </span>
+        </div>
+      </section>
 
       <!-- Charts: Servicio + Status -->
       <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">⚙️ Tickets por Servicio</h3>
-          <div style="height:300px"><canvas id="serviceChart-{{ dom.slug }}"></canvas></div>
-        </div>
-        <div class="card">
-          <h3 class="font-bold mb-3" style="color:#0053e2">🟢 Estado</h3>
-          <div style="height:300px"><canvas id="statusChart-{{ dom.slug }}"></canvas></div>
-        </div>
+        <div class="card"><h3 class="font-bold mb-3" style="color:#0053e2">⚙️ Tickets por Servicio</h3><div style="height:300px"><canvas id="serviceChart-{{ dom.slug }}"></canvas></div></div>
+        <div class="card"><h3 class="font-bold mb-3" style="color:#0053e2">🟢 Estado</h3><div style="height:300px"><canvas id="statusChart-{{ dom.slug }}"></canvas></div></div>
       </section>
 
-      <!-- Control Charts: Cycle Time + Lead Time -->
+      <!-- Control Charts -->
       <section class="card">
-        <h3 class="font-bold mb-1" style="color:#6366f1">⏱️ Cycle Time <span class="text-xs font-normal text-gray-400">(días por ticket — Start → Resolución)</span></h3>
-        <p class="text-xs text-gray-400 mb-3">Media: <strong>{{ dom.avg_cycle_time }}d</strong> &nbsp;|&nbsp; UCL: {{ dom.time_series.cycle_time.ucl }}d &nbsp;|&nbsp; LCL: {{ dom.time_series.cycle_time.lcl }}d</p>
+        <h3 class="font-bold mb-1" style="color:#6366f1">⏱️ Cycle Time <span class="text-xs font-normal text-gray-400">(días por ticket)</span></h3>
         <div style="height:320px"><canvas id="cycleTimeChart-{{ dom.slug }}"></canvas></div>
       </section>
       <section class="card">
-        <h3 class="font-bold mb-1" style="color:#f97316">📈 Lead Time <span class="text-xs font-normal text-gray-400">(días por ticket — Creación → Resolución)</span></h3>
-        <p class="text-xs text-gray-400 mb-3">Media: <strong>{{ dom.avg_lead_time }}d</strong> &nbsp;|&nbsp; UCL: {{ dom.time_series.lead_time.ucl }}d &nbsp;|&nbsp; LCL: {{ dom.time_series.lead_time.lcl }}d</p>
+        <h3 class="font-bold mb-1" style="color:#f97316">📈 Lead Time <span class="text-xs font-normal text-gray-400">(días por ticket)</span></h3>
         <div style="height:320px"><canvas id="leadTimeChart-{{ dom.slug }}"></canvas></div>
       </section>
 
@@ -259,20 +262,16 @@
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
             <thead><tr class="text-left text-red-800"><th class="py-2 pr-4">Key</th><th class="pr-4">Summary</th><th class="pr-4">Assignee</th><th>Updated</th></tr></thead>
-            <tbody>
-            {% for e in dom.blocked_epics %}
-            <tr class="border-t border-red-200">
+            <tbody>{% for e in dom.blocked_epics %}<tr class="border-t border-red-200">
               <td class="py-2 pr-4"><a href="{{ e.url }}" target="_blank" class="text-red-700 underline font-mono">{{ e.key }}</a></td>
               <td class="pr-4">{{ e.summary }}</td><td class="pr-4">{{ e.assignee }}</td><td class="text-xs">{{ e.updated }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
+            </tr>{% endfor %}</tbody>
           </table>
         </div>
       </section>
       {% endif %}
 
-      <!-- Detail table: ALL issues per domain -->
+      <!-- Detail table -->
       <section class="card">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
           <h2 class="text-lg font-bold" style="color:#0053e2">📝 Tickets de {{ dom.name }} ({{ dom.total_issues }})</h2>
@@ -317,21 +316,10 @@
     general: {{ gantt|tojson }},
     {% for dom in domains %}'{{ dom.slug }}': {{ dom.gantt|tojson }},{% endfor %}
   };
-  const CHART_DATA = {
-    general: {
-      service:   { labels: {{ service_dist_global.keys()|list|tojson }}, values: {{ service_dist_global.values()|list|tojson }} },
-      status:    { labels: {{ status_dist.keys()|list|tojson }},         values: {{ status_dist.values()|list|tojson }} },
-      cycleTime: {{ time_series.cycle_time|tojson }},
-      leadTime:  {{ time_series.lead_time|tojson }},
-    },
-    {% for dom in domains %}
-    '{{ dom.slug }}': {
-      service:   { labels: {{ dom.service_dist.keys()|list|tojson }}, values: {{ dom.service_dist.values()|list|tojson }} },
-      status:    { labels: {{ dom.status_dist.keys()|list|tojson }}, values: {{ dom.status_dist.values()|list|tojson }} },
-      cycleTime: {{ dom.time_series.cycle_time|tojson }},
-      leadTime:  {{ dom.time_series.lead_time|tojson }},
-    },
-    {% endfor %}
+  /* Issue arrays ligeros para filtrado dinámico */
+  const ISSUES_DATA = {
+    general: {{ issues_slim|tojson }},
+    {% for dom in domains %}'{{ dom.slug }}': {{ dom.issues_slim|tojson }},{% endfor %}
   };
   const DOMAIN_SLUGS = ['general', {% for dom in domains %}'{{ dom.slug }}'{% if not loop.last %}, {% endif %}{% endfor %}];
   </script>

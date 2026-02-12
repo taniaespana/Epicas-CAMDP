@@ -1,5 +1,5 @@
 /* =========================================================
-   CAMDP Dashboard — Tabs, Gantt, Cycle/Lead Time Charts
+   CAMDP Dashboard — Dynamic charts, week slicer, Gantt click
    ========================================================= */
 
 const WM = { blue: '#0053e2', spark: '#ffc220', green: '#2a8703', red: '#ea1100' };
@@ -12,26 +12,241 @@ const GANTT_COLORS = { on_track: '#2a8703', extended: '#0053e2', blocked: '#ea11
 // ---------------------- State ----------------------
 const ganttCharts = {};
 const ganttFilters = {};
-const builtTabs = {};
+const chartInstances = {};   // chartInstances['serviceChart-general'] = Chart
+const activeFilters = {};    // activeFilters['general'] = { week: 'all', epicKey: '' }
+
+DOMAIN_SLUGS.forEach(s => { activeFilters[s] = { week: 'all', epicKey: '' }; });
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
-// ---------------------- Tab Switching ----------------------
+// ================================================================= //
+//  1. AGGREGATION — compute chart data from filtered issues          //
+// ================================================================= //
+
+function countBy(items, keyFn) {
+  const m = {};
+  items.forEach(i => { const k = keyFn(i) || 'Sin dato'; m[k] = (m[k] || 0) + 1; });
+  // sort descending by count
+  return Object.fromEntries(Object.entries(m).sort((a, b) => b[1] - a[1]));
+}
+
+function avg(arr) { return arr.length ? +(arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : 0; }
+function stddev(arr) {
+  if (arr.length < 2) return 0;
+  const m = avg(arr);
+  return Math.sqrt(arr.reduce((s, v) => s + (v - m) ** 2, 0) / arr.length);
+}
+
+function aggregateIssues(issues) {
+  const serviceDist = countBy(issues, i => i.sv);
+  const statusDist  = countBy(issues, i => i.s);
+
+  // Build control chart series sorted by created
+  const sorted = [...issues].sort((a, b) => a.c.localeCompare(b.c));
+  const ctPoints = [], ltPoints = [], ctVals = [], ltVals = [];
+  sorted.forEach(i => {
+    if (i.ct != null) { ctPoints.push({ x: i.c, y: i.ct, key: i.k }); ctVals.push(i.ct); }
+    if (i.lt != null) { ltPoints.push({ x: i.c, y: i.lt, key: i.k }); ltVals.push(i.lt); }
+  });
+  const ctMean = avg(ctVals), ltMean = avg(ltVals);
+  const ctStd = stddev(ctVals), ltStd = stddev(ltVals);
+
+  return {
+    service: serviceDist,
+    status: statusDist,
+    cycleTime: {
+      points: ctPoints, mean: ctMean,
+      ucl: +(ctMean + 2 * ctStd).toFixed(1),
+      lcl: +Math.max(ctMean - 2 * ctStd, 0).toFixed(1),
+    },
+    leadTime: {
+      points: ltPoints, mean: ltMean,
+      ucl: +(ltMean + 2 * ltStd).toFixed(1),
+      lcl: +Math.max(ltMean - 2 * ltStd, 0).toFixed(1),
+    },
+  };
+}
+
+// ================================================================= //
+//  2. FILTERING                                                      //
+// ================================================================= //
+
+function getFilteredIssues(slug) {
+  let issues = ISSUES_DATA[slug] || [];
+  const f = activeFilters[slug];
+  if (f.week && f.week !== 'all') {
+    issues = issues.filter(i => i.w === f.week);
+  }
+  if (f.epicKey) {
+    issues = issues.filter(i => i.ek === f.epicKey);
+  }
+  return issues;
+}
+
+function applyFilters(slug) {
+  const issues = getFilteredIssues(slug);
+  const agg = aggregateIssues(issues);
+  rebuildCharts(slug, agg);
+}
+
+// ================================================================= //
+//  3. CHART BUILDING                                                 //
+// ================================================================= //
+
+function destroyChart(id) {
+  if (chartInstances[id]) { chartInstances[id].destroy(); delete chartInstances[id]; }
+}
+
+function makeBarOrDoughnut(canvasId, type, labels, values, bgColors, opts = {}) {
+  destroyChart(canvasId);
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || !labels.length) return null;
+  const isH = type === 'bar' && (labels.length > 6 || opts.horizontal);
+  const chart = new Chart(canvas, {
+    type,
+    data: {
+      labels,
+      datasets: [{
+        label: opts.label || '', data: values,
+        backgroundColor: bgColors.length === 1 ? labels.map(() => bgColors[0]) : bgColors.slice(0, labels.length),
+        borderWidth: type === 'doughnut' ? 2 : 0, borderColor: '#fff', borderRadius: type === 'bar' ? 4 : 0,
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, indexAxis: isH ? 'y' : 'x',
+      plugins: { legend: { display: type === 'doughnut', position: 'right' } },
+      scales: type === 'doughnut' ? {} : {
+        x: { ticks: { maxRotation: 45, font: { size: 11 } } },
+        y: { ticks: { font: { size: 11 } }, beginAtZero: true },
+      },
+    },
+  });
+  chartInstances[canvasId] = chart;
+  return chart;
+}
+
+function makeControlChart(canvasId, data, color) {
+  destroyChart(canvasId);
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || !data?.points?.length) return null;
+
+  const pts = data.points;
+  const labels = pts.map((_, i) => i);
+  const values = pts.map(p => p.y);
+
+  const chart = new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Días', data: values,
+          backgroundColor: values.map(v =>
+            v > data.ucl ? '#ea1100' : (v > data.mean ? color + '99' : color + '66')
+          ),
+          borderWidth: 0, borderRadius: 1, barPercentage: 1.0, categoryPercentage: 1.0,
+        },
+        { label: `Media (${data.mean}d)`, data: pts.map(() => data.mean), type: 'line',
+          borderColor: '#000', borderWidth: 2, borderDash: [6, 3], pointRadius: 0, fill: false },
+        { label: `UCL (${data.ucl}d)`, data: pts.map(() => data.ucl), type: 'line',
+          borderColor: '#ea1100', borderWidth: 1.5, borderDash: [4, 4], pointRadius: 0, fill: false },
+        { label: `LCL (${data.lcl}d)`, data: pts.map(() => data.lcl), type: 'line',
+          borderColor: '#2a8703', borderWidth: 1.5, borderDash: [4, 4], pointRadius: 0, fill: false },
+      ],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: true, position: 'top', labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } } },
+        tooltip: { callbacks: {
+          title: (items) => { const p = pts[items[0]?.dataIndex]; return p ? `${p.key} (${p.x})` : ''; },
+          label: (ctx) => ctx.datasetIndex === 0 ? ` ${ctx.raw} días` : null,
+        }},
+      },
+      scales: {
+        x: { display: true, ticks: { maxTicksLimit: 15, callback: v => { const p = pts[v]; return p ? p.x : ''; }, font: { size: 9 }, maxRotation: 45 }, grid: { display: false } },
+        y: { beginAtZero: true, ticks: { font: { size: 10 } }, grid: { color: '#f3f4f6' } },
+      },
+    },
+  });
+  chartInstances[canvasId] = chart;
+  return chart;
+}
+
+function rebuildCharts(slug, agg) {
+  const svc = agg.service;
+  makeBarOrDoughnut(`serviceChart-${slug}`, 'bar', Object.keys(svc), Object.values(svc), [WM.blue], { horizontal: true });
+  const st = agg.status;
+  makeBarOrDoughnut(`statusChart-${slug}`, 'doughnut', Object.keys(st), Object.values(st), PALETTE);
+  makeControlChart(`cycleTimeChart-${slug}`, agg.cycleTime, '#6366f1');
+  makeControlChart(`leadTimeChart-${slug}`, agg.leadTime, '#f97316');
+}
+
+// ================================================================= //
+//  4. TAB SWITCHING                                                  //
+// ================================================================= //
+
+const builtTabs = {};
+
 function switchTab(slug) {
   $$('.domain-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === slug));
   $$('.tab-content').forEach(d => d.classList.toggle('active', d.id === `tab-${slug}`));
   if (!builtTabs[slug]) {
-    buildTabCharts(slug);
+    applyFilters(slug);
     builtTabs[slug] = true;
   }
   if (GANTT_DATA[slug]?.length) buildGantt(slug);
 }
 window.switchTab = switchTab;
 
-// ---------------------- Search ----------------------
+// ================================================================= //
+//  5. WEEK SLICER                                                    //
+// ================================================================= //
+
+$$('.week-slicer').forEach(sel => {
+  sel.addEventListener('change', function () {
+    const slug = this.dataset.domain;
+    activeFilters[slug].week = this.value;
+    builtTabs[slug] = false;  // force rebuild
+    applyFilters(slug);
+    builtTabs[slug] = true;
+  });
+});
+
+// ================================================================= //
+//  6. EPIC FILTER (Gantt click)                                      //
+// ================================================================= //
+
+function setEpicFilter(slug, epicKey) {
+  activeFilters[slug].epicKey = epicKey;
+  const badge = $(`#epicFilter-${slug}`);
+  const name  = $(`#epicName-${slug}`);
+  if (badge && name) {
+    badge.classList.remove('hidden');
+    name.textContent = epicKey;
+  }
+  builtTabs[slug] = false;
+  applyFilters(slug);
+  builtTabs[slug] = true;
+}
+
+function clearEpicFilter(slug) {
+  activeFilters[slug].epicKey = '';
+  const badge = $(`#epicFilter-${slug}`);
+  if (badge) badge.classList.add('hidden');
+  builtTabs[slug] = false;
+  applyFilters(slug);
+  builtTabs[slug] = true;
+}
+window.clearEpicFilter = clearEpicFilter;
+
+// ================================================================= //
+//  7. SEARCH                                                         //
+// ================================================================= //
+
 function setupSearch() {
-  // General search
   const gi = $('#searchInput-general');
   if (gi) gi.addEventListener('input', function () {
     const q = this.value.toLowerCase();
@@ -39,12 +254,10 @@ function setupSearch() {
       r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
     });
   });
-  // Domain searches
   $$('.domain-search').forEach(input => {
     input.addEventListener('input', function () {
       const q = this.value.toLowerCase();
-      const tableId = this.dataset.table;
-      $$(`#${tableId} tbody tr`).forEach(r => {
+      $$(`#${this.dataset.table} tbody tr`).forEach(r => {
         r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
       });
     });
@@ -52,175 +265,10 @@ function setupSearch() {
 }
 setupSearch();
 
-// ---------------------- Chart Factory ----------------------
-function makeChart(canvasId, type, labels, values, bgColors, opts = {}) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas || !labels.length) return null;
+// ================================================================= //
+//  8. GANTT                                                          //
+// ================================================================= //
 
-  const isHorizontal = type === 'bar' && (labels.length > 6 || opts.horizontal);
-
-  return new Chart(canvas, {
-    type,
-    data: {
-      labels,
-      datasets: [{
-        label: opts.label || '',
-        data: values,
-        backgroundColor: bgColors.length === 1
-          ? labels.map(() => bgColors[0])
-          : bgColors.slice(0, labels.length),
-        borderWidth: type === 'doughnut' ? 2 : 0,
-        borderColor: '#fff',
-        borderRadius: type === 'bar' ? 4 : 0,
-      }],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      indexAxis: isHorizontal ? 'y' : 'x',
-      plugins: {
-        legend: { display: type === 'doughnut', position: 'right' },
-        tooltip: {
-          callbacks: opts.tooltipCb || {},
-        },
-      },
-      scales: type === 'doughnut' ? {} : {
-        x: { ticks: { maxRotation: 45, font: { size: 11 } } },
-        y: { ticks: { font: { size: 11 } }, beginAtZero: true },
-      },
-    },
-  });
-}
-
-// ---------------------- Control Chart (SPC) ----------------------
-function makeControlChart(canvasId, data, color) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas || !data?.points?.length) return null;
-
-  const points = data.points;
-  const labels = points.map((p, i) => i);
-  const values = points.map(p => p.y);
-  const meanLine = points.map(() => data.mean);
-  const uclLine = points.map(() => data.ucl);
-  const lclLine = points.map(() => data.lcl);
-
-  return new Chart(canvas, {
-    type: 'bar',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'Días',
-          data: values,
-          backgroundColor: values.map(v =>
-            v > data.ucl ? '#ea1100' : (v > data.mean ? color + '99' : color + '66')
-          ),
-          borderWidth: 0,
-          borderRadius: 1,
-          barPercentage: 1.0,
-          categoryPercentage: 1.0,
-        },
-        {
-          label: `Media (${data.mean}d)`,
-          data: meanLine,
-          type: 'line',
-          borderColor: '#000',
-          borderWidth: 2,
-          borderDash: [6, 3],
-          pointRadius: 0,
-          fill: false,
-        },
-        {
-          label: `UCL (${data.ucl}d)`,
-          data: uclLine,
-          type: 'line',
-          borderColor: '#ea1100',
-          borderWidth: 1.5,
-          borderDash: [4, 4],
-          pointRadius: 0,
-          fill: false,
-        },
-        {
-          label: `LCL (${data.lcl}d)`,
-          data: lclLine,
-          type: 'line',
-          borderColor: '#2a8703',
-          borderWidth: 1.5,
-          borderDash: [4, 4],
-          pointRadius: 0,
-          fill: false,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: {
-          display: true,
-          position: 'top',
-          labels: { usePointStyle: true, boxWidth: 8, font: { size: 10 } },
-        },
-        tooltip: {
-          callbacks: {
-            title: (items) => {
-              const idx = items[0]?.dataIndex;
-              const p = points[idx];
-              return p ? `${p.key} (${p.x})` : '';
-            },
-            label: (ctx) => {
-              if (ctx.datasetIndex === 0) return ` ${ctx.raw} días`;
-              return null;
-            },
-          },
-        },
-      },
-      scales: {
-        x: {
-          display: true,
-          ticks: {
-            maxTicksLimit: 15,
-            callback: (val) => {
-              const p = points[val];
-              return p ? p.x : '';
-            },
-            font: { size: 9 },
-            maxRotation: 45,
-          },
-          grid: { display: false },
-        },
-        y: {
-          beginAtZero: true,
-          ticks: { font: { size: 10 } },
-          grid: { color: '#f3f4f6' },
-        },
-      },
-    },
-  });
-}
-
-// ---------------------- Build Charts for Tab ----------------------
-function buildTabCharts(slug) {
-  const cd = CHART_DATA[slug];
-  if (!cd) return;
-
-  if (cd.service?.labels?.length) {
-    makeChart(`serviceChart-${slug}`, 'bar', cd.service.labels, cd.service.values,
-      [WM.blue], { horizontal: true });
-  }
-  if (cd.status?.labels?.length) {
-    makeChart(`statusChart-${slug}`, 'doughnut', cd.status.labels, cd.status.values, PALETTE);
-  }
-  if (cd.cycleTime?.points?.length) {
-    makeControlChart(`cycleTimeChart-${slug}`, cd.cycleTime, '#6366f1');
-  }
-  if (cd.leadTime?.points?.length) {
-    makeControlChart(`leadTimeChart-${slug}`, cd.leadTime, '#f97316');
-  }
-}
-
-// ---------------------- Gantt ----------------------
 function parseDate(str) {
   const [y, m, d] = str.split('-').map(Number);
   return new Date(y, m - 1, d);
@@ -232,7 +280,7 @@ function buildGantt(slug) {
   if (filter !== 'all') items = items.filter(e => e.status === filter);
   if (!items.length) return;
 
-  const labels = items.map(e => `${e.key} — ${e.summary}`);
+  const labels = items.map(e => `${e.key} \u2014 ${e.summary}`);
   const allDates = items.flatMap(e => [parseDate(e.start), parseDate(e.end)]);
   const minDate = new Date(Math.min(...allDates));
   const maxDate = new Date(Math.max(...allDates));
@@ -262,6 +310,12 @@ function buildGantt(slug) {
     options: {
       indexAxis: 'y', responsive: true, maintainAspectRatio: false,
       layout: { padding: { top: 20 } },
+      onClick: (evt, elements) => {
+        if (!elements.length) return;
+        const idx = elements[0].index;
+        const epicKey = items[idx].key;
+        setEpicFilter(slug, epicKey);
+      },
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -273,6 +327,7 @@ function buildGantt(slug) {
                 `${e.key}: ${e.summary}`, `Inicio: ${e.start}`,
                 `Fin planeado: ${e.planned_done || '-'}`, `Due: ${e.due || '-'}`,
                 `Estado: ${e.status}`, `Assignee: ${e.assignee}`,
+                '', '\u{1f449} Clic para filtrar gráficos por esta épica',
               ];
             },
           },
@@ -283,7 +338,7 @@ function buildGantt(slug) {
           type: 'linear', position: 'top',
           min: minDate.getTime(), max: maxDate.getTime(),
           ticks: {
-            callback: (v) => new Date(v).toLocaleDateString('es-MX', { month: 'short', day: 'numeric' }),
+            callback: v => new Date(v).toLocaleDateString('es-MX', { month: 'short', day: 'numeric' }),
             font: { size: 10 }, maxRotation: 0, stepSize: 7 * 86400000,
           },
           grid: { color: '#f3f4f6' },
@@ -322,7 +377,10 @@ function setGanttFilter(domain, status) {
 }
 window.setGanttFilter = setGanttFilter;
 
-// ---------------------- Init ----------------------
-buildTabCharts('general');
+// ================================================================= //
+//  9. INIT                                                           //
+// ================================================================= //
+
+applyFilters('general');
 builtTabs.general = true;
 if (GANTT_DATA.general?.length) buildGantt('general');

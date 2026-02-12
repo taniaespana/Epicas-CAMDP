@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CUTOFF_DATE = "2026-01-15"
+ISSUES_UPDATED_SINCE = "2026-01-05"
 TODAY = date.today()
 
 # ------------------------------------------------------------------ #
@@ -186,7 +187,14 @@ def load_epics() -> list[dict]:
 
 def load_all_issues() -> list[dict]:
     path = ROOT / "data" / "all_issues.json"
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    if not path.exists():
+        return []
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return [
+        i for i in raw
+        if i.get("issuetype") == "Épica"
+        or i.get("updated", "") >= ISSUES_UPDATED_SINCE
+    ]
 
 
 def filter_relevant(epics: list[dict]) -> list[dict]:
@@ -236,6 +244,15 @@ def enrich_epic(epic: dict) -> dict:
     return epic
 
 
+def _week_label(date_str: str) -> str:
+    """Convierte '2026-01-15' en 'Sem 2026-01-12' (lunes de esa semana)."""
+    d = _parse_date(date_str)
+    if not d:
+        return ""
+    monday = d - __import__("datetime").timedelta(days=d.weekday())
+    return f"Sem {monday.isoformat()}"
+
+
 def enrich_issue(issue: dict) -> dict:
     issue["dominios"] = _get_by_prefix(issue.get("components", []), "1")
     issue["servicios"] = _get_by_prefix(issue.get("components", []), "3")
@@ -243,6 +260,7 @@ def enrich_issue(issue: dict) -> dict:
     issue["servicio"] = ", ".join(issue["servicios"])
     issue["cycle_time"] = compute_cycle_time(issue)
     issue["lead_time"] = compute_lead_time(issue)
+    issue["week"] = _week_label(issue.get("updated", ""))
     return issue
 
 
@@ -297,6 +315,33 @@ def build_gantt_items(epics: list[dict]) -> list[dict]:
 
 
 # ------------------------------------------------------------------ #
+#  Issue data ligero para JS (filtrado dinámico client-side)          #
+# ------------------------------------------------------------------ #
+
+def _issue_slim(issue: dict) -> dict:
+    """Versión ligera del issue para embed en JS."""
+    return {
+        "k": issue["key"],
+        "t": issue["issuetype"],
+        "s": issue["status"],
+        "a": issue["assignee"],
+        "sv": issue.get("servicio", ""),
+        "c": issue.get("created", ""),
+        "u": issue.get("updated", ""),
+        "w": issue.get("week", ""),
+        "ct": issue.get("cycle_time"),
+        "lt": issue.get("lead_time"),
+        "ek": issue.get("epic_key", ""),
+    }
+
+
+def _collect_weeks(issues: list[dict]) -> list[str]:
+    """Retorna lista de semanas ordenadas de los issues."""
+    weeks = sorted({i["week"] for i in issues if i.get("week")})
+    return weeks
+
+
+# ------------------------------------------------------------------ #
 #  Métricas por dominio                                               #
 # ------------------------------------------------------------------ #
 
@@ -345,6 +390,8 @@ def compute_domain_metrics(
         "cycle_time_by_service": _time_by_service(dom_issues, compute_cycle_time),
         "lead_time_by_service": _time_by_service(dom_issues, compute_lead_time),
         "time_series": build_time_series(dom_issues),
+        "issues_slim": [_issue_slim(i) for i in dom_issues],
+        "weeks": _collect_weeks(dom_issues),
     }
 
 
@@ -423,6 +470,8 @@ def compute_all_metrics() -> dict:
             [s for i in all_issues for s in i.get("servicios", [])]
         ),
         "time_series": build_time_series(all_issues),
+        "issues_slim": [_issue_slim(i) for i in all_issues],
+        "weeks": _collect_weeks(all_issues),
         "active_epics": active,
         "blocked_epics": blocked,
         "done_recent": done_recent,
