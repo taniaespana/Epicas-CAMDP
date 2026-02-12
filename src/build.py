@@ -12,7 +12,7 @@ from metrics import compute_all_metrics
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = ROOT / "templates"
-SITE_DIR = ROOT / "site"
+SITE_DIR = ROOT / "docs"
 
 
 def build() -> None:
