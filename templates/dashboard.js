@@ -41,6 +41,8 @@ function applyFilter(field, value) {
     row.style.display = match ? '' : 'none';
   });
   updateVisibleCount();
+  // Also filter Gantt
+  buildGantt();
 }
 
 function clearAllFilters() {
@@ -49,6 +51,8 @@ function clearAllFilters() {
   $('#searchInput').value = '';
   $$('#epicTable tbody tr').forEach(row => { row.style.display = ''; });
   updateVisibleCount();
+  // Reset Gantt
+  buildGantt();
 }
 // Expose globally for the HTML onclick
 window.clearAllFilters = clearAllFilters;
@@ -150,9 +154,29 @@ function parseDate(str) {
   return new Date(y, m - 1, d);
 }
 
+function ganttMatchesChartFilter(e) {
+  if (!activeFilter.field) return true;
+  const f = activeFilter.field;
+  const v = activeFilter.value.toLowerCase();
+  // Direct field match first
+  const directVal = (e[f] || '').toLowerCase();
+  if (directVal.includes(v)) return true;
+  // For month filter, match start date prefix
+  if (f === 'month') return (e.start || '').startsWith(activeFilter.value);
+  return false;
+}
+
 function filteredGantt() {
-  if (ganttFilter === 'all') return GANTT_DATA;
-  return GANTT_DATA.filter(e => e.status === ganttFilter);
+  let items = GANTT_DATA;
+  // Apply status pill filter
+  if (ganttFilter !== 'all') {
+    items = items.filter(e => e.status === ganttFilter);
+  }
+  // Apply chart click filter
+  if (activeFilter.field) {
+    items = items.filter(e => ganttMatchesChartFilter(e));
+  }
+  return items;
 }
 
 function buildGantt() {

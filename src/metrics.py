@@ -185,6 +185,10 @@ def compute_all_metrics() -> dict:
             "color": color,
             "assignee": e["assignee"],
             "dominio": e["dominio"],
+            "equipo": e["equipo_df"],
+            "servicio": e["servicio"],
+            "app": e["app_producto"],
+            "tipo": e["tipo"],
         })
 
     return {
