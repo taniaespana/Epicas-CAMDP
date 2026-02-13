@@ -1,5 +1,150 @@
 [
   {
+    "key": "CAMDP-26633",
+    "summary": "CAM - Data Factory - Test - Optimización de DAG intdldat-k1wm-weekly-full-k1-ms-sctrck",
+    "issuetype": "Test",
+    "status": "Backlog",
+    "status_category": "Por hacer",
+    "assignee": "EDUALTER FERNANDEZ - Vendor",
+    "assignee_email": "EDUALTER.FERNANDEZ@walmart.com",
+    "priority": "P1",
+    "created": "2026-02-13",
+    "updated": "2026-02-13",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "Functional"
+    ],
+    "components": [
+      "2.DF_Proyectos"
+    ],
+    "description": "",
+    "url": "https://jira.walmart.com/browse/CAMDP-26633",
+    "start_date": "",
+    "planned_done_date": "",
+    "due_date": "",
+    "epic_key": "CAMDP-26232"
+  },
+  {
+    "key": "CAMDP-26632",
+    "summary": "Seguimiento MFA SA SVCDPSummaryLayerPro - dl-powerbi-reports",
+    "issuetype": "Tarea",
+    "status": "Backlog",
+    "status_category": "Por hacer",
+    "assignee": "Miriam Mondragon - Vendor",
+    "assignee_email": "vn5a09r@email.wal-mart.com",
+    "priority": "P1",
+    "created": "2026-02-13",
+    "updated": "2026-02-13",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "1.Vulnerabilidades",
+      "3.Externo"
+    ],
+    "components": [
+      "1.Data_DP",
+      "2.DF_KTLOs",
+      "5.Externo"
+    ],
+    "description": "",
+    "url": "https://jira.walmart.com/browse/CAMDP-26632",
+    "start_date": "",
+    "planned_done_date": "",
+    "due_date": "",
+    "epic_key": "CAMDP-26232"
+  },
+  {
+    "key": "CAMDP-26631",
+    "summary": "Seguimiento MFA SA SVCDPSummaryLayerPro - dl-cdp-settings-node",
+    "issuetype": "Tarea",
+    "status": "Backlog",
+    "status_category": "Por hacer",
+    "assignee": "Miriam Mondragon - Vendor",
+    "assignee_email": "vn5a09r@email.wal-mart.com",
+    "priority": "P1",
+    "created": "2026-02-13",
+    "updated": "2026-02-13",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "1.Vulnerabilidades",
+      "3.Externo"
+    ],
+    "components": [
+      "1.Data_DP",
+      "2.DF_KTLOs",
+      "5.Externo"
+    ],
+    "description": "",
+    "url": "https://jira.walmart.com/browse/CAMDP-26631",
+    "start_date": "",
+    "planned_done_date": "",
+    "due_date": "",
+    "epic_key": "CAMDP-26232"
+  },
+  {
+    "key": "CAMDP-26630",
+    "summary": "A-TEAM - DataFactory (Preparación para salir a producción - Saltrama)",
+    "issuetype": "Subtarea",
+    "status": "Backlog",
+    "status_category": "Por hacer",
+    "assignee": "Samuel Urias - Vendor",
+    "assignee_email": "Samuel.Urias@walmart.com",
+    "priority": "P2",
+    "created": "2026-02-13",
+    "updated": "2026-02-13",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "1.Innovación",
+      "2.SALTRAMA",
+      "3.Interno"
+    ],
+    "components": [
+      "1.Tecnología",
+      "2.DF_Proyectos",
+      "3.Innovación",
+      "4.SALTRAMA",
+      "5.Interno"
+    ],
+    "description": "",
+    "url": "https://jira.walmart.com/browse/CAMDP-26630",
+    "start_date": "",
+    "planned_done_date": "2025-09-29",
+    "due_date": "2026-02-13",
+    "epic_key": ""
+  },
+  {
+    "key": "CAMDP-26629",
+    "summary": "Seguimiento MFA SA SVCDPSummaryLayerPro - dl-notifications-api",
+    "issuetype": "Tarea",
+    "status": "Backlog",
+    "status_category": "Por hacer",
+    "assignee": "Miriam Mondragon - Vendor",
+    "assignee_email": "vn5a09r@email.wal-mart.com",
+    "priority": "P1",
+    "created": "2026-02-13",
+    "updated": "2026-02-13",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "1.Vulnerabilidades",
+      "3.Externo"
+    ],
+    "components": [
+      "1.Data_DP",
+      "2.DF_KTLOs",
+      "5.Externo"
+    ],
+    "description": "",
+    "url": "https://jira.walmart.com/browse/CAMDP-26629",
+    "start_date": "",
+    "planned_done_date": "",
+    "due_date": "",
+    "epic_key": "CAMDP-26232"
+  },
+  {
     "key": "CAMDP-26628",
     "summary": " Calidad - DataFactory (PoC Automatización - Incremento Dimensiones de Calidad)",
     "issuetype": "Tarea",
@@ -120,15 +265,15 @@
     "key": "CAMDP-26624",
     "summary": "Calidad - DataFactory (Generar PPT de Avance Calidad de Datos)",
     "issuetype": "Tarea",
-    "status": "Work in Progress",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "Jose Perez - Vendor",
     "assignee_email": "Jose.Perez16@walmart.com",
     "priority": "P1",
     "created": "2026-02-12",
     "updated": "2026-02-13",
-    "resolution": "",
-    "resolution_date": "",
+    "resolution": "Task Completed",
+    "resolution_date": "2026-02-13",
     "labels": [
       "1.Innovación",
       "3.Interno"
@@ -288,8 +433,8 @@
     "description": "",
     "url": "https://jira.walmart.com/browse/CAMDP-26619",
     "start_date": "2026-02-13",
-    "planned_done_date": "",
-    "due_date": "",
+    "planned_done_date": "2026-02-17",
+    "due_date": "2026-02-17",
     "epic_key": "CAMDP-26618"
   },
   {
@@ -323,7 +468,7 @@
   },
   {
     "key": "CAMDP-26617",
-    "summary": "CAM - Data Factory - Optimización de DAG Forced Prices",
+    "summary": "CAM - Data Factory - Test - Optimización de DAGs intldldat-k1wm-full-prod-k1-forced-prices",
     "issuetype": "Test Execution",
     "status": "Backlog",
     "status_category": "Por hacer",
@@ -331,7 +476,7 @@
     "assignee_email": "Yadir.Vega@walmart.com",
     "priority": "P1",
     "created": "2026-02-11",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -349,7 +494,7 @@
   },
   {
     "key": "CAMDP-26616",
-    "summary": "CAM - Data Factory - Optimización de DAG Forced Prices",
+    "summary": "CAM - Data Factory - Test Plan - Optimización de DAGs  intldldat-k1wm-full-prod-k1-forced-prices e intdldat-k1wm-weekly-full-k1-ms-sctrck",
     "issuetype": "Test Plan",
     "status": "Backlog",
     "status_category": "Por hacer",
@@ -357,7 +502,7 @@
     "assignee_email": "Yadir.Vega@walmart.com",
     "priority": "P1",
     "created": "2026-02-11",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -376,7 +521,7 @@
   },
   {
     "key": "CAMDP-26615",
-    "summary": "CAM - Data Factory - Optimización de DAG Forced Prices",
+    "summary": "CAM - Data Factory - Test - Optimización de DAGs intldldat-k1wm-full-prod-k1-forced-prices",
     "issuetype": "Test",
     "status": "Backlog",
     "status_category": "Por hacer",
@@ -384,7 +529,7 @@
     "assignee_email": "Yadir.Vega@walmart.com",
     "priority": "P1",
     "created": "2026-02-11",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -402,7 +547,7 @@
   },
   {
     "key": "CAMDP-26614",
-    "summary": "CAM - Data Factory - Optimización de DAG  Forced Prices",
+    "summary": "CAM - Data Factory - Test Set- Optimización de DAGs intldldat-k1wm-full-prod-k1-forced-prices e intdldat-k1wm-weekly-full-k1-ms-sctrck",
     "issuetype": "Test Set",
     "status": "Backlog",
     "status_category": "Por hacer",
@@ -410,7 +555,7 @@
     "assignee_email": "Yadir.Vega@walmart.com",
     "priority": "P1",
     "created": "2026-02-11",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -428,7 +573,7 @@
   },
   {
     "key": "CAMDP-26613",
-    "summary": "CAM - Data Factory - Optimización de DAG  Forced Prices",
+    "summary": "CAM - Data Factory - Optimización de DAGs  intldldat-k1wm-full-prod-k1-forced-prices e intdldat-k1wm-weekly-full-k1-ms-sctrck",
     "issuetype": "Historia",
     "status": "Ready to Start",
     "status_category": "En curso",
@@ -490,7 +635,7 @@
     "assignee_email": "ERICK.DIAZ@walmart.com",
     "priority": "P1",
     "created": "2026-02-10",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -499,6 +644,7 @@
     "components": [
       "1.Data_DP",
       "1.E-Commerce",
+      "2.DF_Proyectos",
       "3.Ing_Datos",
       "5.Externo"
     ],
@@ -519,18 +665,15 @@
     "assignee_email": "ERICK.DIAZ@walmart.com",
     "priority": "P1",
     "created": "2026-02-10",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
-      "1.Ing_Datos",
-      "3.Externo",
-      "Functional",
-      "Performance"
+      "Functional"
     ],
     "components": [
       "1.Data_DP",
-      "2.DF_KTLOs",
+      "2.DF_Proyectos",
       "3.Ing_Datos",
       "5.Externo"
     ],
@@ -551,17 +694,16 @@
     "assignee_email": "ERICK.DIAZ@walmart.com",
     "priority": "P1",
     "created": "2026-02-10",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
-      "1.Ing_Datos",
-      "3.Externo",
       "CAM-QA"
     ],
     "components": [
       "1.Data_DP",
       "1.E-Commerce",
+      "2.DF_Proyectos",
       "3.Ing_Datos",
       "5.Externo"
     ],
@@ -582,14 +724,16 @@
     "assignee_email": "ERICK.DIAZ@walmart.com",
     "priority": "P1",
     "created": "2026-02-10",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
-      "CAM-QA"
+      "CAM-QA",
+      "Febrero-2026"
     ],
     "components": [
       "1.E-Commerce",
+      "2.DF_Proyectos",
       "3.Ing_Datos"
     ],
     "description": "",
@@ -603,13 +747,13 @@
     "key": "CAMDP-26607",
     "summary": "CAM Data Factory - Pruebas de QA para ETL VTEX",
     "issuetype": "Historia",
-    "status": "Ready to Start",
-    "status_category": "En curso",
+    "status": "Backlog",
+    "status_category": "Por hacer",
     "assignee": "Erick Diaz - Vendor",
     "assignee_email": "ERICK.DIAZ@walmart.com",
     "priority": "P1",
     "created": "2026-02-10",
-    "updated": "2026-02-11",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [],
@@ -656,15 +800,15 @@
     "key": "CAMDP-26603",
     "summary": "Inventario de reportes oficiales en plataforma SPOT",
     "issuetype": "Tarea",
-    "status": "Ready for Review",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "Ian Picado - Vendor",
     "assignee_email": "Ian.Picado@walmart.com",
     "priority": "P1",
     "created": "2026-02-10",
     "updated": "2026-02-13",
-    "resolution": "",
-    "resolution_date": "",
+    "resolution": "Task Completed",
+    "resolution_date": "2026-02-13",
     "labels": [
       "New_Request"
     ],
@@ -1275,15 +1419,15 @@
     "key": "CAMDP-26575",
     "summary": "A-TEAM - DataFactory (Ajustes de python a Scala - Continuación II - Saltrama)",
     "issuetype": "Subtarea",
-    "status": "Work in Progress",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "Samuel Urias - Vendor",
     "assignee_email": "Samuel.Urias@walmart.com",
     "priority": "P2",
     "created": "2026-02-09",
     "updated": "2026-02-13",
-    "resolution": "",
-    "resolution_date": "",
+    "resolution": "Task Completed",
+    "resolution_date": "2026-02-13",
     "labels": [
       "1.Innovación",
       "2.SALTRAMA",
@@ -1478,15 +1622,15 @@
     "key": "CAMDP-26568",
     "summary": "Rendimiento \"No generacion de reporte Libro Ventas Retail CR\"",
     "issuetype": "Tarea",
-    "status": "Work in Progress",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "Maureen Carvajal - Vendor",
     "assignee_email": "Maureen.Carvajal@walmart.com",
     "priority": "P1",
     "created": "2026-02-06",
-    "updated": "2026-02-12",
-    "resolution": "",
-    "resolution_date": "",
+    "updated": "2026-02-13",
+    "resolution": "Task Completed",
+    "resolution_date": "2026-02-13",
     "labels": [],
     "components": [
       "1.Data_DP",
@@ -1612,15 +1756,15 @@
     "key": "CAMDP-26563",
     "summary": "Calidad - DataFactory (Jobs ambiente Desarrollo - Listado Tablas con Calidad vs Tablas Gobernadas)",
     "issuetype": "Tarea",
-    "status": "Work in Progress",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "Jose Perez - Vendor",
     "assignee_email": "Jose.Perez16@walmart.com",
     "priority": "P2",
     "created": "2026-02-06",
     "updated": "2026-02-13",
-    "resolution": "",
-    "resolution_date": "",
+    "resolution": "Task Completed",
+    "resolution_date": "2026-02-13",
     "labels": [],
     "components": [
       "1.Data_DP",
@@ -93069,7 +93213,7 @@
     "assignee_email": "vn5a09r@email.wal-mart.com",
     "priority": "P1",
     "created": "2025-06-01",
-    "updated": "2026-02-12",
+    "updated": "2026-02-13",
     "resolution": "",
     "resolution_date": "",
     "labels": [
