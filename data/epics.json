@@ -502,7 +502,7 @@
     "status_category": "En curso",
     "assignee": "Francisco Martinez",
     "assignee_email": "Francisco.Martinez4@walmart.com",
-    "priority": "None",
+    "priority": "P1",
     "created": "2026-01-08",
     "updated": "2026-02-12",
     "resolution": "",
@@ -739,7 +739,7 @@
     "assignee_email": "Tania.Espana@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-02-11",
+    "updated": "2026-02-12",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -3739,7 +3739,7 @@
     "assignee_email": "Francisco.Martinez4@walmart.com",
     "priority": "P1",
     "created": "2025-02-28",
-    "updated": "2026-01-07",
+    "updated": "2026-02-12",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
