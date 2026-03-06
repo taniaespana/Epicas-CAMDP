@@ -1,5 +1,174 @@
 [
   {
+    "key": "CAMDP-27022",
+    "summary": "INICIATIVA - ML- Remanentes de actividad comercial",
+    "status": "Backlog",
+    "status_category": "Por hacer",
+    "assignee": "MANUEL DIAZ",
+    "assignee_email": "Manuel.Diaz0@walmart.com",
+    "priority": "None",
+    "created": "2026-03-06",
+    "updated": "2026-03-06",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [],
+    "components": [
+      "1.SCM",
+      "2.DF_ML",
+      "3.Machine_Learning",
+      "5.Externo"
+    ],
+    "description": "h3. 📋 Descripción\r\n\r\nDesarrollar un sistema de scoring basado en inteligencia artificial que permita identificar, clasificar y optimizar los *remanentes de actividad comercial* dentro de la plataforma MGTXT, integrándose con el ecosistema de *CAM Data Management* en Confluence Enterprise.\r\n\r\nEl AI S",
+    "url": "https://jira.walmart.com/browse/CAMDP-27022",
+    "start_date": "",
+    "planned_done_date": "",
+    "due_date": ""
+  },
+  {
+    "key": "CAMDP-26945",
+    "summary": "2026 NS - Items Atributos de Peso",
+    "status": "Work in Progress",
+    "status_category": "En curso",
+    "assignee": "MANUEL DIAZ",
+    "assignee_email": "Manuel.Diaz0@walmart.com",
+    "priority": "P3",
+    "created": "2026-03-03",
+    "updated": "2026-03-05",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "1.Innovación",
+      "2.MACHINE_LEARNING",
+      "3.Externo",
+      "CAMDF_Interno",
+      "Fabric",
+      "New_Request",
+      "Portafolio2025_DataProduct"
+    ],
+    "components": [
+      "1.Tecnología",
+      "2.DF_ML",
+      "3.Innovación",
+      "5.Externo",
+      "NavySeals"
+    ],
+    "description": "Esta epica se crea con el objetivo de agrupar todas las tareas relacionadas al PoC y Desarrollo del modelo  basado en Robot de Matches para identificar atributos de items con oportunidad de mejora en sus pesos y características que afectan el calculo de merma.",
+    "url": "https://jira.walmart.com/browse/CAMDP-26945",
+    "start_date": "2025-10-20",
+    "planned_done_date": "2026-06-30",
+    "due_date": ""
+  },
+  {
+    "key": "CAMDP-26892",
+    "summary": "INICIATIVA - ML - Proyecto Predictor – Expected Sales",
+    "status": "Backlog",
+    "status_category": "Por hacer",
+    "assignee": "MANUEL DIAZ",
+    "assignee_email": "Manuel.Diaz0@walmart.com",
+    "priority": "P1",
+    "created": "2026-03-02",
+    "updated": "2026-03-05",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "1.SCM",
+      "CAMDF_Externo",
+      "Fabric",
+      "New_Request"
+    ],
+    "components": [
+      "1.SCM",
+      "2.DF_ML",
+      "3.Machine_Learning",
+      "5.Externo"
+    ],
+    "description": "Hola, equipo,\r\n\r\nUna vez completada la evaluación de *AI Score* y la exploración inicial, entrego formalmente el proyecto *Smart Forecasting – Expected Sales* para la implementación de *Machine Learning (ML)*.\r\n\r\nEsta iniciativa busca *transformar el proceso actual de previsión de ventas* dentro de ",
+    "url": "https://jira.walmart.com/browse/CAMDP-26892",
+    "start_date": "2025-11-03",
+    "planned_done_date": "2026-08-31",
+    "due_date": ""
+  },
+  {
+    "key": "CAMDP-26739",
+    "summary": "DG-SCM-Migración tablas -Reporteria-CPH",
+    "status": "Work in Progress",
+    "status_category": "En curso",
+    "assignee": "Ericka Artavia",
+    "assignee_email": "Ericka.Artavia@walmart.com",
+    "priority": "P2",
+    "created": "2026-02-19",
+    "updated": "2026-03-05",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "New_Request"
+    ],
+    "components": [
+      "1.SCM",
+      "2.DF_Proyectos",
+      "3.ETL",
+      "5.Externo"
+    ],
+    "description": "*¿Cuál es el objetivo del proyecto?*\r\n\r\nEl proyecto de CPH tiene como objetivo automatizar el calculo de del CPH diario para Barcenas, Amatitlan y Congelados y Farmacia.\r\n\r\n*¿Qué problema de negocio pretende resolver?*\r\n\r\nActualmente el proceso es demasiado manual ya que los analistas tienen que des",
+    "url": "https://jira.walmart.com/browse/CAMDP-26739",
+    "start_date": "2026-02-23",
+    "planned_done_date": "2026-06-30",
+    "due_date": ""
+  },
+  {
+    "key": "CAMDP-26700",
+    "summary": "Implementar Monitoreo del Pipeline Success Rate (%)",
+    "status": "Work in Progress",
+    "status_category": "En curso",
+    "assignee": "Ericka Artavia",
+    "assignee_email": "Ericka.Artavia@walmart.com",
+    "priority": "None",
+    "created": "2026-02-18",
+    "updated": "2026-02-19",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [],
+    "components": [
+      "1.Data_DP",
+      "2.DF_Ingesta",
+      "3.Innovación",
+      "5.Interno"
+    ],
+    "description": "h2. *📝 Descripción*\r\n\r\nActualmente, el equipo no cuenta con una herramienta centralizada ni automatizada para monitorear la confiabilidad de las cargas de datos.\r\nEl objetivo de esta iniciativa es *crear un mecanismo de observabilidad* que permita medir y dar seguimiento al indicador:\r\n\r\n*Pipeline S",
+    "url": "https://jira.walmart.com/browse/CAMDP-26700",
+    "start_date": "2026-02-19",
+    "planned_done_date": "2026-06-30",
+    "due_date": ""
+  },
+  {
+    "key": "CAMDP-26651",
+    "summary": "DF - SCM - Facturación",
+    "status": "Work in Progress",
+    "status_category": "En curso",
+    "assignee": "Josue Serrano",
+    "assignee_email": "Josue.Serrano@walmart.com",
+    "priority": "P2",
+    "created": "2026-02-16",
+    "updated": "2026-03-05",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "CAM_TECH_VALUE_ENABLER"
+    ],
+    "components": [
+      "1.SCM",
+      "2.A-Team",
+      "3.ETL",
+      "5.Externo",
+      "Portfolio_Supply"
+    ],
+    "description": "PENDIENTE COLOCAR DESCRIPCIÓN por [~j0s1f7k] , [~e0a0dh1] \r\n\r\nÉpica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Facturación*\r\n\r\n ",
+    "url": "https://jira.walmart.com/browse/CAMDP-26651",
+    "start_date": "2026-02-16",
+    "planned_done_date": "2026-06-30",
+    "due_date": ""
+  },
+  {
     "key": "CAMDP-26618",
     "summary": "Proyecto Ecomm | Disponibilidad de Fuentes",
     "status": "Work in Progress",
@@ -8,7 +177,7 @@
     "assignee_email": "Ericka.Artavia@walmart.com",
     "priority": "None",
     "created": "2026-02-11",
-    "updated": "2026-02-12",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -35,7 +204,7 @@
     "assignee_email": "Ericka.Artavia@walmart.com",
     "priority": "P1",
     "created": "2026-02-03",
-    "updated": "2026-02-05",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -67,7 +236,7 @@
     "assignee_email": "Luis.Castro0@walmart.com",
     "priority": "P2",
     "created": "2026-02-03",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -98,7 +267,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2026-01-21",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -108,12 +277,15 @@
       "New_Request"
     ],
     "components": [
-      "1.SCM"
+      "1.SCM",
+      "2.DF_ML",
+      "3.Machine_Learning",
+      "5.Externo"
     ],
     "description": "Hola, equipo,\r\n\r\nUna vez completada la evaluación de *AI Score* y la exploración inicial, entrego formalmente el proyecto *Smart Forecasting – Expected Sales* para la implementación de *Machine Learning (ML)*.\r\n\r\nEsta iniciativa busca *transformar el proceso actual de previsión de ventas* dentro de ",
     "url": "https://jira.walmart.com/browse/CAMDP-26417",
     "start_date": "2025-11-03",
-    "planned_done_date": "2026-02-18",
+    "planned_done_date": "2026-08-31",
     "due_date": ""
   },
   {
@@ -125,7 +297,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P2",
     "created": "2026-01-20",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -150,11 +322,11 @@
     "summary": "Proyecto Comercial - Pricing - Análisis  Adhoc IA -[2026]",
     "status": "Work in Progress",
     "status_category": "En curso",
-    "assignee": "Fernando Miranda - Vendor",
-    "assignee_email": "Fernando.Miranda1@walmart.com",
+    "assignee": "Fernando Vega - Vendor",
+    "assignee_email": "Fernando.Vega@walmart.com",
     "priority": "P1",
     "created": "2026-01-19",
-    "updated": "2026-02-13",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -182,7 +354,7 @@
     "assignee_email": "Alejandro.Piedra0@walmart.com",
     "priority": "P1",
     "created": "2026-01-19",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -213,7 +385,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2026-01-15",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -226,6 +398,7 @@
     ],
     "components": [
       "1.Data_Sharing",
+      "2.DF_ML",
       "3.Machine_Learning",
       "5.Externo"
     ],
@@ -244,7 +417,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P2",
     "created": "2026-01-12",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -299,7 +472,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2026-01-12",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "Duplicado",
     "resolution_date": "2026-02-09",
     "labels": [
@@ -329,7 +502,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2026-01-12",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "Won't Do",
     "resolution_date": "2026-01-21",
     "labels": [
@@ -359,7 +532,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2026-01-12",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -376,7 +549,7 @@
     "description": "*Descripción detallada*\r\n\r\nSe requiere implementar un modelo de IA para Merma Administrativa, el cual permita realizar ensayos de algoritmos, análisis EDA, definición de variables y revisión de indicadores de rendimiento, para poder anticipar y automatizar la detección de estos casos y que genere un",
     "url": "https://jira.walmart.com/browse/CAMDP-26304",
     "start_date": "2025-11-06",
-    "planned_done_date": "2026-02-24",
+    "planned_done_date": "2026-06-30",
     "due_date": ""
   },
   {
@@ -388,7 +561,7 @@
     "assignee_email": "Johana.Lesmes@walmart.com",
     "priority": "P3",
     "created": "2026-01-09",
-    "updated": "2026-02-05",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -419,7 +592,7 @@
     "assignee_email": "Francisco.Martinez4@walmart.com",
     "priority": "P1",
     "created": "2026-01-09",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -440,20 +613,20 @@
     "url": "https://jira.walmart.com/browse/CAMDP-26250",
     "start_date": "2026-01-09",
     "planned_done_date": "2026-02-23",
-    "due_date": ""
+    "due_date": "2026-03-31"
   },
   {
     "key": "CAMDP-26245",
     "summary": "Proyecto Comercial - Pricing [2026]",
-    "status": "Work in Progress",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "Francisco Martinez",
     "assignee_email": "Francisco.Martinez4@walmart.com",
     "priority": "P1",
     "created": "2026-01-08",
-    "updated": "2026-02-11",
-    "resolution": "",
-    "resolution_date": "",
+    "updated": "2026-03-05",
+    "resolution": "Listo",
+    "resolution_date": "2026-03-05",
     "labels": [
       "1.ETL",
       "1.Innovación",
@@ -482,7 +655,7 @@
     "assignee_email": "Tania.Espana@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-02-11",
+    "updated": "2026-03-06",
     "resolution": "",
     "resolution_date": "",
     "labels": [],
@@ -498,13 +671,13 @@
   {
     "key": "CAMDP-26242",
     "summary": "Proyecto Ecomm | Reporte 3 patas",
-    "status": "Work in Progress",
+    "status": "Blocked",
     "status_category": "En curso",
     "assignee": "Francisco Martinez",
     "assignee_email": "Francisco.Martinez4@walmart.com",
     "priority": "P1",
     "created": "2026-01-08",
-    "updated": "2026-02-12",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -533,7 +706,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P1",
     "created": "2026-01-08",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -565,7 +738,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P1",
     "created": "2026-01-08",
-    "updated": "2026-02-05",
+    "updated": "2026-03-06",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -591,7 +764,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P2",
     "created": "2026-01-08",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -608,11 +781,11 @@
       "5.Externo",
       "Portfolio_Supply"
     ],
-    "description": "PENDIENTE COLOCAR DESCRIPCIÓN\r\n\r\nÉpica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Analizador de huevo*\r\n\r\n ",
+    "description": "PENDIENTE COLOCAR DESCRIPCIÓN por [~j0s1f7k] , [~e0a0dh1] \r\n\r\nÉpica iniciativa de la célula de SCM, donde el campo Epic Name hace referencia a la estructura:\r\n\r\n*D&A Team + Dominio + Area + Tipo + Proyecto*\r\n\r\n*DF - SCM - Analizador de huevo*\r\n\r\n ",
     "url": "https://jira.walmart.com/browse/CAMDP-26237",
     "start_date": "2025-11-24",
     "planned_done_date": "2026-01-26",
-    "due_date": "2026-02-27"
+    "due_date": "2026-06-30"
   },
   {
     "key": "CAMDP-26236",
@@ -649,7 +822,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P2",
     "created": "2026-01-08",
-    "updated": "2026-02-09",
+    "updated": "2026-03-05",
     "resolution": "Won't Do",
     "resolution_date": "2026-01-08",
     "labels": [
@@ -679,7 +852,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P3",
     "created": "2026-01-08",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -711,7 +884,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -739,7 +912,7 @@
     "assignee_email": "Tania.Espana@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-02-13",
+    "updated": "2026-03-06",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -764,7 +937,7 @@
     "assignee_email": "Tania.Espana@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-02-05",
+    "updated": "2026-03-06",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -879,7 +1052,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P2",
     "created": "2025-12-15",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -909,7 +1082,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2025-12-11",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -1024,7 +1197,7 @@
     "assignee_email": "Francisco.Martinez4@walmart.com",
     "priority": "P1",
     "created": "2025-11-20",
-    "updated": "2026-02-11",
+    "updated": "2026-03-03",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -1175,7 +1348,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2025-11-04",
-    "updated": "2026-01-12",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -1226,7 +1399,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "None",
     "created": "2025-10-31",
-    "updated": "2026-01-08",
+    "updated": "2026-02-23",
     "resolution": "Listo",
     "resolution_date": "2026-01-06",
     "labels": [
@@ -1281,7 +1454,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P1",
     "created": "2025-10-29",
-    "updated": "2026-01-08",
+    "updated": "2026-02-22",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -1306,7 +1479,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2025-10-28",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -1334,7 +1507,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P3",
     "created": "2025-10-24",
-    "updated": "2026-01-06",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-06",
     "labels": [
@@ -1389,7 +1562,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P3",
     "created": "2025-10-20",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-06",
     "labels": [
@@ -1451,7 +1624,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2025-10-13",
-    "updated": "2026-01-15",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -1502,7 +1675,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P2",
     "created": "2025-10-08",
-    "updated": "2026-02-09",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-06",
     "labels": [
@@ -1532,7 +1705,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P3",
     "created": "2025-10-06",
-    "updated": "2026-01-09",
+    "updated": "2026-03-05",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -1558,7 +1731,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2025-10-03",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -1734,7 +1907,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "Needs to be Prioritized",
     "created": "2025-09-23",
-    "updated": "2026-01-07",
+    "updated": "2026-02-19",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
@@ -1873,13 +2046,13 @@
   {
     "key": "CAMDP-24605",
     "summary": "Proyecto Habilitación Tablas Etiquetas Electrónicas",
-    "status": "Work in Progress",
+    "status": "Blocked",
     "status_category": "En curso",
     "assignee": "Johana Lesmes - Vendor",
     "assignee_email": "Johana.Lesmes@walmart.com",
     "priority": "P3",
     "created": "2025-09-17",
-    "updated": "2026-02-11",
+    "updated": "2026-03-05",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -2236,7 +2409,7 @@
     "assignee_email": "Samuel.Urias@walmart.com",
     "priority": "P1",
     "created": "2025-07-24",
-    "updated": "2026-02-05",
+    "updated": "2026-02-17",
     "resolution": "Listo",
     "resolution_date": "2026-02-03",
     "labels": [
@@ -5592,7 +5765,7 @@
     "assignee_email": "Kevin.Mora0@walmart.com",
     "priority": "None",
     "created": "2024-06-28",
-    "updated": "2025-11-06",
+    "updated": "2026-02-25",
     "resolution": "Listo",
     "resolution_date": "2025-11-06",
     "labels": [
@@ -7278,7 +7451,7 @@
     "assignee_email": "Alejandro.Piedra0@walmart.com",
     "priority": "P4",
     "created": "2021-05-27",
-    "updated": "2026-02-12",
+    "updated": "2026-03-03",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
