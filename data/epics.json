@@ -8,7 +8,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "None",
     "created": "2026-03-06",
-    "updated": "2026-03-06",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [],
@@ -67,7 +67,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2026-03-02",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -149,7 +149,7 @@
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P2",
     "created": "2026-02-16",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -166,7 +166,7 @@
     "url": "https://jira.walmart.com/browse/CAMDP-26651",
     "start_date": "2026-02-16",
     "planned_done_date": "2026-06-30",
-    "due_date": ""
+    "due_date": "2026-03-31"
   },
   {
     "key": "CAMDP-26618",
@@ -236,7 +236,7 @@
     "assignee_email": "Luis.Castro0@walmart.com",
     "priority": "P2",
     "created": "2026-02-03",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -267,7 +267,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2026-01-21",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -291,13 +291,13 @@
   {
     "key": "CAMDP-26404",
     "summary": "DF - SCM - Manufactura - Evolución Amino",
-    "status": "Work in Progress",
+    "status": "Blocked",
     "status_category": "En curso",
     "assignee": "Josue Serrano",
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P2",
     "created": "2026-01-20",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -592,7 +592,7 @@
     "assignee_email": "Francisco.Martinez4@walmart.com",
     "priority": "P1",
     "created": "2026-01-09",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -670,14 +670,14 @@
   },
   {
     "key": "CAMDP-26242",
-    "summary": "Proyecto Ecomm | Reporte 3 patas",
+    "summary": "Ecomm | Development | Reporte de conciliacion de precios y stock",
     "status": "Blocked",
     "status_category": "En curso",
     "assignee": "Francisco Martinez",
     "assignee_email": "Francisco.Martinez4@walmart.com",
     "priority": "P1",
     "created": "2026-01-08",
-    "updated": "2026-03-05",
+    "updated": "2026-03-08",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -691,7 +691,7 @@
       "3.ETL",
       "5.Externo"
     ],
-    "description": "Objetivo dedicado al proyecto de Ecommerce",
+    "description": "Esta épica agrupa todas las tareas relacionadas con el desarrollo del reporte de conciliación de precios y stock, iniciativa que fue trabajada durante el año anterior y que actualmente se encuentra en sus etapas finales de creación y liberación.\r\n\r\nEl objetivo de esta épica es consolidar y finalizar",
     "url": "https://jira.walmart.com/browse/CAMDP-26242",
     "start_date": "2026-01-08",
     "planned_done_date": "2026-03-26",
@@ -700,13 +700,13 @@
   {
     "key": "CAMDP-26239",
     "summary": "SCM - Transporte - Simpli Route a Datamart [2026]",
-    "status": "Work in Progress",
+    "status": "Blocked",
     "status_category": "En curso",
     "assignee": "Josue Serrano",
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P1",
     "created": "2026-01-08",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -758,13 +758,13 @@
   {
     "key": "CAMDP-26237",
     "summary": "SCM - Analizador de huevo [2026]",
-    "status": "Blocked",
+    "status": "Work in Progress",
     "status_category": "En curso",
     "assignee": "Josue Serrano",
     "assignee_email": "Josue.Serrano@walmart.com",
     "priority": "P2",
     "created": "2026-01-08",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -785,7 +785,7 @@
     "url": "https://jira.walmart.com/browse/CAMDP-26237",
     "start_date": "2025-11-24",
     "planned_done_date": "2026-01-26",
-    "due_date": "2026-06-30"
+    "due_date": "2026-03-31"
   },
   {
     "key": "CAMDP-26236",
@@ -878,15 +878,15 @@
   {
     "key": "CAMDP-26233",
     "summary": "Proy. Morralla - Fase Hypercare [2026]",
-    "status": "Work in Progress",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "MANUEL DIAZ",
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-03-05",
-    "resolution": "",
-    "resolution_date": "",
+    "updated": "2026-03-09",
+    "resolution": "Listo",
+    "resolution_date": "2026-03-09",
     "labels": [
       "1.Machine_learning",
       "3.Externo"
@@ -912,7 +912,7 @@
     "assignee_email": "Tania.Espana@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-03-06",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -7451,7 +7451,7 @@
     "assignee_email": "Alejandro.Piedra0@walmart.com",
     "priority": "P4",
     "created": "2021-05-27",
-    "updated": "2026-03-03",
+    "updated": "2026-03-09",
     "resolution": "Listo",
     "resolution_date": "2026-01-07",
     "labels": [
