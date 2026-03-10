@@ -1,5 +1,32 @@
 [
   {
+    "key": "CAMDP-27098",
+    "summary": "Ecomm | 2 hrs availability",
+    "status": "Backlog",
+    "status_category": "Por hacer",
+    "assignee": "MANUEL DIAZ",
+    "assignee_email": "Manuel.Diaz0@walmart.com",
+    "priority": "P1",
+    "created": "2026-03-09",
+    "updated": "2026-03-09",
+    "resolution": "",
+    "resolution_date": "",
+    "labels": [
+      "New_Request"
+    ],
+    "components": [
+      "1.E-Commerce",
+      "2.DF_Ingesta",
+      "3.ETL",
+      "5.Externo"
+    ],
+    "description": "|Homologar y medir el KPI de 2 hrs availability que actualmente mide Chile|",
+    "url": "https://jira.walmart.com/browse/CAMDP-27098",
+    "start_date": "2026-02-12",
+    "planned_done_date": "2026-04-30",
+    "due_date": ""
+  },
+  {
     "key": "CAMDP-27022",
     "summary": "INICIATIVA - ML- Remanentes de actividad comercial",
     "status": "Backlog",
@@ -177,7 +204,7 @@
     "assignee_email": "Ericka.Artavia@walmart.com",
     "priority": "None",
     "created": "2026-02-11",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -198,15 +225,15 @@
   {
     "key": "CAMDP-26541",
     "summary": "Proyecto Ingesta de datos Saltrama [2026]",
-    "status": "Work in Progress",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "Ericka Artavia",
     "assignee_email": "Ericka.Artavia@walmart.com",
     "priority": "P1",
     "created": "2026-02-03",
-    "updated": "2026-03-05",
-    "resolution": "",
-    "resolution_date": "",
+    "updated": "2026-03-09",
+    "resolution": "Listo",
+    "resolution_date": "2026-03-09",
     "labels": [
       "1.Calidad_de_datos",
       "2.SALTRAMA",
@@ -225,7 +252,7 @@
     "url": "https://jira.walmart.com/browse/CAMDP-26541",
     "start_date": "2026-02-03",
     "planned_done_date": "2026-03-30",
-    "due_date": "2026-02-28"
+    "due_date": "2026-03-30"
   },
   {
     "key": "CAMDP-26540",
@@ -673,11 +700,11 @@
     "summary": "Ecomm | Development | Reporte de conciliacion de precios y stock",
     "status": "Blocked",
     "status_category": "En curso",
-    "assignee": "Francisco Martinez",
-    "assignee_email": "Francisco.Martinez4@walmart.com",
+    "assignee": "Erick Diaz - Vendor",
+    "assignee_email": "ERICK.DIAZ@walmart.com",
     "priority": "P1",
     "created": "2026-01-08",
-    "updated": "2026-03-08",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -846,15 +873,15 @@
   {
     "key": "CAMDP-26234",
     "summary": "AI|ML - Discrepancias Importaciones [2026]",
-    "status": "Work in Progress",
-    "status_category": "En curso",
+    "status": "Listo",
+    "status_category": "Listo",
     "assignee": "MANUEL DIAZ",
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P3",
     "created": "2026-01-08",
-    "updated": "2026-03-05",
-    "resolution": "",
-    "resolution_date": "",
+    "updated": "2026-03-09",
+    "resolution": "Listo",
+    "resolution_date": "2026-03-09",
     "labels": [
       "1.Machine_learning",
       "3.Interno",
@@ -937,7 +964,7 @@
     "assignee_email": "Tania.Espana@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-03-06",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -1731,7 +1758,7 @@
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2025-10-03",
-    "updated": "2026-03-05",
+    "updated": "2026-03-09",
     "resolution": "",
     "resolution_date": "",
     "labels": [
