@@ -2,13 +2,13 @@
   {
     "key": "CAMDP-27098",
     "summary": "Ecomm | 2 hrs availability",
-    "status": "Backlog",
-    "status_category": "Por hacer",
+    "status": "Work in Progress",
+    "status_category": "En curso",
     "assignee": "MANUEL DIAZ",
     "assignee_email": "Manuel.Diaz0@walmart.com",
     "priority": "P1",
     "created": "2026-03-09",
-    "updated": "2026-03-09",
+    "updated": "2026-03-11",
     "resolution": "",
     "resolution_date": "",
     "labels": [
@@ -16,8 +16,8 @@
     ],
     "components": [
       "1.E-Commerce",
-      "2.DF_Ingesta",
-      "3.ETL",
+      "2.DF_ML",
+      "3.Machine_Learning",
       "5.Externo"
     ],
     "description": "|Homologar y medir el KPI de 2 hrs availability que actualmente mide Chile|",
@@ -679,7 +679,7 @@
     "assignee_email": "Tania.Espana@walmart.com",
     "priority": "None",
     "created": "2026-01-08",
-    "updated": "2026-03-06",
+    "updated": "2026-03-11",
     "resolution": "",
     "resolution_date": "",
     "labels": [],
